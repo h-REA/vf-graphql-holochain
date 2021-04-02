@@ -17,6 +17,7 @@ Specifies the resource as part of a recipe, for use in planning from recipe.
 """
 type RecipeResource {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a recipe resource. Does not imply uniqueness."
   name: String!
@@ -52,6 +53,7 @@ The specification of a resource inflow to, or outflow from, a recipe process.
 """
 type RecipeFlow {
   id: ID!
+  revisionId: ID!
 
   "The amount and unit of the economic resource counted or inventoried."
   resourceQuantity: Measure
@@ -83,6 +85,7 @@ Specifies a process in a recipe for use in planning from recipe.
 """
 type RecipeProcess {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a recipe process. Does not imply uniqueness."
   name: String!
@@ -105,6 +108,7 @@ Specifies an exchange agreement as part of a recipe.
 """
 type RecipeExchange {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a recipe exchange. Does not imply uniqueness."
   name: String!

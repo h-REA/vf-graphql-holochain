@@ -16,6 +16,7 @@ Supports the gift economy.
 """
 type Appreciation {
   id: ID!
+  revisionId: ID!
 
   "The economic event this appreciation has been given in acknowledgement of."
   appreciationOf: EconomicEvent!

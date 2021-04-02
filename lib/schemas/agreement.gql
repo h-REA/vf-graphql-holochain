@@ -18,6 +18,7 @@ Any type of agreement among economic agents.
 """
 type Agreement {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an agreement. Does not imply uniqueness."
   name: String

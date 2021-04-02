@@ -18,6 +18,7 @@ An observed economic flow, as opposed to a flow planned to happen in the future.
 """
 type EconomicEvent {
   id: ID!
+  revisionId: ID!
 
   "Relates an economic event to a verb, such as consume, produce, work, improve, etc."
   action: Action!
@@ -82,6 +83,7 @@ A resource which is useful to people or the ecosystem.
 """
 type EconomicResource {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an item. Does not imply uniqueness."
   name: String
@@ -138,6 +140,7 @@ From DataFoodConsortium vocabulary https://datafoodconsortium.gitbook.io/dfc-sta
 """
 type ProductBatch {
   id: ID!
+  revisionId: ID!
 
   "The standard unique identifier of the batch."
   batchNumber: String!
@@ -154,6 +157,7 @@ An activity that changes inputs into outputs.  It could transform or transport e
 """
 type Process {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a process. Does not imply uniqueness."
   name: String!

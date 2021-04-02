@@ -19,6 +19,7 @@ An agent to which the proposal is to be published.  A proposal can be published 
 """
 type ProposedTo {
   id: ID!
+  revisionId: ID!
 
   "The agent to which the proposal is published."
   proposedTo: Agent!

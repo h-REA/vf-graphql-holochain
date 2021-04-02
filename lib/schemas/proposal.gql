@@ -15,6 +15,7 @@ Published requests or offers, sometimes with what is expected in return.
 """
 type Proposal {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a proposal. Does not imply uniqueness."
   name: String
@@ -48,6 +49,7 @@ Represents many-to-many relationships between Proposals and Intents, supporting 
 """
 type ProposedIntent {
   id: ID!
+  revisionId: ID!
 
   "This is a reciprocal intent of this proposal, not primary. Not meant to be used for intent matching."
   reciprocal: Boolean

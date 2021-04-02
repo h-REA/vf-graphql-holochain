@@ -47,6 +47,7 @@ From OM2 vocabulary.
 """
 type Unit {
   id: ID!
+  revisionId: ID!
 
   "A human readable label for the unit, can be language specific."
   label: String!

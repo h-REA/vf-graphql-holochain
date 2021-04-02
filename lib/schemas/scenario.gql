@@ -15,6 +15,7 @@ An estimated or analytical logical collection of higher level processes used for
 """
 type Scenario {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a scenario. Does not imply uniqueness."
   name: String!
@@ -43,6 +44,7 @@ The type definition of one or more scenarios, such as Yearly Budget.
 """
 type ScenarioDefinition {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a scenario definition. Does not imply uniqueness."
   name: String!
