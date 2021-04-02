@@ -86,7 +86,7 @@ type PlanResponse {
 
 
 type Query {
-  plan(id: ID): Plan
+  plan(id: ID!): Plan
   plans(start: ID, limit: Int): [Plan!]
 }
 

@@ -127,7 +127,7 @@ type ProposedIntentResponse {
 
 
 type Query {
-  proposal(id: ID): Proposal
+  proposal(id: ID!): Proposal
   proposals(start: ID, limit: Int): [Proposal!]
 }
 

@@ -312,16 +312,16 @@ type RecipeFlowResponse {
 
 
 type Query {
-  recipeFlow(id: ID): RecipeFlow
+  recipeFlow(id: ID!): RecipeFlow
   recipeFlows(start: ID, limit: Int): [RecipeFlow!]
 
-  recipeResource(id: ID): RecipeResource
+  recipeResource(id: ID!): RecipeResource
   recipeResources(start: ID, limit: Int): [RecipeResource!]
 
-  recipeProcess(id: ID): RecipeProcess
+  recipeProcess(id: ID!): RecipeProcess
   recipeProcesses(start: ID, limit: Int): [RecipeProcess!]
 
-  recipeExchange(id: ID): RecipeExchange
+  recipeExchange(id: ID!): RecipeExchange
   recipeExchanges(start: ID, limit: Int): [RecipeExchange!]
 }
 

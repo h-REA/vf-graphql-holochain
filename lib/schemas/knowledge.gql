@@ -152,13 +152,13 @@ type ProcessSpecificationResponse {
 
 
 type Query {
-  action(id: ID): Action
+  action(id: ID!): Action
   actions: [Action!]
 
-  resourceSpecification(id: ID): ResourceSpecification
+  resourceSpecification(id: ID!): ResourceSpecification
   resourceSpecifications(start: ID, limit: Int): [ResourceSpecification!]
 
-  processSpecification(id: ID): ProcessSpecification
+  processSpecification(id: ID!): ProcessSpecification
   processSpecifications(start: ID, limit: Int): [ProcessSpecification!]
 }
 

@@ -62,7 +62,7 @@ type AgreementResponse {
 
 
 type Query {
-  agreement(id: ID): Agreement
+  agreement(id: ID!): Agreement
   agreements(start: ID, limit: Int): [Agreement!]
 }
 

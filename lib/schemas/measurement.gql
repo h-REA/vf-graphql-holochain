@@ -107,7 +107,7 @@ type UnitResponse {
 
 
 type Query {
-  unit(id: ID): Unit
+  unit(id: ID!): Unit
   units(start: ID, limit: Int): [Unit!]
 }
 

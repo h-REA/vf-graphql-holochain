@@ -433,7 +433,7 @@ type ProcessResponse {
 
 
 type Query {
-  economicEvent(id: ID): EconomicEvent
+  economicEvent(id: ID!): EconomicEvent
   economicEvents(start: ID, limit: Int): [EconomicEvent!]
   economicEventsFiltered(
     providerId: ID,
@@ -444,13 +444,13 @@ type Query {
     endDate: String
   ): [EconomicEvent!]
 
-  economicResource(id: ID): EconomicResource
+  economicResource(id: ID!): EconomicResource
   economicResources(start: ID, limit: Int): [EconomicResource!]
 
-  productBatch(id: ID): ProductBatch
+  productBatch(id: ID!): ProductBatch
   productBatches(start: ID, limit: Int): [ProductBatch!]
 
-  process(id: ID): Process
+  process(id: ID!): Process
   processes(start: ID, limit: Int): [Process!]
 }
 

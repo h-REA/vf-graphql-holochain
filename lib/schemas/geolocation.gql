@@ -85,7 +85,7 @@ type SpatialThingResponse {
 
 
 type Query {
-  spatialThing(id: ID): SpatialThing
+  spatialThing(id: ID!): SpatialThing
   spatialThings(start: ID, limit: Int): [SpatialThing!]
 }
 

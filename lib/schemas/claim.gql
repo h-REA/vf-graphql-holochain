@@ -206,10 +206,10 @@ type SettlementResponse {
 
 
 type Query {
-  claim(id: ID): Claim
+  claim(id: ID!): Claim
   claims(start: ID, limit: Int): [Claim!]
 
-  settlement(id: ID): Settlement
+  settlement(id: ID!): Settlement
   settlements(start: ID, limit: Int): [Settlement!]
 }
 

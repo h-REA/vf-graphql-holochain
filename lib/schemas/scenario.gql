@@ -141,10 +141,10 @@ type ScenarioDefinitionResponse {
 
 
 type Query {
-  scenario(id: ID): Scenario
+  scenario(id: ID!): Scenario
   scenarios(start: ID, limit: Int): [Scenario!]
 
-  scenarioDefinition(id: ID): ScenarioDefinition
+  scenarioDefinition(id: ID!): ScenarioDefinition
   scenarioDefinitions(start: ID, limit: Int): [ScenarioDefinition!]
 }
 
