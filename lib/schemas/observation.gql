@@ -255,7 +255,7 @@ input EconomicEventCreateParams {
 }
 
 input EconomicEventUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "A textual description or comment."
   note: String
@@ -312,7 +312,7 @@ input EconomicResourceCreateParams {
 }
 
 input EconomicResourceUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   classifiedAs: [URI!]
@@ -348,7 +348,7 @@ input ProductBatchCreateParams {
 }
 
 input ProductBatchUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "The standard unique identifier of the batch."
   batchNumber: String
@@ -396,7 +396,7 @@ input ProcessCreateParams {
 }
 
 input ProcessUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a process. Does not imply uniqueness."
   name: String
@@ -457,17 +457,17 @@ type Query {
 type Mutation {
   createEconomicEvent(event: EconomicEventCreateParams!, newInventoriedResource: EconomicResourceCreateParams): EconomicEventResponse
   updateEconomicEvent(event: EconomicEventUpdateParams!): EconomicEventResponse
-  deleteEconomicEvent(id: ID!): Boolean
+  deleteEconomicEvent(revisionId: ID!): Boolean
 
   # :TODO: should this be allowed without an originating event? Or should the event be recorded transparently?
   updateEconomicResource(resource: EconomicResourceUpdateParams!): EconomicResourceResponse
-  deleteEconomicResource(id: ID!): Boolean
+  deleteEconomicResource(revisionId: ID!): Boolean
 
   createProductBatch(productBatch: ProductBatchCreateParams!): ProductBatchResponse
   updateProductBatch(productBatch: ProductBatchUpdateParams!): ProductBatchResponse
-  deleteProductBatch(id: ID!): Boolean
+  deleteProductBatch(revisionId: ID!): Boolean
 
   createProcess(process: ProcessCreateParams!): ProcessResponse
   updateProcess(process: ProcessUpdateParams!): ProcessResponse
-  deleteProcess(id: ID!): Boolean
+  deleteProcess(revisionId: ID!): Boolean
 }

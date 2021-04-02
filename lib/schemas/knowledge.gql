@@ -100,7 +100,7 @@ input ResourceSpecificationCreateParams {
 }
 
 input ResourceSpecificationUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a type of resource. Does not imply uniqueness."
   name: String
@@ -136,7 +136,7 @@ input ProcessSpecificationCreateParams {
 }
 
 input ProcessSpecificationUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for the process. Does not imply uniqueness."
   name: String
@@ -165,9 +165,9 @@ type Query {
 type Mutation {
   createResourceSpecification(resourceSpecification: ResourceSpecificationCreateParams): ResourceSpecificationResponse
   updateResourceSpecification(resourceSpecification: ResourceSpecificationUpdateParams): ResourceSpecificationResponse
-  deleteResourceSpecification(id: ID!): Boolean
+  deleteResourceSpecification(revisionId: ID!): Boolean
 
   createProcessSpecification(processSpecification: ProcessSpecificationCreateParams): ProcessSpecificationResponse
   updateProcessSpecification(processSpecification: ProcessSpecificationUpdateParams): ProcessSpecificationResponse
-  deleteProcessSpecification(id: ID!): Boolean
+  deleteProcessSpecification(revisionId: ID!): Boolean
 }

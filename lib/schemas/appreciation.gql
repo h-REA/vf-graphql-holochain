@@ -41,7 +41,7 @@ input AppreciationCreateParams {
 }
 
 input AppreciationUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`EconomicEvent`) The economic event this appreciation has been given in acknowledgement of."
   appreciationOf: ID
@@ -62,5 +62,5 @@ type AppreciationResponse {
 type Mutation {
   createAppreciation(appreciation: AppreciationCreateParams!): AppreciationResponse
   updateAppreciation(appreciation: AppreciationUpdateParams!): AppreciationResponse
-  deleteAppreciation(id: ID!): Boolean
+  deleteAppreciation(revisionId: ID!): Boolean
 }

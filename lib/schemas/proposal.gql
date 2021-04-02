@@ -90,7 +90,7 @@ input ProposalCreateParams {
 }
 
 input ProposalUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a proposal. Does not imply uniqueness."
   name: String
@@ -134,7 +134,7 @@ type Query {
 type Mutation {
   createProposal(proposal: ProposalCreateParams): ProposalResponse
   updateProposal(proposal: ProposalUpdateParams): ProposalResponse
-  deleteProposal(id: ID!): Boolean
+  deleteProposal(revisionId: ID!): Boolean
 
   """
   Include an existing intent as part of a proposal.
@@ -142,5 +142,5 @@ type Mutation {
   @param publishes the (`Intent`) to include as part of the proposal
   """
   proposeIntent(publishedIn: ID!, publishes: ID!, reciprocal: Boolean): ProposedIntentResponse
-  deleteProposedIntent(id: ID!): Boolean
+  deleteProposedIntent(revisionId: ID!): Boolean
 }

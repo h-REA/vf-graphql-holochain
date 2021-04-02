@@ -269,7 +269,7 @@ input IntentCreateParams {
 }
 
 input IntentUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an intent. Does not imply uniqueness."
   name: String
@@ -398,7 +398,7 @@ input CommitmentCreateParams {
 }
 
 input CommitmentUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`Process`) Defines the process to which this commitment is an input."
   inputOf: ID
@@ -479,7 +479,7 @@ input FulfillmentCreateParams {
 }
 
 input FulfillmentUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`EconomicEvent`) The economic event which completely or partially fulfills a commitment."
   fulfilledBy: ID
@@ -521,7 +521,7 @@ input SatisfactionCreateParams {
 }
 
 input SatisfactionUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`Intent`) An intent satisfied fully or partially by an economic event or commitment."
   satisfies: ID
@@ -562,17 +562,17 @@ type Query {
 type Mutation {
   createCommitment(commitment: CommitmentCreateParams): CommitmentResponse
   updateCommitment(commitment: CommitmentUpdateParams): CommitmentResponse
-  deleteCommitment(id: ID!): Boolean
+  deleteCommitment(revisionId: ID!): Boolean
 
   createIntent(intent: IntentCreateParams): IntentResponse
   updateIntent(intent: IntentUpdateParams): IntentResponse
-  deleteIntent(id: ID!): Boolean
+  deleteIntent(revisionId: ID!): Boolean
 
   createFulfillment(fulfillment: FulfillmentCreateParams!): FulfillmentResponse
   updateFulfillment(fulfillment: FulfillmentUpdateParams!): FulfillmentResponse
-  deleteFulfillment(id: ID!): Boolean
+  deleteFulfillment(revisionId: ID!): Boolean
 
   createSatisfaction(satisfaction: SatisfactionCreateParams): SatisfactionResponse
   updateSatisfaction(satisfaction: SatisfactionUpdateParams): SatisfactionResponse
-  deleteSatisfaction(id: ID!): Boolean
+  deleteSatisfaction(revisionId: ID!): Boolean
 }

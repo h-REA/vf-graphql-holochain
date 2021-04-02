@@ -43,7 +43,7 @@ input AgreementCreateParams { # implements AgreementParams
 }
 
 input AgreementUpdateParams { # implements UpdateParams & AgreementParams
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an agreement. Does not imply uniqueness."
   name: String
@@ -69,5 +69,5 @@ type Query {
 type Mutation {
   createAgreement(agreement: AgreementCreateParams): AgreementResponse
   updateAgreement(agreement: AgreementUpdateParams): AgreementResponse
-  deleteAgreement(id: ID!): Boolean
+  deleteAgreement(revisionId: ID!): Boolean
 }

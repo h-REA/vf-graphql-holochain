@@ -118,7 +118,7 @@ input ClaimCreateParams {
 }
 
 input ClaimUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`Action`) Relates a claim to a verb, such as consume, produce, work, improve, etc."
   action: ID
@@ -181,7 +181,7 @@ input SettlementCreateParams {
 }
 
 input SettlementUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`Claim`) A claim which is fully or partially settled by an economic event."
   settles: ID
@@ -216,9 +216,9 @@ type Query {
 type Mutation {
   createClaim(claim: ClaimCreateParams!): ClaimResponse
   updateClaim(claim: ClaimUpdateParams!): ClaimResponse
-  deleteClaim(id: ID!): Boolean
+  deleteClaim(revisionId: ID!): Boolean
 
   createSettlement(settlement: SettlementCreateParams!): SettlementResponse
   updateSettlement(s0ettlement: SettlementUpdateParams!): SettlementResponse
-  deleteSettlement(id: ID!): Boolean
+  deleteSettlement(revisionId: ID!): Boolean
 }
