@@ -262,3 +262,21 @@ test('configuration: future claims', (t) => {
   t.end()
 })
 
+// kitchen sink
+
+test('configuration: everything', (t) => {
+  const schema = makeMockSchema(printSchema(buildSchema([
+    'history',
+    'knowledge', 'measurement',
+    'agent',
+    'observation', 'planning', 'recipe',
+    'plan', 'scenario',
+    'proposal', 'agreement',
+    'appreciation',
+    'claim',
+    'geolocation',
+  ])))
+  exerciseSchema(schema)
+  t.end()
+})
+
