@@ -38,7 +38,7 @@ type Scenario {
   note: String
 }
 
-"""
+""
 The type definition of one or more scenarios, such as Yearly Budget.
 """
 type ScenarioDefinition {
@@ -61,7 +61,7 @@ input ScenarioCreateParams {
   name: String!
 
   "(`ScenarioDefinition`) The scenario definition for this scenario, for example yearly budget."
-  definedAs: ID!
+  definedAs: ID
 
   "The beginning date/time of the scenario, often the beginning of an accounting period."
   hasBeginning: DateTime
@@ -86,7 +86,7 @@ input ScenarioUpdateParams {
   name: String
 
   "(`ScenarioDefinition`) The scenario definition for this scenario, for example yearly budget."
-  definedAs: ID!
+  definedAs: ID
 
   "The beginning date/time of the scenario, often the beginning of an accounting period."
   hasBeginning: DateTime
