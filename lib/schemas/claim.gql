@@ -99,7 +99,7 @@ input ClaimCreateParams {
   due: DateTime
 
   "(`EconomicEvent`) The economic event which already occurred which this claim has been made against."
-  triggeredBy: ID
+  triggeredBy: ID!
 
   "The data on which the claim was made."
   created: DateTime
