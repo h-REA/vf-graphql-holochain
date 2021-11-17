@@ -112,7 +112,7 @@ type ScenarioResponse {
 
 input ScenarioDefinitionCreateParams {
   "An informal or formal textual identifier for a scenario definition. Does not imply uniqueness."
-  name: String
+  name: String!
 
   "The duration of the scenario, often an accounting period."
   hasDuration: IDuration
@@ -125,7 +125,7 @@ input ScenarioDefinitionUpdateParams {
   id: ID!
 
   "An informal or formal textual identifier for a scenario definition. Does not imply uniqueness."
-  name: String!
+  name: String
 
   "The duration of the scenario, often an accounting period."
   hasDuration: IDuration
