@@ -17,7 +17,7 @@ type Plan {
   id: ID!
 
   "An informal or formal textual identifier for a plan. Does not imply uniqueness."
-  name: String
+  name: String!
 
   "The time the plan was made."
   created: DateTime
