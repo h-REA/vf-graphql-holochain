@@ -63,7 +63,7 @@ input ScenarioCreateParams {
   name: String!
 
   "(`ScenarioDefinition`) The scenario definition for this scenario, for example yearly budget."
-  definedAs: ID!
+  definedAs: ID
 
   "The beginning date/time of the scenario, often the beginning of an accounting period."
   hasBeginning: DateTime
@@ -88,7 +88,7 @@ input ScenarioUpdateParams {
   name: String
 
   "(`ScenarioDefinition`) The scenario definition for this scenario, for example yearly budget."
-  definedAs: ID!
+  definedAs: ID
 
   "The beginning date/time of the scenario, often the beginning of an accounting period."
   hasBeginning: DateTime
@@ -114,7 +114,7 @@ type ScenarioResponse {
 
 input ScenarioDefinitionCreateParams {
   "An informal or formal textual identifier for a scenario definition. Does not imply uniqueness."
-  name: String
+  name: String!
 
   "The duration of the scenario, often an accounting period."
   hasDuration: IDuration
@@ -127,7 +127,7 @@ input ScenarioDefinitionUpdateParams {
   revisionId: ID!
 
   "An informal or formal textual identifier for a scenario definition. Does not imply uniqueness."
-  name: String!
+  name: String
 
   "The duration of the scenario, often an accounting period."
   hasDuration: IDuration

@@ -8,6 +8,14 @@
 - Switched to [PNPM](http://pnpm.js.org/) for package management for better cross-monorepo support
 - **Reflect correct Apache-2.0 licensing** in NPM metadata (was: MIT)
 
+## 0.8.5
+
+- Fixed errata in fields being required or not:
+	- `Claim.triggeredBy` is now required when creating
+	- `Plan.name` is now required
+	- `ScenarioDefinition.name` is now correctly required when creating, but not when updating
+	- `Scenario.definedAs` is no longer required
+
 ## 0.8.4
 
 - Fixed casing of `AgreementResponse.agreement` to remove uppercase `A`
