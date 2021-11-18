@@ -38,7 +38,7 @@ type Scenario {
   note: String
 }
 
-""
+"""
 The type definition of one or more scenarios, such as Yearly Budget.
 """
 type ScenarioDefinition {
