@@ -5,6 +5,10 @@
 	- `Plan.name` is now required
 	- `ScenarioDefinition.name` is now correctly required when creating, but not when updating
 	- `Scenario.definedAs` is no longer required
+- Fixed IDs not being mandatory in all direct-retrieval API methods
+- Added a mock GraphQLClient for direct use in UI code, to complement the mock GraphQLServer
+- Switched to [PNPM](http://pnpm.js.org/) for package management for better cross-monorepo support
+- **Reflect correct Apache-2.0 licensing** in NPM metadata (was: MIT)
 
 ## 0.8.4
 
