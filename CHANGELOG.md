@@ -1,6 +1,6 @@
 ## 0.9.0
 
-- Switched to a revision-based API for referencing updates & deletions, for compatibility with eventually-consistent distributed systems
+- **Breaking:** switched to a revision-based API for referencing updates & deletions, for compatibility with eventually-consistent distributed systems
 	- `revisionId` is now a mandatory field in all updateable record types. For systems which do not implement history, it is fine to return `revisionId` with the same value as `id`.
 	- Added a new optional `history` module, which services needing to implement human-facing conflict resolution capabilities (eg. eventually-consistent networks) may implement. These additional query edges and response types provide a minimal-footprint API which can be used to resolve conflicts between divergent branches of the same record. See the 'bridging' schemas beginning with `history.*` as a reference.
 - Fixed IDs not being mandatory in all direct-retrieval API methods
