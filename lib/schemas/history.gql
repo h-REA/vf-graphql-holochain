@@ -1,6 +1,23 @@
 ##
 #
-# Metadata needed to implement revision introspection
+# 'History' module providing metadata needed to implement revision introspection.
+#
+# This module extends responses for all updateable record types with an additional
+# metadata payload-
+#
+#     meta: RecordMeta!
+#
+# Most of the fields in this metadata are optional, since the capabilities affording
+# the features they depend upon differ between data storage engines. User interfaces
+# intending to provide version-management functionality should bear this in mind, and
+# design for all possibilities and absences of data.
+#
+# In addition to this record metadata, all record types gain an additional query edge-
+#
+#     revision(revisionId: ID!): Self
+#
+# This allows the UI to pass any `Revision.ID` it is able to obtain for a record into
+# a simple and predictable API which it can then use to fetch, display and compare data.
 #
 # @see bridging/history.*.gql
 #
