@@ -26,6 +26,10 @@
 type RecordMeta {
   "Metadata about the previous revision of this record, queryable via `revision(previousRevision.id)`. If this is the first revision of a record, this field is empty."
   previousRevision: Revision
+  "Number of older revisions, if known."
+  previousRevisionsCount: Int
+  "Number of newer revisions, if known."
+  futureRevisionsCount: Int
   "Metadata regarding the most recent revision of this record, if able to be determined."
   latestRevision: Revision # left optional, since in some systems this will be difficult or impossible to determine
   "Metadata regarding the current revision of this record. A record's `currentRevision.id` == `revisionId`."
@@ -35,8 +39,8 @@ type RecordMeta {
 type Revision {
   "ID of the revision, used to query a specific version of the related record."
   id: ID!
-  "Time this revision was created."
+  "Time this revision was created, if known."
   time: DateTime
-  "Author ID of the revision. Usually, but not necessarily, equal to the author's `Agent` ID."
+  "ID of the author who created this revision. Should be given as the author's `Agent` ID."
   authorId: ID
 }
