@@ -12,6 +12,9 @@
 type EconomicEvent {
   "The place where an economic event occurs.  Usually mappable."
   atLocation: SpatialThing
+
+  "The new location of the receiver resource."
+  toLocation: SpatialThing
 }
 
 type EconomicResource {
