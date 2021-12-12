@@ -12,6 +12,9 @@
 type EconomicEvent {
   "The place where an economic event occurs.  Usually mappable."
   atLocation: SpatialThing
+
+  "The new location of the receiver resource."
+  toLocation: SpatialThing
 }
 
 type EconomicResource {
@@ -22,4 +25,17 @@ type EconomicResource {
 type SpatialThing {
   economicResources: [EconomicResource!]
   economicEvents: [EconomicEvent!]
+}
+
+input EconomicEventCreateParams {
+  "(`SpatialThing`) The place where an economic event occurs.  Usually mappable."
+  atLocation: ID
+
+  "(`SpatialThing`) The new location of the receiver resource."
+  toLocation: ID
+}
+
+input EconomicResourceCreateParams {
+  "(`SpatialThing`) The current place an economic resource is located.  Could be at any level of granularity, from a town to an address to a warehouse location.  Usually mappable."
+  currentLocation: ID
 }

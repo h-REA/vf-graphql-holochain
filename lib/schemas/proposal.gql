@@ -73,9 +73,6 @@ input ProposalCreateParams {
   "The end time of proposal publication."
   hasEnd: DateTime
 
-  "(`SpatialThing`) The location at which this proposal is eligible."
-  eligibleLocation: ID
-
   "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 
@@ -100,9 +97,6 @@ input ProposalUpdateParams {
 
   "The end time of proposal publication."
   hasEnd: DateTime
-
-  "(`SpatialThing`) The location at which this proposal is eligible."
-  eligibleLocation: ID
 
   "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
