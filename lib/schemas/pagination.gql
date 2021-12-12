@@ -17,14 +17,14 @@
 
 """Cursors for pagination"""
 type PageInfo {
-  "Cursor pointing to the start of the results returned, to be used with `before` query parameter if the backend supports reverse pagination."
-  startCursor: ID
-  "Cursor pointing to the end of the results returned, to be used with `after` query parameter if the backend supports forward pagination."
-  endCursor: ID
-  "True if there are more results before `startCursor`."
-  hasPreviousPage: Boolean
-  "True if there are more results after `endCursor`. If unknown, it is better to omit this value in the response as some UIs may determine `false` as a hard stop, rather than a retryable action."
-  hasNextPage: Boolean
+  "Cursor pointing to the first of the results returned, to be used with `before` query parameter if the backend supports reverse pagination."
+  startCursor: String!
+  "Cursor pointing to the last of the results returned, to be used with `after` query parameter if the backend supports forward pagination."
+  endCursor: String!
+  "True if there are more results before `startCursor`. If unable to be determined, implementations should return `true` to allow for requerying."
+  hasPreviousPage: Boolean!
+  "True if there are more results after `endCursor`. If unable to be determined, implementations should return `true` to allow for requerying."
+  hasNextPage: Boolean!
   "Returns the total result count, if it can be determined."
   totalCount: Int
 }
