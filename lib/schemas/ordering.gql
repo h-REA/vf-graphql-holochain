@@ -1,0 +1,15 @@
+##
+#
+# Entrypoint for connection ordering schemas
+#
+# @see schemas/bridging/*.ordering.gql
+#
+# @package  ValueFlows GraphQL
+# @since    2021-12-12
+#
+##
+
+enum Sort {
+  asc
+  desc
+}

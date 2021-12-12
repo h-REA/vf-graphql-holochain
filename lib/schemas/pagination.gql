@@ -28,8 +28,3 @@ type PageInfo {
   "Returns the total result count, if it can be determined."
   totalCount: Int
 }
-
-enum Sort {
-  asc
-  desc
-}
