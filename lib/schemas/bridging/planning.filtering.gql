@@ -1,0 +1,17 @@
+##
+# Query filtering parameters for the Planning module
+#
+# :TODO: decide on final set, @see https://github.com/dyne/reflow-os/issues/16
+#
+# @package  vf-graphql
+# @since    2021-11-27
+#
+##
+
+input IntentFilterParams {
+  name: String
+}
+
+type Query {
+  intents(filter: IntentFilterParams): IntentConnection!
+}

@@ -1,6 +1,6 @@
 ##
 #
-# Entrypoint for connection ordering schemas
+# Shared structs for connection result ordering parameters
 #
 # @see schemas/bridging/*.ordering.gql
 #
