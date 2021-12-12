@@ -5,6 +5,8 @@
 	- `Plan.name` is now required
 	- `ScenarioDefinition.name` is now correctly required when creating, but not when updating
 	- `Scenario.definedAs` is no longer required
+- Added new field `EconomicEvent.toLocation` for managing resource location updates
+- Fix `EconomicEvent.inScopeOf` being updateable when it shouldn't be
 - Fixed IDs not being mandatory in all direct-retrieval API methods
 - Added a mock GraphQLClient for direct use in UI code, to complement the mock GraphQLServer
 - Switched to [PNPM](http://pnpm.js.org/) for package management for better cross-monorepo support
