@@ -1,0 +1,35 @@
+##
+#
+# Data structures needed to manage pagination of data in implementation-agnostic ways.
+# Compliant with the Relay connection spec- see https://relay.dev/graphql/connections.htm
+#
+# The particulars as to *how* a system paginates results, and whether to
+# support forwards and/or backwards pagination, are up to each implementation to decide.
+# UI applications should thus deal with all possible cases in the presence & absence
+# of different fields.
+#
+# Note also that pagination is a distinct feature from ordering or filtering.
+#
+# @package  ValueFlows GraphQL
+# @since    2021-11-27
+#
+##
+
+"""Cursors for pagination"""
+type PageInfo {
+  "Cursor pointing to the start of the results returned, to be used with `before` query parameter if the backend supports reverse pagination."
+  startCursor: ID
+  "Cursor pointing to the end of the results returned, to be used with `after` query parameter if the backend supports forward pagination."
+  endCursor: ID
+  "True if there are more results before `startCursor`."
+  hasPreviousPage: Boolean
+  "True if there are more results after `endCursor`. If unknown, it is better to omit this value in the response as some UIs may determine `false` as a hard stop, rather than a retryable action."
+  hasNextPage: Boolean
+  "Returns the total result count, if it can be determined."
+  totalCount: Int
+}
+
+enum Sort {
+  asc
+  desc
+}
