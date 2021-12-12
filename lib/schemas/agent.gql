@@ -159,9 +159,6 @@ input AgentCreateParams { # implements AgentParams
   "The uri to an image relevant to the agent, such as a logo, avatar, photo, etc."
   image: URI
 
-  "(`SpatialThing`) The main place an agent is located, often an address where activities occur and mail can be sent. This is usually a mappable geographic location.  It also could be a website address, as in the case of agents who have no physical location."
-  primaryLocation: ID
-
   "A textual description or comment."
   note: String
 }
@@ -175,9 +172,6 @@ input AgentUpdateParams { # implements UpdateParams & AgentParams
   "The uri to an image relevant to the agent, such as a logo, avatar, photo, etc."
   image: URI
 
-  "(`SpatialThing`) The main place an agent is located, often an address where activities occur and mail can be sent. This is usually a mappable geographic location.  It also could be a website address, as in the case of agents who have no physical location."
-  primaryLocation: ID
-
   "A textual description or comment."
   note: String
 }
@@ -189,9 +183,6 @@ input OrganizationCreateParams { # implements AgentParams
 
   "The uri to an image relevant to the agent, such as a logo, avatar, photo, etc."
   image: URI
-
-  "(`SpatialThing`) The main place an agent is located, often an address where activities occur and mail can be sent. This is usually a mappable geographic location.  It also could be a website address, as in the case of agents who have no physical location."
-  primaryLocation: ID
 
   "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   classifiedAs: [URI!]
@@ -208,9 +199,6 @@ input OrganizationUpdateParams { # implements UpdateParams & AgentParams
 
   "The uri to an image relevant to the agent, such as a logo, avatar, photo, etc."
   image: URI
-
-  "(`SpatialThing`) The main place an agent is located, often an address where activities occur and mail can be sent. This is usually a mappable geographic location.  It also could be a website address, as in the case of agents who have no physical location."
-  primaryLocation: ID
 
   "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   classifiedAs: [URI!]

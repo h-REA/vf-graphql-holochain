@@ -226,9 +226,6 @@ input EconomicEventCreateParams {
   "The amount and unit of the work or use or citation effort-based action. This is often a time duration, but also could be cycle counts or other measures of effort or usefulness."
   effortQuantity: IMeasure
 
-  "(`SpatialThing`) The place where an economic event occurs.  Usually mappable."
-  atLocation: ID
-
   "The beginning of the economic event."
   hasBeginning: DateTime
 
@@ -303,9 +300,6 @@ input EconomicResourceCreateParams {
 
   "(`EconomicResource`) Used when a stock economic resource contains items also defined as economic resources."
   containedIn: ID
-
-  "(`SpatialThing`) The current place an economic resource is located.  Could be at any level of granularity, from a town to an address to a warehouse location.  Usually mappable."
-  currentLocation: ID
 
   "A textual description or comment."
   note: String
