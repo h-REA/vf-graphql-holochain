@@ -8,10 +8,47 @@
 #
 ##
 
+input CommitmentFilterParams {
+  searchString: String
+  action: [ID!]
+  startDate: DateTime
+  endDate: DateTime
+  finished: Boolean
+}
+
 input IntentFilterParams {
-  name: String
+  searchString: String
+  startDate: DateTime
+  endDate: DateTime
+  finished: Boolean
+  action: [ID!]
+  inScopeOf: [ID!]
+  tagIds: [ID!]
+  classifiedAs: [URI!]
+  atLocation: [ID!]
+  agent: [ID!]
+  provider: [ID!]
+  receiver: [ID!]
+  status: String
+}
+
+input FulfillmentFilterParams {
+  "Match Fulfillments fulfilling any of the given Commitments"
+  fulfills: [ID!]
+  "Match Fulfillments fulfilled by any of the given EconomicEvents"
+  fulfilledBy: [ID!]
+}
+
+input SatisfactionFilterParams {
+  "Match Satisfactions satisfying any of the given Intents"
+  satisfies: [ID!]
+  "Match Satisfactions satisfied by any of the given EconomicEvents or Commitments"
+  satisfiedBy: [ID!]
 }
 
 type Query {
+  commitments(filter: CommitmentFilterParams): CommitmentConnection!
   intents(filter: IntentFilterParams): IntentConnection!
+  fulfillments(filter: FulfillmentFilterParams): FulfillmentConnection!
+  satisfactions(filter: SatisfactionFilterParams): SatisfactionConnection!
 }
