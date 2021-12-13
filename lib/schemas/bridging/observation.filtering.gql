@@ -1,0 +1,24 @@
+##
+#
+# Query filter parameters for the Observation module
+#
+# :TODO: decide on final set
+# @see https://lab.allmende.io/valueflows/vf-schemas/vf-graphql/-/issues/90
+#
+# @package  ValueFlows GraphQL
+# @since    2021-12-13
+#
+##
+
+input EconomicEventFilterParams {
+  providerId: [ID!]
+  receiverId: [ID!]
+  resourceClassifiedAs: [URI!]
+  action: [ID!]
+  startDate: DateTime
+  endDate: DateTime
+}
+
+type Query {
+  economicEvents(filter: EconomicEventFilterParams): EconomicEventConnection!
+}

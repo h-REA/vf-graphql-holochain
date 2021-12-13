@@ -57,7 +57,20 @@ type AppreciationResponse {
   appreciation: Appreciation
 }
 
+type AppreciationConnection {
+  edges: [AppreciationEdge!]!
+  pageInfo: PageInfo!
+}
 
+type AppreciationEdge {
+  node: Appreciation!
+  cursor: String!
+}
+
+type Query {
+  appreciation(id: ID!): Appreciation!
+  appreciations(first: Int, after: String, last: Int, before: String): AppreciationConnection!
+}
 
 type Mutation {
   createAppreciation(appreciation: AppreciationCreateParams!): AppreciationResponse

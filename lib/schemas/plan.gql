@@ -84,10 +84,19 @@ type PlanResponse {
 }
 
 
+type PlanConnection {
+  edges: [PlanEdge!]!
+  pageInfo: PageInfo!
+}
+
+type PlanEdge {
+  node: Plan!
+  cursor: String!
+}
 
 type Query {
   plan(id: ID!): Plan
-  plans(start: ID, limit: Int): [Plan!]
+  plans(first: Int, after: String, last: Int, before: String): PlanConnection!
 }
 
 type Mutation {

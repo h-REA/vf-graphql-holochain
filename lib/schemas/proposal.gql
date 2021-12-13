@@ -112,17 +112,24 @@ type ProposalResponse {
   proposal: Proposal
 }
 
-
-
 type ProposedIntentResponse {
   proposedIntent: ProposedIntent
 }
 
 
+type ProposalConnection {
+  edges: [ProposalEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ProposalEdge {
+  node: Proposal!
+  cursor: String!
+}
 
 type Query {
   proposal(id: ID!): Proposal
-  proposals(start: ID, limit: Int): [Proposal!]
+  proposals(first: Int, after: String, last: Int, before: String): ProposalConnection!
 }
 
 type Mutation {

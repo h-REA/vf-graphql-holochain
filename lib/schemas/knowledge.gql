@@ -150,16 +150,35 @@ type ProcessSpecificationResponse {
 }
 
 
+type ResourceSpecificationConnection {
+  edges: [ResourceSpecificationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ResourceSpecificationEdge {
+  node: ResourceSpecification!
+  cursor: String!
+}
+
+type ProcessSpecificationConnection {
+  edges: [ProcessSpecificationEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ProcessSpecificationEdge {
+  node: ProcessSpecification!
+  cursor: String!
+}
 
 type Query {
   action(id: ID!): Action
   actions: [Action!]
 
   resourceSpecification(id: ID!): ResourceSpecification
-  resourceSpecifications(start: ID, limit: Int): [ResourceSpecification!]
+  resourceSpecifications(first: Int, after: String, last: Int, before: String): ResourceSpecificationConnection!
 
   processSpecification(id: ID!): ProcessSpecification
-  processSpecifications(start: ID, limit: Int): [ProcessSpecification!]
+  processSpecifications(first: Int, after: String, last: Int, before: String): ProcessSpecificationConnection!
 }
 
 type Mutation {

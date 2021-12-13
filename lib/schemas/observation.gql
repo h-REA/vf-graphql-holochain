@@ -422,27 +422,58 @@ type ProcessResponse {
 }
 
 
+type EconomicEventConnection {
+  edges: [EconomicEventEdge!]!
+  pageInfo: PageInfo!
+}
+
+type EconomicEventEdge {
+  node: EconomicEvent!
+  cursor: String!
+}
+
+type EconomicResourceConnection {
+  edges: [EconomicResourceEdge!]!
+  pageInfo: PageInfo!
+}
+
+type EconomicResourceEdge {
+  node: EconomicResource!
+  cursor: String!
+}
+
+type ProductBatchConnection {
+  edges: [ProductBatchEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ProductBatchEdge {
+  node: ProductBatch!
+  cursor: String!
+}
+
+type ProcessConnection {
+  edges: [ProcessEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ProcessEdge {
+  node: Process!
+  cursor: String!
+}
 
 type Query {
   economicEvent(id: ID!): EconomicEvent
-  economicEvents(start: ID, limit: Int): [EconomicEvent!]
-  economicEventsFiltered(
-    providerId: ID,
-    receiverId: ID,
-    resourceClassifiedAs: [URI!],
-    action: ID,
-    startDate: String,
-    endDate: String
-  ): [EconomicEvent!]
+  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection!
 
   economicResource(id: ID!): EconomicResource
-  economicResources(start: ID, limit: Int): [EconomicResource!]
+  economicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection!
 
   productBatch(id: ID!): ProductBatch
-  productBatches(start: ID, limit: Int): [ProductBatch!]
+  productBatches(first: Int, after: String, last: Int, before: String): ProductBatchConnection!
 
   process(id: ID!): Process
-  processes(start: ID, limit: Int): [Process!]
+  processes(first: Int, after: String, last: Int, before: String): ProcessConnection!
 }
 
 type Mutation {

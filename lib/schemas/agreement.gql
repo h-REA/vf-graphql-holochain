@@ -61,9 +61,19 @@ type AgreementResponse {
 
 
 
+type AgreementConnection {
+  edges: [AgreementEdge!]!
+  pageInfo: PageInfo!
+}
+
+type AgreementEdge {
+  node: Agreement!
+  cursor: String!
+}
+
 type Query {
   agreement(id: ID!): Agreement
-  agreements(start: ID, limit: Int): [Agreement!]
+  agreements(first: Int, after: String, last: Int, before: String): AgreementConnection!
 }
 
 type Mutation {

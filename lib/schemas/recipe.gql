@@ -310,19 +310,58 @@ type RecipeFlowResponse {
 }
 
 
+type RecipeFlowConnection {
+  edges: [RecipeFlowEdge!]!
+  pageInfo: PageInfo!
+}
+
+type RecipeFlowEdge {
+  node: RecipeFlow!
+  cursor: String!
+}
+
+type RecipeResourceConnection {
+  edges: [RecipeResourceEdge!]!
+  pageInfo: PageInfo!
+}
+
+type RecipeResourceEdge {
+  node: RecipeResource!
+  cursor: String!
+}
+
+type RecipeProcessConnection {
+  edges: [RecipeProcessEdge!]!
+  pageInfo: PageInfo!
+}
+
+type RecipeProcessEdge {
+  node: RecipeProcess!
+  cursor: String!
+}
+
+type RecipeExchangeConnection {
+  edges: [RecipeExchangeEdge!]!
+  pageInfo: PageInfo!
+}
+
+type RecipeExchangeEdge {
+  node: RecipeExchange!
+  cursor: String!
+}
 
 type Query {
   recipeFlow(id: ID!): RecipeFlow
-  recipeFlows(start: ID, limit: Int): [RecipeFlow!]
+  recipeFlows(first: Int, after: String, last: Int, before: String): RecipeFlowConnection!
 
   recipeResource(id: ID!): RecipeResource
-  recipeResources(start: ID, limit: Int): [RecipeResource!]
+  recipeResources(first: Int, after: String, last: Int, before: String): RecipeResourceConnection!
 
   recipeProcess(id: ID!): RecipeProcess
-  recipeProcesses(start: ID, limit: Int): [RecipeProcess!]
+  recipeProcesses(first: Int, after: String, last: Int, before: String): RecipeProcessConnection!
 
   recipeExchange(id: ID!): RecipeExchange
-  recipeExchanges(start: ID, limit: Int): [RecipeExchange!]
+  recipeExchanges(first: Int, after: String, last: Int, before: String): RecipeExchangeConnection!
 }
 
 type Mutation {
