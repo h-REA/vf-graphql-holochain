@@ -2,33 +2,35 @@
 #
 # Result ordering parameters for the Planning module
 #
-# :TODO: decide on final set, what is here might be overkill and we should start with what is needed by usergroups
+# :TODO: decide on final options and logic
 #
 # @package  ValueFlows GraphQL
 # @since    2021-12-12
 #
 ##
 
+# input CommitmentsOrder {
+# }
+
 input IntentsOrder {
-  id: Sort
   name: Sort
-  inputOf: Sort
-  outputOf: Sort
-  provider: Sort
-  receiver: Sort
-  resourceConformsTo: Sort
-  resourceInventoriedAs: Sort
   resourceQuantity: Sort
   effortQuantity: Sort
   availableQuantity: Sort
-  hasBeginning: Sort
-  hasEnd: Sort
-  hasPointInTime: Sort
+  startTime: Sort
+  endTime: Sort
   due: Sort
-  finished: Sort
-  atLocation: Sort
 }
 
+# input FulfillmentsOrder {
+# }
+
+# input SatisfactionsOrder {
+# }
+
 type Query {
+  # commitments(orderBy: CommitmentsOrder): CommitmentConnection!
   intents(orderBy: IntentsOrder): IntentConnection!
+  # fulfillments(orderBy: FulfillmentsOrder): FulfillmentConnection!
+  # satisfactions(orderBy: SatisfactionsOrder): SatisfactionConnection!
 }
