@@ -36,42 +36,20 @@ input EconomicEventCreateParams {
   receiver: ID!
 }
 
-
-"Query parameters for reading `EconomicEvent`s related to an `Agent`"
-input agentEventSearchParams {
-  searchString: String
-  action: ID
-  startDate: DateTime
-  endDate: DateTime
-}
-
-"Query parameters for reading `EconomicResource`s related to an `Agent`"
-input agentResourceSearchParams {
-  searchString: String
-  resourceClassification: URI
-  page: Int
-}
-
-"Query parameters for reading `Process`es related to an `Agent`"
-input agentProcessSearchParams {
-  searchString: String
-  finished: Boolean
-}
-
 interface Agent {
-  economicEvents(filter: agentEventSearchParams): [EconomicEvent!]
-  inventoriedEconomicResources(filter: agentResourceSearchParams): [EconomicResource!]
-  processes(filter: agentProcessSearchParams): [Process!]
+  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection!
+  inventoriedEconomicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection!
+  processes(first: Int, after: String, last: Int, before: String): ProcessConnection!
 }
 
 type Person implements Agent {
-  economicEvents(filter: agentEventSearchParams): [EconomicEvent!]
-  inventoriedEconomicResources(filter: agentResourceSearchParams): [EconomicResource!]
-  processes(filter: agentProcessSearchParams): [Process!]
+  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection!
+  inventoriedEconomicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection!
+  processes(first: Int, after: String, last: Int, before: String): ProcessConnection!
 }
 
 type Organization implements Agent {
-  economicEvents(filter: agentEventSearchParams): [EconomicEvent!]
-  inventoriedEconomicResources(filter: agentResourceSearchParams): [EconomicResource!]
-  processes(filter: agentProcessSearchParams): [Process!]
+  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection!
+  inventoriedEconomicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection!
+  processes(first: Int, after: String, last: Int, before: String): ProcessConnection!
 }

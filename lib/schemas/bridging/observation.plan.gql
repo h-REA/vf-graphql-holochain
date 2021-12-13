@@ -14,14 +14,6 @@ type Process {
   plannedWithin: Plan
 }
 
-"Query parameters for reading `Process`es related to a `Plan`"
-input planProcessSearchParams {
-  searchString: String
-  after: DateTime
-  before: DateTime
-  finished: Boolean
-}
-
 type Plan {
-  processes(filter: planProcessSearchParams): [Process!]
+  processes(first: Int, after: String, last: Int, before: String): ProcessConnection!
 }

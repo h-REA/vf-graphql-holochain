@@ -4,25 +4,20 @@
 #
 # Provides information about the relationships between agents and plans.
 #
-# @package  vf-graphql
-# @since    2020-02-11
+# @package
+# @author   pospi <pospi@spadgos.com>
+# @since    2021-12-13
 #
 ##
 
-"Query parameters for reading `Plan`s related to an `Agent`"
-input agentPlanSearchParams {
-  searchString: String
-  finished: Boolean
-}
-
 interface Agent {
-  plans(filter: agentPlanSearchParams): [Plan!]
+  plans(first: Int, after: String, last: Int, before: String): PlanConnection!
 }
 
 type Person implements Agent {
-  plans(filter: agentPlanSearchParams): [Plan!]
+  plans(first: Int, after: String, last: Int, before: String): PlanConnection!
 }
 
 type Organization implements Agent {
-  plans(filter: agentPlanSearchParams): [Plan!]
+  plans(first: Int, after: String, last: Int, before: String): PlanConnection!
 }

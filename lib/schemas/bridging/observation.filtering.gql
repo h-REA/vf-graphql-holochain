@@ -2,7 +2,7 @@
 #
 # Query filter parameters for the Observation module
 #
-# :TODO: decide on final set
+# :TODO: decide on final set, and align with agent.observation.filtering params
 # @see https://lab.allmende.io/valueflows/vf-schemas/vf-graphql/-/issues/90
 #
 # @package  ValueFlows GraphQL

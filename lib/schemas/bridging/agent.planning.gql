@@ -65,35 +65,17 @@ input CommitmentUpdateParams {
 }
 
 
-"Query parameters for reading `Commitment`s related to an `Agent`"
-input agentCommitmentSearchParams {
-  searchString: String
-  action: ID
-  startDate: DateTime
-  endDate: DateTime
-  finished: Boolean
-}
-
-"Query parameters for reading `Intent`s related to an `Agent`"
-input agentIntentSearchParams {
-  searchString: String
-  action: ID
-  startDate: DateTime
-  endDate: DateTime
-  finished: Boolean
-}
-
 interface Agent {
-  commitments(filter: agentCommitmentSearchParams): [Commitment!]
-  intents(filter: agentIntentSearchParams): [Intent!]
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection!
+  intents(first: Int, after: String, last: Int, before: String): IntentConnection!
 }
 
 type Person implements Agent {
-  commitments(filter: agentCommitmentSearchParams): [Commitment!]
-  intents(filter: agentIntentSearchParams): [Intent!]
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection!
+  intents(first: Int, after: String, last: Int, before: String): IntentConnection!
 }
 
 type Organization implements Agent {
-  commitments(filter: agentCommitmentSearchParams): [Commitment!]
-  intents(filter: agentIntentSearchParams): [Intent!]
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection!
+  intents(first: Int, after: String, last: Int, before: String): IntentConnection!
 }
