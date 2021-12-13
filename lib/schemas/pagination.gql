@@ -25,6 +25,8 @@ type PageInfo {
   hasPreviousPage: Boolean!
   "True if there are more results after `endCursor`. If unable to be determined, implementations should return `true` to allow for requerying."
   hasNextPage: Boolean!
-  "Returns the total result count, if it can be determined."
+  "The total result count, if it can be determined."
   totalCount: Int
+  "The number of items requested per page. Allows the storage backend to indicate this when it is responsible for setting a default and the client does not provide it. Note this may be different to the number of items returned, if there is less than 1 page of results."
+  pageLimit: Int
 }
