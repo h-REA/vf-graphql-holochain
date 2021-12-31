@@ -105,7 +105,7 @@ input ScenarioUpdateParams {
 }
 
 type ScenarioResponse {
-  scenario: Scenario
+  scenario: Scenario!
 }
 
 
@@ -135,7 +135,7 @@ input ScenarioDefinitionUpdateParams {
 }
 
 type ScenarioDefinitionResponse {
-  scenarioDefinition: ScenarioDefinition
+  scenarioDefinition: ScenarioDefinition!
 }
 
 
@@ -149,11 +149,11 @@ type Query {
 }
 
 type Mutation {
-  createScenario(plan: ScenarioCreateParams!): ScenarioResponse
-  updateScenario(plan: ScenarioUpdateParams!): ScenarioResponse
+  createScenario(plan: ScenarioCreateParams!): ScenarioResponse!
+  updateScenario(plan: ScenarioUpdateParams!): ScenarioResponse!
   deleteScenario(id: ID!): Boolean!
 
-  createScenarioDefinition(plan: ScenarioDefinitionCreateParams!): ScenarioDefinitionResponse
-  updateScenarioDefinition(plan: ScenarioDefinitionUpdateParams!): ScenarioDefinitionResponse
+  createScenarioDefinition(plan: ScenarioDefinitionCreateParams!): ScenarioDefinitionResponse!
+  updateScenarioDefinition(plan: ScenarioDefinitionUpdateParams!): ScenarioDefinitionResponse!
   deleteScenarioDefinition(id: ID!): Boolean!
 }

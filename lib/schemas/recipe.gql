@@ -168,7 +168,7 @@ input RecipeResourceUpdateParams {
 }
 
 type RecipeResourceResponse {
-  recipeResource: RecipeResource
+  recipeResource: RecipeResource!
 }
 
 
@@ -210,7 +210,7 @@ input RecipeProcessUpdateParams {
 }
 
 type RecipeProcessResponse {
-  recipeProcess: RecipeProcess
+  recipeProcess: RecipeProcess!
 }
 
 
@@ -234,7 +234,7 @@ input RecipeExchangeUpdateParams {
 }
 
 type RecipeExchangeResponse {
-  recipeExchange: RecipeExchange
+  recipeExchange: RecipeExchange!
 }
 
 
@@ -306,7 +306,7 @@ input RecipeFlowUpdateParams {
 }
 
 type RecipeFlowResponse {
-  recipeFlow: RecipeFlow
+  recipeFlow: RecipeFlow!
 }
 
 
@@ -326,19 +326,19 @@ type Query {
 }
 
 type Mutation {
-  createRecipeFlow(recipeFlow: RecipeFlowCreateParams): RecipeFlowResponse
-  updateRecipeFlow(recipeFlow: RecipeFlowUpdateParams): RecipeFlowResponse
+  createRecipeFlow(recipeFlow: RecipeFlowCreateParams!): RecipeFlowResponse!
+  updateRecipeFlow(recipeFlow: RecipeFlowUpdateParams!): RecipeFlowResponse!
   deleteRecipeFlow(id: ID!): Boolean!
 
-  createRecipeResource(recipeResource: RecipeResourceCreateParams): RecipeResourceResponse
-  updateRecipeResource(recipeResource: RecipeResourceUpdateParams): RecipeResourceResponse
+  createRecipeResource(recipeResource: RecipeResourceCreateParams!): RecipeResourceResponse!
+  updateRecipeResource(recipeResource: RecipeResourceUpdateParams!): RecipeResourceResponse!
   deleteRecipeResource(id: ID!): Boolean!
 
-  createRecipeProcess(recipeProcess: RecipeProcessCreateParams): RecipeProcessResponse
-  updateRecipeProcess(recipeProcess: RecipeProcessUpdateParams): RecipeProcessResponse
+  createRecipeProcess(recipeProcess: RecipeProcessCreateParams!): RecipeProcessResponse!
+  updateRecipeProcess(recipeProcess: RecipeProcessUpdateParams!): RecipeProcessResponse!
   deleteRecipeProcess(id: ID!): Boolean!
 
-  createRecipeExchange(recipeExchange: RecipeExchangeCreateParams): RecipeExchangeResponse
-  updateRecipeExchange(recipeExchange: RecipeExchangeUpdateParams): RecipeExchangeResponse
+  createRecipeExchange(recipeExchange: RecipeExchangeCreateParams!): RecipeExchangeResponse!
+  updateRecipeExchange(recipeExchange: RecipeExchangeUpdateParams!): RecipeExchangeResponse!
   deleteRecipeExchange(id: ID!): Boolean!
 }

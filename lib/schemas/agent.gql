@@ -312,24 +312,24 @@ type Query {
 
 type Mutation {
   "Registers a new (human) person with the collaboration space"
-  createPerson(person: AgentCreateParams!): PersonResponse
+  createPerson(person: AgentCreateParams!): PersonResponse!
   "Update profile details"
-  updatePerson(person: AgentUpdateParams!): PersonResponse
+  updatePerson(person: AgentUpdateParams!): PersonResponse!
   "Erase record of a person and thus remove them from the collaboration space"
   deletePerson(id: ID!): Boolean!
 
   "Registers a new organization (group agent) with the collaboration space"
-  createOrganization(organization: OrganizationCreateParams!): OrganizationResponse
+  createOrganization(organization: OrganizationCreateParams!): OrganizationResponse!
   "Update organization profile details"
-  updateOrganization(organization: OrganizationUpdateParams!): OrganizationResponse
+  updateOrganization(organization: OrganizationUpdateParams!): OrganizationResponse!
   "Erase record of an organization and thus remove it from the collaboration space"
   deleteOrganization(id: ID!): Boolean!
 
-  createAgentRelationship(relationship: AgentRelationshipCreateParams!): AgentRelationshipResponse
-  updateAgentRelationship(relationship: AgentRelationshipUpdateParams!): AgentRelationshipResponse
+  createAgentRelationship(relationship: AgentRelationshipCreateParams!): AgentRelationshipResponse!
+  updateAgentRelationship(relationship: AgentRelationshipUpdateParams!): AgentRelationshipResponse!
   deleteAgentRelationship(id: ID!): Boolean!
 
-  createAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleCreateParams): AgentRelationshipRoleResponse
-  updateAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleUpdateParams): AgentRelationshipRoleResponse
+  createAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleCreateParams!): AgentRelationshipRoleResponse!
+  updateAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleUpdateParams!): AgentRelationshipRoleResponse!
   deleteAgentRelationshipRole(id: ID!): Boolean!
 }
