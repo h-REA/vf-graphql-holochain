@@ -316,20 +316,20 @@ type Mutation {
   "Update profile details"
   updatePerson(person: AgentUpdateParams!): PersonResponse
   "Erase record of a person and thus remove them from the collaboration space"
-  deletePerson(id: ID!): Boolean
+  deletePerson(id: ID!): Boolean!
 
   "Registers a new organization (group agent) with the collaboration space"
   createOrganization(organization: OrganizationCreateParams!): OrganizationResponse
   "Update organization profile details"
   updateOrganization(organization: OrganizationUpdateParams!): OrganizationResponse
   "Erase record of an organization and thus remove it from the collaboration space"
-  deleteOrganization(id: ID!): Boolean
+  deleteOrganization(id: ID!): Boolean!
 
   createAgentRelationship(relationship: AgentRelationshipCreateParams!): AgentRelationshipResponse
   updateAgentRelationship(relationship: AgentRelationshipUpdateParams!): AgentRelationshipResponse
-  deleteAgentRelationship(id: ID!): Boolean
+  deleteAgentRelationship(id: ID!): Boolean!
 
   createAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleCreateParams): AgentRelationshipRoleResponse
   updateAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleUpdateParams): AgentRelationshipRoleResponse
-  deleteAgentRelationshipRole(id: ID!): Boolean
+  deleteAgentRelationshipRole(id: ID!): Boolean!
 }

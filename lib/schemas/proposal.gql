@@ -128,7 +128,7 @@ type Query {
 type Mutation {
   createProposal(proposal: ProposalCreateParams): ProposalResponse
   updateProposal(proposal: ProposalUpdateParams): ProposalResponse
-  deleteProposal(id: ID!): Boolean
+  deleteProposal(id: ID!): Boolean!
 
   """
   Include an existing intent as part of a proposal.
@@ -136,5 +136,5 @@ type Mutation {
   @param publishes the (`Intent`) to include as part of the proposal
   """
   proposeIntent(publishedIn: ID!, publishes: ID!, reciprocal: Boolean): ProposedIntentResponse
-  deleteProposedIntent(id: ID!): Boolean
+  deleteProposedIntent(id: ID!): Boolean!
 }

@@ -328,17 +328,17 @@ type Query {
 type Mutation {
   createRecipeFlow(recipeFlow: RecipeFlowCreateParams): RecipeFlowResponse
   updateRecipeFlow(recipeFlow: RecipeFlowUpdateParams): RecipeFlowResponse
-  deleteRecipeFlow(id: ID!): Boolean
+  deleteRecipeFlow(id: ID!): Boolean!
 
   createRecipeResource(recipeResource: RecipeResourceCreateParams): RecipeResourceResponse
   updateRecipeResource(recipeResource: RecipeResourceUpdateParams): RecipeResourceResponse
-  deleteRecipeResource(id: ID!): Boolean
+  deleteRecipeResource(id: ID!): Boolean!
 
   createRecipeProcess(recipeProcess: RecipeProcessCreateParams): RecipeProcessResponse
   updateRecipeProcess(recipeProcess: RecipeProcessUpdateParams): RecipeProcessResponse
-  deleteRecipeProcess(id: ID!): Boolean
+  deleteRecipeProcess(id: ID!): Boolean!
 
   createRecipeExchange(recipeExchange: RecipeExchangeCreateParams): RecipeExchangeResponse
   updateRecipeExchange(recipeExchange: RecipeExchangeUpdateParams): RecipeExchangeResponse
-  deleteRecipeExchange(id: ID!): Boolean
+  deleteRecipeExchange(id: ID!): Boolean!
 }

@@ -38,5 +38,5 @@ type Mutation {
   @param proposedTo the (`Agent`) to include in the proposal
   """
   proposeTo(proposed: ID!, proposedTo: ID!): ProposedToResponse
-  deleteProposedTo(id: ID!): Boolean
+  deleteProposedTo(id: ID!): Boolean!
 }

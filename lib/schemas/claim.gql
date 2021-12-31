@@ -216,9 +216,9 @@ type Query {
 type Mutation {
   createClaim(claim: ClaimCreateParams!): ClaimResponse
   updateClaim(claim: ClaimUpdateParams!): ClaimResponse
-  deleteClaim(id: ID!): Boolean
+  deleteClaim(id: ID!): Boolean!
 
   createSettlement(settlement: SettlementCreateParams!): SettlementResponse
   updateSettlement(s0ettlement: SettlementUpdateParams!): SettlementResponse
-  deleteSettlement(id: ID!): Boolean
+  deleteSettlement(id: ID!): Boolean!
 }
