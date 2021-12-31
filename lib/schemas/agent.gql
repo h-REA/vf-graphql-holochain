@@ -227,6 +227,9 @@ input AgentRelationshipCreateParams { # implements AgentRelationshipParams
   "(`AgentRelationshipRole`) The role of an economic relationship that exists between 2 agents, such as member, trading partner."
   relationship: ID! # AgentRelationshipRole
 
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [ID!]
+
   "A textual description or comment."
   note: String
 }
@@ -242,6 +245,10 @@ input AgentRelationshipUpdateParams { # implements UpdateParams & AgentRelations
 
   "(`AgentRelationshipRole`) The role of an economic relationship that exists between 2 agents, such as member, trading partner."
   relationship: ID
+
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [ID!]
+
 
   "A textual description or comment."
   note: String
