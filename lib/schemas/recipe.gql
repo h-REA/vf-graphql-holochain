@@ -200,7 +200,7 @@ input RecipeProcessUpdateParams {
   hasDuration: IDuration
 
   "(`ProcessSpecification`) The standard specification or definition of a process."
-  processConformsTo: ID!
+  processConformsTo: ID
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization."
   processClassifiedAs: [URI!]
