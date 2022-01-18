@@ -80,7 +80,7 @@ input PlanUpdateParams {
 }
 
 type PlanResponse {
-  plan: Plan
+  plan: Plan!
 }
 
 
@@ -91,9 +91,9 @@ type Query {
 }
 
 type Mutation {
-  createPlan(plan: PlanCreateParams!): PlanResponse
+  createPlan(plan: PlanCreateParams!): PlanResponse!
   # :TODO:
-  # createPlanFromRecipe(): PlanResponse
-  updatePlan(plan: PlanUpdateParams!): PlanResponse
-  deletePlan(id: ID!): Boolean
+  # createPlanFromRecipe(): PlanResponse!
+  updatePlan(plan: PlanUpdateParams!): PlanResponse!
+  deletePlan(id: ID!): Boolean!
 }
