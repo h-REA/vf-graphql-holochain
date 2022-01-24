@@ -103,11 +103,11 @@ We usually suggest that you do *not* enforce an http/https protocol scheme, to a
 
 ### Prerequisites
 
-- If you don't have Yarn- `npm i -g yarn` using the version of node you plan on developing this project against *(for recommended, see `.nvmrc`)*. You can setup your modules manually using `npm link` if you prefer, but Yarn's workspaces feature will save you a lot of time.
+- If you don't have PNPM- `npm i -g pnpm` using the version of node you plan on developing this project against *(for recommended, see `.nvmrc`)*. You can setup your modules manually using `npm link` if you prefer, but PNPM's workspaces feature will save you a lot of time.
 
 ### Initialising for development
 
-1. Run `yarn` from the top level folder of this repository to install and wire up all dependencies.
+1. Run `pnpm i` from the top level folder of this repository to install and wire up all dependencies.
 2. Run `npm run build` to compile the schema files.
 
 ### Available commands
