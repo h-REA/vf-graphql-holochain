@@ -24,11 +24,11 @@
   },
   "homepage": "https://github.com/valueflows/vf-graphql#readme",
   "dependencies": {
-    "apollo-client": "^2.6.0",
+    "@apollo/client": "^3.5.7",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-link-schema": "^1.2.5",
-    "@valueflows/vf-graphql": "^0.8",
-    "@graphql-tools/mock": "^6.0.7"
+    "@valueflows/vf-graphql": "workspace:*",
+    "@graphql-tools/mock": "^8.5.1"
   },
   "peerDependencies": {
     "graphql": ">=14"
