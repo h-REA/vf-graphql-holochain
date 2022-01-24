@@ -7,7 +7,7 @@
  * @since:   2020-08-07
  */
 
-import { ApolloClient } from 'apollo-client'
+import { ApolloClient } from '@apollo/client'
 import { SchemaLink } from 'apollo-link-schema'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { addMocksToSchema } from '@graphql-tools/mock'
