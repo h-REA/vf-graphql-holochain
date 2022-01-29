@@ -60,7 +60,7 @@ type RecipeFlow {
   effortQuantity: Measure
 
   "The resource definition referenced by this flow in the recipe."
-  recipeFlowResource: RecipeResource
+  recipeFlowResource: RecipeResource!
 
   "Relates a process input or output to a verb, such as consume, produce, work, modify, etc."
   action: Action!
