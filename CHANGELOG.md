@@ -6,7 +6,9 @@
 	- `ScenarioDefinition.name` is now correctly required when creating, but not when updating
 	- `Scenario.definedAs` is no longer required
 - **Breaking:** added a new field `EconomicEvent.toLocation` for managing resource location updates. `EconomicResource.currentLocation` is no longer updateable directly.
-- Fix `EconomicEvent.inScopeOf` being updateable when it shouldn't be
+- Fix `EconomicEvent.inScopeOf` being updateable when it should not be
+- Fix `RecipeFlow.recipeFlowResource` not being required when it should be
+- Fix `RecipeProcess.processConformsTo` being required when it should not be
 - Fixed IDs not being mandatory in all direct-retrieval API methods
 - Added a mock GraphQLClient for direct use in UI code, to complement the mock GraphQLServer
 - Fixed some geolocation fields being present in the generated schema when the `geolocation` module is not active
