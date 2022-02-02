@@ -94,7 +94,7 @@ type RecipeProcess {
   processClassifiedAs: [URI!]
 
   "The standard specification or definition of a process."
-  processConformsTo: ProcessSpecification!
+  processConformsTo: ProcessSpecification
 
   "A textual description or comment."
   note: String
@@ -181,7 +181,7 @@ input RecipeProcessCreateParams {
   hasDuration: IDuration
 
   "(`ProcessSpecification`) The standard specification or definition of a process."
-  processConformsTo: ID!
+  processConformsTo: ID
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization."
   processClassifiedAs: [URI!]
