@@ -7,7 +7,9 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "cd lib && npm run build",
-    "publish": "cd lib && npm publish --access public",
+    "publish": "npm run publish:lib && npm run publish:mock-client",
+    "publish:lib": "cd lib && npm publish --access public",
+    "publish:mock-client": "cd mock-client && npm publish --access public",
     "start": "npm-run-all --parallel dev:schema dev:demoUI",
     "test": "cd tests && npm run test",
     "dev:schema": "cd lib && npm run dev",
