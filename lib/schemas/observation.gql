@@ -446,6 +446,7 @@ type Query {
 }
 
 type Mutation {
+  "Registers a new (`EconomicEvent`) with the collaboration space. Also serves as a means to register (`EconomicResource`) as well, instead of createEconomicResource"
   createEconomicEvent(event: EconomicEventCreateParams!, newInventoriedResource: EconomicResourceCreateParams): EconomicEventResponse!
   updateEconomicEvent(event: EconomicEventUpdateParams!): EconomicEventResponse!
   deleteEconomicEvent(id: ID!): Boolean!
