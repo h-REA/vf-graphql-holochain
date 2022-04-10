@@ -1,7 +1,7 @@
 /**
  * GraphQL / iQL server
  *
- * @package: HoloREA
+ * @package: vf-graphql
  * @author:  pospi <pospi@spadgos.com>
  * @since:   2019-03-18
  */

@@ -80,7 +80,7 @@ If using Apollo GraphQL, this means defining an [implementation object](https://
 
 Schemas will usually have to inject `__typename` parameters to disambiguate union types, especially for `EventOrCommitment` where there are no required fields which can determine the difference between the two records via duck-typing.
 
-For a more detailed example, see the [Holochain schema bindings](https://github.com/holo-rea/holo-rea/tree/master/modules/vf-graphql-holochain#readme).
+For a more detailed example, see the [Holochain schema bindings](https://github.com/h-rea/hrea/tree/master/modules/vf-graphql-holochain#readme).
 
 ### Scalar type resolvers
 
