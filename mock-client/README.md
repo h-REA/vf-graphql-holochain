@@ -16,7 +16,7 @@ Directly pluggable with other ValueFlows-compatible GraphQL client modules- simp
 
 ## Other ValueFlows GraphQL clients
 
-- [Holochain API client](https://github.com/h-rea/app-offers-needs-marketplace/tree/sprout/src/graphql-client) based on the [hREA](https://github.com/h-rea/hrea/tree/sprout/modules/vf-graphql-holochain) implementation
+- [Holochain API client](https://github.com/h-rea/hrea/tree/sprout/modules/graphql-client) based on the [hREA](https://github.com/h-rea/hrea/tree/sprout/modules/vf-graphql-holochain) implementation
 
 
 ## License
