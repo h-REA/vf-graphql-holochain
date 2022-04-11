@@ -9,19 +9,14 @@
 #
 ##
 
-"Query parameters for reading `Proposal`s related to an `Agent`"
-input agentProposalSearchParams {
-  searchString: String
-}
-
 interface Agent {
-  proposals(filter: agentProposalSearchParams): [Proposal!]
+  proposals(first: Int, after: String, last: Int, before: String): ProposalConnection!
 }
 
 type Person implements Agent {
-  proposals(filter: agentProposalSearchParams): [Proposal!]
+  proposals(first: Int, after: String, last: Int, before: String): ProposalConnection!
 }
 
 type Organization implements Agent {
-  proposals(filter: agentProposalSearchParams): [Proposal!]
+  proposals(first: Int, after: String, last: Int, before: String): ProposalConnection!
 }
