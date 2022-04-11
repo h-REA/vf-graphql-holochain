@@ -1,0 +1,27 @@
+##
+#
+# Agent <> Proposal query API
+#
+# Provides information about the relationships between agents and proposals
+#
+# @package  vf-graphql
+# @since    2022-04-12
+#
+##
+
+"Query parameters for reading `Proposal`s related to an `Agent`"
+input agentProposalSearchParams {
+  searchString: String
+}
+
+interface Agent {
+  proposals(filter: agentProposalSearchParams): [Proposal!]
+}
+
+type Person implements Agent {
+  proposals(filter: agentProposalSearchParams): [Proposal!]
+}
+
+type Organization implements Agent {
+  proposals(filter: agentProposalSearchParams): [Proposal!]
+}
