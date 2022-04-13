@@ -262,9 +262,6 @@ input IntentCreateParams {
   "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 
-  "(`SpatialThing`) The place where an intent occurs. Usually mappable."
-  atLocation: ID
-
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this intent."
   agreedIn: URI
 
@@ -329,9 +326,6 @@ input IntentUpdateParams {
   "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 
-  "(`SpatialThing`) The place where an intent occurs. Usually mappable."
-  atLocation: ID
-
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this intent."
   agreedIn: URI
 }
@@ -391,9 +385,6 @@ input CommitmentCreateParams {
   "(`Plan`) Represents a desired deliverable expected from this plan."
   independentDemandOf: ID
 
-  "(`SpatialThing`) The place where an commitment occurs.  Usually mappable."
-  atLocation: ID
-
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this commitment."
   agreedIn: URI
 
@@ -449,9 +440,6 @@ input CommitmentUpdateParams {
   "(`Plan`) Represents a desired deliverable expected from this plan."
   independentDemandOf: ID
 
-  "(`SpatialThing`) The place where an commitment occurs.  Usually mappable."
-  atLocation: ID
-
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this commitment."
   agreedIn: URI
 
@@ -460,7 +448,7 @@ input CommitmentUpdateParams {
 }
 
 type CommitmentResponse {
-  commitment: Commitment
+  commitment: Commitment!
 }
 
 
@@ -502,7 +490,7 @@ input FulfillmentUpdateParams {
 }
 
 type FulfillmentResponse {
-  fulfillment: Fulfillment
+  fulfillment: Fulfillment!
 }
 
 
@@ -544,7 +532,7 @@ input SatisfactionUpdateParams {
 }
 
 type SatisfactionResponse {
-  satisfaction: Satisfaction
+  satisfaction: Satisfaction!
 }
 
 
@@ -564,19 +552,19 @@ type Query {
 }
 
 type Mutation {
-  createCommitment(commitment: CommitmentCreateParams): CommitmentResponse
-  updateCommitment(commitment: CommitmentUpdateParams): CommitmentResponse
-  deleteCommitment(revisionId: ID!): Boolean
+  createCommitment(commitment: CommitmentCreateParams!): CommitmentResponse!
+  updateCommitment(commitment: CommitmentUpdateParams!): CommitmentResponse!
+  deleteCommitment(revisionId: ID!): Boolean!
 
-  createIntent(intent: IntentCreateParams): IntentResponse
-  updateIntent(intent: IntentUpdateParams): IntentResponse
-  deleteIntent(revisionId: ID!): Boolean
+  createIntent(intent: IntentCreateParams): IntentResponse!
+  updateIntent(intent: IntentUpdateParams): IntentResponse!
+  deleteIntent(revisionId: ID!): Boolean!
 
-  createFulfillment(fulfillment: FulfillmentCreateParams!): FulfillmentResponse
-  updateFulfillment(fulfillment: FulfillmentUpdateParams!): FulfillmentResponse
-  deleteFulfillment(revisionId: ID!): Boolean
+  createFulfillment(fulfillment: FulfillmentCreateParams!): FulfillmentResponse!
+  updateFulfillment(fulfillment: FulfillmentUpdateParams!): FulfillmentResponse!
+  deleteFulfillment(revisionId: ID!): Boolean!
 
-  createSatisfaction(satisfaction: SatisfactionCreateParams): SatisfactionResponse
-  updateSatisfaction(satisfaction: SatisfactionUpdateParams): SatisfactionResponse
-  deleteSatisfaction(revisionId: ID!): Boolean
+  createSatisfaction(satisfaction: SatisfactionCreateParams!): SatisfactionResponse!
+  updateSatisfaction(satisfaction: SatisfactionUpdateParams!): SatisfactionResponse!
+  deleteSatisfaction(revisionId: ID!): Boolean!
 }

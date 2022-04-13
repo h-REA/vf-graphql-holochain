@@ -75,9 +75,6 @@ input ProposalCreateParams {
   "The end time of proposal publication."
   hasEnd: DateTime
 
-  "(`SpatialThing`) The location at which this proposal is eligible."
-  eligibleLocation: ID
-
   "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 
@@ -103,9 +100,6 @@ input ProposalUpdateParams {
   "The end time of proposal publication."
   hasEnd: DateTime
 
-  "(`SpatialThing`) The location at which this proposal is eligible."
-  eligibleLocation: ID
-
   "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 
@@ -117,13 +111,13 @@ input ProposalUpdateParams {
 }
 
 type ProposalResponse {
-  proposal: Proposal
+  proposal: Proposal!
 }
 
 
 
 type ProposedIntentResponse {
-  proposedIntent: ProposedIntent
+  proposedIntent: ProposedIntent!
 }
 
 
@@ -134,15 +128,15 @@ type Query {
 }
 
 type Mutation {
-  createProposal(proposal: ProposalCreateParams): ProposalResponse
-  updateProposal(proposal: ProposalUpdateParams): ProposalResponse
-  deleteProposal(revisionId: ID!): Boolean
+  createProposal(proposal: ProposalCreateParams!): ProposalResponse!
+  updateProposal(proposal: ProposalUpdateParams!): ProposalResponse!
+  deleteProposal(revisionId: ID!): Boolean!
 
   """
   Include an existing intent as part of a proposal.
   @param publishedIn the (`Proposal`) to include the intent in
   @param publishes the (`Intent`) to include as part of the proposal
   """
-  proposeIntent(publishedIn: ID!, publishes: ID!, reciprocal: Boolean): ProposedIntentResponse
-  deleteProposedIntent(revisionId: ID!): Boolean
+  proposeIntent(publishedIn: ID!, publishes: ID!, reciprocal: Boolean): ProposedIntentResponse!
+  deleteProposedIntent(revisionId: ID!): Boolean!
 }

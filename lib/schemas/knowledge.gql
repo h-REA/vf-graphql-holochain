@@ -124,7 +124,7 @@ input ResourceSpecificationUpdateParams {
 }
 
 type ResourceSpecificationResponse {
-  resourceSpecification: ResourceSpecification
+  resourceSpecification: ResourceSpecification!
 }
 
 
@@ -148,7 +148,7 @@ input ProcessSpecificationUpdateParams {
 }
 
 type ProcessSpecificationResponse {
-  processSpecification: ProcessSpecification
+  processSpecification: ProcessSpecification!
 }
 
 
@@ -165,11 +165,11 @@ type Query {
 }
 
 type Mutation {
-  createResourceSpecification(resourceSpecification: ResourceSpecificationCreateParams): ResourceSpecificationResponse
-  updateResourceSpecification(resourceSpecification: ResourceSpecificationUpdateParams): ResourceSpecificationResponse
-  deleteResourceSpecification(revisionId: ID!): Boolean
+  createResourceSpecification(resourceSpecification: ResourceSpecificationCreateParams!): ResourceSpecificationResponse!
+  updateResourceSpecification(resourceSpecification: ResourceSpecificationUpdateParams!): ResourceSpecificationResponse!
+  deleteResourceSpecification(revisionId: ID!): Boolean!
 
-  createProcessSpecification(processSpecification: ProcessSpecificationCreateParams): ProcessSpecificationResponse
-  updateProcessSpecification(processSpecification: ProcessSpecificationUpdateParams): ProcessSpecificationResponse
-  deleteProcessSpecification(revisionId: ID!): Boolean
+  createProcessSpecification(processSpecification: ProcessSpecificationCreateParams!): ProcessSpecificationResponse!
+  updateProcessSpecification(processSpecification: ProcessSpecificationUpdateParams!): ProcessSpecificationResponse!
+  deleteProcessSpecification(revisionId: ID!): Boolean!
 }

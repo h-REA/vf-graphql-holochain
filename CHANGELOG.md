@@ -4,17 +4,24 @@
 	- `revisionId` is now a mandatory field in all updateable record types. For systems which do not implement history, it is fine to return `revisionId` with the same value as `id`.
 	- Added a new optional `history` module, which services needing to implement human-facing conflict resolution capabilities (eg. eventually-consistent networks) may implement. These additional query edges and response types provide a minimal-footprint API which can be used to resolve conflicts between divergent branches of the same record. See the 'bridging' schemas beginning with `history.*` as a reference.
 
-## 0.8.5
+## 0.8.5 (unreleased)
 
 - Fixed errata in fields being required or not:
 	- `Claim.triggeredBy` is now required when creating
 	- `Plan.name` is now required
 	- `ScenarioDefinition.name` is now correctly required when creating, but not when updating
 	- `Scenario.definedAs` is no longer required
+- **Breaking:** added a new field `EconomicEvent.toLocation` for managing resource location updates. `EconomicResource.currentLocation` is no longer updateable directly.
+- Fix `EconomicEvent.inScopeOf` being updateable when it should not be
+- Fix `RecipeFlow.recipeFlowResource` not being required when it should be
+- Fix `RecipeProcess.processConformsTo` being required when it should not be
+- Added `Commitment.plannedWithin`
 - Fixed IDs not being mandatory in all direct-retrieval API methods
 - Added a mock GraphQLClient for direct use in UI code, to complement the mock GraphQLServer
+- Fixed some geolocation fields being present in the generated schema when the `geolocation` module is not active
 - Switched to [PNPM](http://pnpm.js.org/) for package management for better cross-monorepo support
 - **Reflect correct Apache-2.0 licensing** in NPM metadata (was: MIT)
+- Updated GraphQL toolchain in dependencies: `@graphql-tools` v6-v8; `@graphql-codegen` v1-v2; `@apollo.client` v2-v3.
 
 ## 0.8.4
 

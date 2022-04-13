@@ -230,9 +230,6 @@ input EconomicEventCreateParams {
   "The amount and unit of the work or use or citation effort-based action. This is often a time duration, but also could be cycle counts or other measures of effort or usefulness."
   effortQuantity: IMeasure
 
-  "(`SpatialThing`) The place where an economic event occurs.  Usually mappable."
-  atLocation: ID
-
   "The beginning of the economic event."
   hasBeginning: DateTime
 
@@ -272,9 +269,6 @@ input EconomicEventUpdateParams {
 
   "(`EconomicEvent`) References another economic event that implied this economic event, often based on a prior agreement."
   triggeredBy: ID
-
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
 }
 
 type EconomicEventResponse {
@@ -307,9 +301,6 @@ input EconomicResourceCreateParams {
 
   "(`EconomicResource`) Used when a stock economic resource contains items also defined as economic resources."
   containedIn: ID
-
-  "(`SpatialThing`) The current place an economic resource is located.  Could be at any level of granularity, from a town to an address to a warehouse location.  Usually mappable."
-  currentLocation: ID
 
   "A textual description or comment."
   note: String
@@ -431,7 +422,7 @@ input ProcessUpdateParams {
 }
 
 type ProcessResponse {
-  process: Process
+  process: Process!
 }
 
 
@@ -459,19 +450,20 @@ type Query {
 }
 
 type Mutation {
-  createEconomicEvent(event: EconomicEventCreateParams!, newInventoriedResource: EconomicResourceCreateParams): EconomicEventResponse
-  updateEconomicEvent(event: EconomicEventUpdateParams!): EconomicEventResponse
-  deleteEconomicEvent(revisionId: ID!): Boolean
+  "Registers a new (`EconomicEvent`) with the collaboration space. Also serves as a means to register (`EconomicResource`) as well, instead of createEconomicResource"
+  createEconomicEvent(event: EconomicEventCreateParams!, newInventoriedResource: EconomicResourceCreateParams): EconomicEventResponse!
+  updateEconomicEvent(event: EconomicEventUpdateParams!): EconomicEventResponse!
+  deleteEconomicEvent(revisionId: ID!): Boolean!
 
   # :TODO: should this be allowed without an originating event? Or should the event be recorded transparently?
-  updateEconomicResource(resource: EconomicResourceUpdateParams!): EconomicResourceResponse
-  deleteEconomicResource(revisionId: ID!): Boolean
+  updateEconomicResource(resource: EconomicResourceUpdateParams!): EconomicResourceResponse!
+  deleteEconomicResource(revisionId: ID!): Boolean!
 
-  createProductBatch(productBatch: ProductBatchCreateParams!): ProductBatchResponse
-  updateProductBatch(productBatch: ProductBatchUpdateParams!): ProductBatchResponse
-  deleteProductBatch(revisionId: ID!): Boolean
+  createProductBatch(productBatch: ProductBatchCreateParams!): ProductBatchResponse!
+  updateProductBatch(productBatch: ProductBatchUpdateParams!): ProductBatchResponse!
+  deleteProductBatch(revisionId: ID!): Boolean!
 
-  createProcess(process: ProcessCreateParams!): ProcessResponse
-  updateProcess(process: ProcessUpdateParams!): ProcessResponse
-  deleteProcess(revisionId: ID!): Boolean
+  createProcess(process: ProcessCreateParams!): ProcessResponse!
+  updateProcess(process: ProcessUpdateParams!): ProcessResponse!
+  deleteProcess(revisionId: ID!): Boolean!
 }

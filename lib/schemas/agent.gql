@@ -164,9 +164,6 @@ input AgentCreateParams { # implements AgentParams
   "The uri to an image relevant to the agent, such as a logo, avatar, photo, etc."
   image: URI
 
-  "(`SpatialThing`) The main place an agent is located, often an address where activities occur and mail can be sent. This is usually a mappable geographic location.  It also could be a website address, as in the case of agents who have no physical location."
-  primaryLocation: ID
-
   "A textual description or comment."
   note: String
 }
@@ -180,9 +177,6 @@ input AgentUpdateParams { # implements UpdateParams & AgentParams
   "The uri to an image relevant to the agent, such as a logo, avatar, photo, etc."
   image: URI
 
-  "(`SpatialThing`) The main place an agent is located, often an address where activities occur and mail can be sent. This is usually a mappable geographic location.  It also could be a website address, as in the case of agents who have no physical location."
-  primaryLocation: ID
-
   "A textual description or comment."
   note: String
 }
@@ -194,9 +188,6 @@ input OrganizationCreateParams { # implements AgentParams
 
   "The uri to an image relevant to the agent, such as a logo, avatar, photo, etc."
   image: URI
-
-  "(`SpatialThing`) The main place an agent is located, often an address where activities occur and mail can be sent. This is usually a mappable geographic location.  It also could be a website address, as in the case of agents who have no physical location."
-  primaryLocation: ID
 
   "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   classifiedAs: [URI!]
@@ -213,9 +204,6 @@ input OrganizationUpdateParams { # implements UpdateParams & AgentParams
 
   "The uri to an image relevant to the agent, such as a logo, avatar, photo, etc."
   image: URI
-
-  "(`SpatialThing`) The main place an agent is located, often an address where activities occur and mail can be sent. This is usually a mappable geographic location.  It also could be a website address, as in the case of agents who have no physical location."
-  primaryLocation: ID
 
   "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   classifiedAs: [URI!]
@@ -244,6 +232,9 @@ input AgentRelationshipCreateParams { # implements AgentRelationshipParams
   "(`AgentRelationshipRole`) The role of an economic relationship that exists between 2 agents, such as member, trading partner."
   relationship: ID! # AgentRelationshipRole
 
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [ID!]
+
   "A textual description or comment."
   note: String
 }
@@ -259,6 +250,10 @@ input AgentRelationshipUpdateParams { # implements UpdateParams & AgentRelations
 
   "(`AgentRelationshipRole`) The role of an economic relationship that exists between 2 agents, such as member, trading partner."
   relationship: ID
+
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [ID!]
+
 
   "A textual description or comment."
   note: String
@@ -329,24 +324,24 @@ type Query {
 
 type Mutation {
   "Registers a new (human) person with the collaboration space"
-  createPerson(person: AgentCreateParams!): PersonResponse
+  createPerson(person: AgentCreateParams!): PersonResponse!
   "Update profile details"
-  updatePerson(person: AgentUpdateParams!): PersonResponse
+  updatePerson(person: AgentUpdateParams!): PersonResponse!
   "Erase record of a person and thus remove them from the collaboration space"
-  deletePerson(revisionId: ID!): Boolean
+  deletePerson(revisionId: ID!): Boolean!
 
   "Registers a new organization (group agent) with the collaboration space"
-  createOrganization(organization: OrganizationCreateParams!): OrganizationResponse
+  createOrganization(organization: OrganizationCreateParams!): OrganizationResponse!
   "Update organization profile details"
-  updateOrganization(organization: OrganizationUpdateParams!): OrganizationResponse
+  updateOrganization(organization: OrganizationUpdateParams!): OrganizationResponse!
   "Erase record of an organization and thus remove it from the collaboration space"
-  deleteOrganization(revisionId: ID!): Boolean
+  deleteOrganization(revisionId: ID!): Boolean!
 
-  createAgentRelationship(relationship: AgentRelationshipCreateParams!): AgentRelationshipResponse
-  updateAgentRelationship(relationship: AgentRelationshipUpdateParams!): AgentRelationshipResponse
-  deleteAgentRelationship(revisionId: ID!): Boolean
+  createAgentRelationship(relationship: AgentRelationshipCreateParams!): AgentRelationshipResponse!
+  updateAgentRelationship(relationship: AgentRelationshipUpdateParams!): AgentRelationshipResponse!
+  deleteAgentRelationship(revisionId: ID!): Boolean!
 
-  createAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleCreateParams): AgentRelationshipRoleResponse
-  updateAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleUpdateParams): AgentRelationshipRoleResponse
-  deleteAgentRelationshipRole(revisionId: ID!): Boolean
+  createAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleCreateParams!): AgentRelationshipRoleResponse!
+  updateAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleUpdateParams!): AgentRelationshipRoleResponse!
+  deleteAgentRelationshipRole(revisionId: ID!): Boolean!
 }

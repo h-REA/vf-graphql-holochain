@@ -13,3 +13,13 @@ type Proposal {
   "Location or area where the proposal is valid."
   eligibleLocation: SpatialThing
 }
+
+input ProposalCreateParams {
+  "(`SpatialThing`) The location at which this proposal is eligible."
+  eligibleLocation: ID
+}
+
+input ProposalUpdateParams {
+  "(`SpatialThing`) The location at which this proposal is eligible."
+  eligibleLocation: ID
+}

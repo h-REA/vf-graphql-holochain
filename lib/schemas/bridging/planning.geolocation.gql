@@ -23,3 +23,23 @@ type SpatialThing {
   commitments: [Commitment!]
   intents: [Intent!]
 }
+
+input IntentCreateParams {
+  "(`SpatialThing`) The place where an intent occurs. Usually mappable."
+  atLocation: ID
+}
+
+input IntentUpdateParams {
+  "(`SpatialThing`) The place where an intent occurs. Usually mappable."
+  atLocation: ID
+}
+
+input CommitmentCreateParams {
+  "(`SpatialThing`) The place where an commitment occurs.  Usually mappable."
+  atLocation: ID
+}
+
+input CommitmentUpdateParams {
+  "(`SpatialThing`) The place where an commitment occurs.  Usually mappable."
+  atLocation: ID
+}

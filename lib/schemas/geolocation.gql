@@ -80,7 +80,7 @@ input SpatialThingUpdateParams {
 }
 
 type SpatialThingResponse {
-  spatialThing: SpatialThing
+  spatialThing: SpatialThing!
 }
 
 
@@ -91,7 +91,7 @@ type Query {
 }
 
 type Mutation {
-  createSpatialThing(spatialThing: SpatialThingCreateParams!): SpatialThingResponse
-  updateSpatialThing(spatialThing: SpatialThingUpdateParams!): SpatialThingResponse
-  deleteSpatialThing(revisionId: ID!): Boolean
+  createSpatialThing(spatialThing: SpatialThingCreateParams!): SpatialThingResponse!
+  updateSpatialThing(spatialThing: SpatialThingUpdateParams!): SpatialThingResponse!
+  deleteSpatialThing(revisionId: ID!): Boolean!
 }

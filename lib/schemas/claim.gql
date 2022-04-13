@@ -160,7 +160,7 @@ input ClaimUpdateParams {
 }
 
 type ClaimResponse {
-  claim: Claim
+  claim: Claim!
 }
 
 
@@ -202,7 +202,7 @@ input SettlementUpdateParams {
 }
 
 type SettlementResponse {
-  settlement: Settlement
+  settlement: Settlement!
 }
 
 
@@ -216,11 +216,11 @@ type Query {
 }
 
 type Mutation {
-  createClaim(claim: ClaimCreateParams!): ClaimResponse
-  updateClaim(claim: ClaimUpdateParams!): ClaimResponse
-  deleteClaim(revisionId: ID!): Boolean
+  createClaim(claim: ClaimCreateParams!): ClaimResponse!
+  updateClaim(claim: ClaimUpdateParams!): ClaimResponse!
+  deleteClaim(revisionId: ID!): Boolean!
 
-  createSettlement(settlement: SettlementCreateParams!): SettlementResponse
-  updateSettlement(s0ettlement: SettlementUpdateParams!): SettlementResponse
-  deleteSettlement(revisionId: ID!): Boolean
+  createSettlement(settlement: SettlementCreateParams!): SettlementResponse!
+  updateSettlement(s0ettlement: SettlementUpdateParams!): SettlementResponse!
+  deleteSettlement(revisionId: ID!): Boolean!
 }

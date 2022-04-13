@@ -57,7 +57,7 @@ input AgreementUpdateParams { # implements UpdateParams & AgreementParams
 }
 
 type AgreementResponse {
-  agreement: Agreement
+  agreement: Agreement!
 }
 
 
@@ -68,7 +68,7 @@ type Query {
 }
 
 type Mutation {
-  createAgreement(agreement: AgreementCreateParams): AgreementResponse
-  updateAgreement(agreement: AgreementUpdateParams): AgreementResponse
-  deleteAgreement(revisionId: ID!): Boolean
+  createAgreement(agreement: AgreementCreateParams): AgreementResponse!
+  updateAgreement(agreement: AgreementUpdateParams): AgreementResponse!
+  deleteAgreement(revisionId: ID!): Boolean!
 }

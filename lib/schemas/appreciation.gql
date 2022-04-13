@@ -55,13 +55,13 @@ input AppreciationUpdateParams {
 }
 
 type AppreciationResponse {
-  appreciation: Appreciation
+  appreciation: Appreciation!
 }
 
 
 
 type Mutation {
-  createAppreciation(appreciation: AppreciationCreateParams!): AppreciationResponse
-  updateAppreciation(appreciation: AppreciationUpdateParams!): AppreciationResponse
-  deleteAppreciation(revisionId: ID!): Boolean
+  createAppreciation(appreciation: AppreciationCreateParams!): AppreciationResponse!
+  updateAppreciation(appreciation: AppreciationUpdateParams!): AppreciationResponse!
+  deleteAppreciation(revisionId: ID!): Boolean!
 }
