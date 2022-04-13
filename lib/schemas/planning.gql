@@ -556,8 +556,8 @@ type Mutation {
   updateCommitment(commitment: CommitmentUpdateParams!): CommitmentResponse!
   deleteCommitment(revisionId: ID!): Boolean!
 
-  createIntent(intent: IntentCreateParams): IntentResponse!
-  updateIntent(intent: IntentUpdateParams): IntentResponse!
+  createIntent(intent: IntentCreateParams!): IntentResponse!
+  updateIntent(intent: IntentUpdateParams!): IntentResponse!
   deleteIntent(revisionId: ID!): Boolean!
 
   createFulfillment(fulfillment: FulfillmentCreateParams!): FulfillmentResponse!

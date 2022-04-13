@@ -11,6 +11,7 @@
 	- `Plan.name` is now required
 	- `ScenarioDefinition.name` is now correctly required when creating, but not when updating
 	- `Scenario.definedAs` is no longer required
+	- Fixed `Intent` mutation parameters not being marked as required
 - **Breaking:** added a new field `EconomicEvent.toLocation` for managing resource location updates. `EconomicResource.currentLocation` is no longer updateable directly.
 - Fix `EconomicEvent.inScopeOf` being updateable when it should not be
 - Fix `RecipeFlow.recipeFlowResource` not being required when it should be
