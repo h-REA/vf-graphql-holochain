@@ -221,6 +221,6 @@ type Mutation {
   deleteClaim(revisionId: ID!): Boolean!
 
   createSettlement(settlement: SettlementCreateParams!): SettlementResponse!
-  updateSettlement(s0ettlement: SettlementUpdateParams!): SettlementResponse!
+  updateSettlement(settlement: SettlementUpdateParams!): SettlementResponse!
   deleteSettlement(revisionId: ID!): Boolean!
 }

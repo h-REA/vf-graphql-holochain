@@ -93,7 +93,7 @@ type Query {
 
 type Mutation {
   createPlan(plan: PlanCreateParams!): PlanResponse!
-  # :TODO:\
+  # :TODO:
   # createPlanFromRecipe(): PlanResponse!
   updatePlan(plan: PlanUpdateParams!): PlanResponse!
   deletePlan(revisionId: ID!): Boolean!
