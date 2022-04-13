@@ -39,7 +39,7 @@ server.start().then(() => {
   server.applyMiddleware({ app })
 
   app.use(SCHEMA_VIEWER_PATH, voyagerMiddleware({
-    endpointUrl: server.graphiqlPath,
+    endpointUrl: server.graphqlPath,
     displayOptions: {
       hideRoot: true,
       showLeafFields: true,
