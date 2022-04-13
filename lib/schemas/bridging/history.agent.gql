@@ -1,3 +1,8 @@
+type Revision {
+  "The authoring `Agent` who created this revision."
+  author: Agent
+}
+
 interface Agent {
   revision(revisionId: ID!): Agent
   meta: RecordMeta!

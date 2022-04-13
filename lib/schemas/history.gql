@@ -41,6 +41,4 @@ type Revision {
   id: ID!
   "Time this revision was created, if known."
   time: DateTime
-  "ID of the author who created this revision. Should be given as the author's `Agent` ID."
-  authorId: ID
 }
