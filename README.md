@@ -80,7 +80,7 @@ If using Apollo GraphQL, this means defining an [implementation object](https://
 
 Schemas will usually have to inject `__typename` parameters to disambiguate union types, especially for `EventOrCommitment` where there are no required fields which can determine the difference between the two records via duck-typing.
 
-For a more detailed example, see the [Holochain schema bindings](https://github.com/holo-rea/holo-rea/tree/master/modules/vf-graphql-holochain#readme).
+For a more detailed example, see the [Holochain schema bindings](https://github.com/h-rea/hrea/tree/master/modules/vf-graphql-holochain#readme).
 
 ### Scalar type resolvers
 
@@ -103,11 +103,11 @@ We usually suggest that you do *not* enforce an http/https protocol scheme, to a
 
 ### Prerequisites
 
-- If you don't have Yarn- `npm i -g yarn` using the version of node you plan on developing this project against *(for recommended, see `.nvmrc`)*. You can setup your modules manually using `npm link` if you prefer, but Yarn's workspaces feature will save you a lot of time.
+- If you don't have PNPM- `npm i -g pnpm` using the version of node you plan on developing this project against *(for recommended, see `.nvmrc`)*. You can setup your modules manually using `npm link` if you prefer, but PNPM's workspaces feature will save you a lot of time.
 
 ### Initialising for development
 
-1. Run `yarn` from the top level folder of this repository to install and wire up all dependencies.
+1. Run `pnpm i` from the top level folder of this repository to install and wire up all dependencies.
 2. Run `npm run build` to compile the schema files.
 
 ### Available commands
@@ -144,7 +144,7 @@ The `buildSchema` helper defined in the module root manages all the logic for ma
 ### Publishing to NPM
 
 - You will need to be given access to the [VF NPM org](https://www.npmjs.com/org/valueflows) in order to update the module on the registry. You can request access in https://gitter.im/valueflows/welcome
-- Bump the version in `lib/package.json` & commit to the repository
+- Bump the versions in `lib/package.json` and `mock-client/package.json` & commit to the repository
 - Update `CHANGELOG.md` with the new version ID and list of changes, and commit
 - Run `npm run publish` from this directory
 - Tag the current release in git and push the tag to `origin`

@@ -1,16 +1,21 @@
-## 0.8.5
+## 0.8.5 (unreleased)
 
 - Fixed errata in fields being required or not:
 	- `Claim.triggeredBy` is now required when creating
 	- `Plan.name` is now required
 	- `ScenarioDefinition.name` is now correctly required when creating, but not when updating
 	- `Scenario.definedAs` is no longer required
-- Added new field `EconomicEvent.toLocation` for managing resource location updates
-- Fix `EconomicEvent.inScopeOf` being updateable when it shouldn't be
+- **Breaking:** added a new field `EconomicEvent.toLocation` for managing resource location updates. `EconomicResource.currentLocation` is no longer updateable directly.
+- Fix `EconomicEvent.inScopeOf` being updateable when it should not be
+- Fix `RecipeFlow.recipeFlowResource` not being required when it should be
+- Fix `RecipeProcess.processConformsTo` being required when it should not be
+- Added `Commitment.plannedWithin`
 - Fixed IDs not being mandatory in all direct-retrieval API methods
 - Added a mock GraphQLClient for direct use in UI code, to complement the mock GraphQLServer
+- Fixed some geolocation fields being present in the generated schema when the `geolocation` module is not active
 - Switched to [PNPM](http://pnpm.js.org/) for package management for better cross-monorepo support
 - **Reflect correct Apache-2.0 licensing** in NPM metadata (was: MIT)
+- Updated GraphQL toolchain in dependencies: `@graphql-tools` v6-v8; `@graphql-codegen` v1-v2; `@apollo.client` v2-v3.
 
 ## 0.8.4
 

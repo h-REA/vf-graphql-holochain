@@ -444,7 +444,7 @@ input CommitmentUpdateParams {
 }
 
 type CommitmentResponse {
-  commitment: Commitment
+  commitment: Commitment!
 }
 
 
@@ -486,7 +486,7 @@ input FulfillmentUpdateParams {
 }
 
 type FulfillmentResponse {
-  fulfillment: Fulfillment
+  fulfillment: Fulfillment!
 }
 
 
@@ -528,7 +528,7 @@ input SatisfactionUpdateParams {
 }
 
 type SatisfactionResponse {
-  satisfaction: Satisfaction
+  satisfaction: Satisfaction!
 }
 
 type CommitmentConnection {
@@ -586,19 +586,19 @@ type Query {
 }
 
 type Mutation {
-  createCommitment(commitment: CommitmentCreateParams): CommitmentResponse
-  updateCommitment(commitment: CommitmentUpdateParams): CommitmentResponse
-  deleteCommitment(id: ID!): Boolean
+  createCommitment(commitment: CommitmentCreateParams!): CommitmentResponse!
+  updateCommitment(commitment: CommitmentUpdateParams!): CommitmentResponse!
+  deleteCommitment(id: ID!): Boolean!
 
   createIntent(intent: IntentCreateParams): IntentResponse
   updateIntent(intent: IntentUpdateParams): IntentResponse
-  deleteIntent(id: ID!): Boolean
+  deleteIntent(id: ID!): Boolean!
 
-  createFulfillment(fulfillment: FulfillmentCreateParams!): FulfillmentResponse
-  updateFulfillment(fulfillment: FulfillmentUpdateParams!): FulfillmentResponse
-  deleteFulfillment(id: ID!): Boolean
+  createFulfillment(fulfillment: FulfillmentCreateParams!): FulfillmentResponse!
+  updateFulfillment(fulfillment: FulfillmentUpdateParams!): FulfillmentResponse!
+  deleteFulfillment(id: ID!): Boolean!
 
-  createSatisfaction(satisfaction: SatisfactionCreateParams): SatisfactionResponse
-  updateSatisfaction(satisfaction: SatisfactionUpdateParams): SatisfactionResponse
-  deleteSatisfaction(id: ID!): Boolean
+  createSatisfaction(satisfaction: SatisfactionCreateParams!): SatisfactionResponse!
+  updateSatisfaction(satisfaction: SatisfactionUpdateParams!): SatisfactionResponse!
+  deleteSatisfaction(id: ID!): Boolean!
 }

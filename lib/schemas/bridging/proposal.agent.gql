@@ -5,7 +5,7 @@
 # Allows flagging Proposals for interest by agents who have an interest in
 # completing them.
 #
-# @package  Holo-REA
+# @package  vf-graphql
 # @since    2020-06-03
 #
 ##
@@ -28,7 +28,7 @@ type ProposedTo {
 }
 
 type ProposedToResponse {
-  proposedTo: ProposedTo
+  proposedTo: ProposedTo!
 }
 
 type Mutation {
@@ -37,6 +37,6 @@ type Mutation {
   @param proposed the (`Proposal`) to send to an involved agent
   @param proposedTo the (`Agent`) to include in the proposal
   """
-  proposeTo(proposed: ID!, proposedTo: ID!): ProposedToResponse
-  deleteProposedTo(id: ID!): Boolean
+  proposeTo(proposed: ID!, proposedTo: ID!): ProposedToResponse!
+  deleteProposedTo(id: ID!): Boolean!
 }

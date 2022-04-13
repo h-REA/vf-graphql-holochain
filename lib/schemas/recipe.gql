@@ -60,7 +60,7 @@ type RecipeFlow {
   effortQuantity: Measure
 
   "The resource definition referenced by this flow in the recipe."
-  recipeFlowResource: RecipeResource
+  recipeFlowResource: RecipeResource!
 
   "Relates a process input or output to a verb, such as consume, produce, work, modify, etc."
   action: Action!
@@ -94,7 +94,7 @@ type RecipeProcess {
   processClassifiedAs: [URI!]
 
   "The standard specification or definition of a process."
-  processConformsTo: ProcessSpecification!
+  processConformsTo: ProcessSpecification
 
   "A textual description or comment."
   note: String
@@ -168,7 +168,7 @@ input RecipeResourceUpdateParams {
 }
 
 type RecipeResourceResponse {
-  recipeResource: RecipeResource
+  recipeResource: RecipeResource!
 }
 
 
@@ -181,7 +181,7 @@ input RecipeProcessCreateParams {
   hasDuration: IDuration
 
   "(`ProcessSpecification`) The standard specification or definition of a process."
-  processConformsTo: ID!
+  processConformsTo: ID
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization."
   processClassifiedAs: [URI!]
@@ -200,7 +200,7 @@ input RecipeProcessUpdateParams {
   hasDuration: IDuration
 
   "(`ProcessSpecification`) The standard specification or definition of a process."
-  processConformsTo: ID!
+  processConformsTo: ID
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization."
   processClassifiedAs: [URI!]
@@ -210,7 +210,7 @@ input RecipeProcessUpdateParams {
 }
 
 type RecipeProcessResponse {
-  recipeProcess: RecipeProcess
+  recipeProcess: RecipeProcess!
 }
 
 
@@ -234,7 +234,7 @@ input RecipeExchangeUpdateParams {
 }
 
 type RecipeExchangeResponse {
-  recipeExchange: RecipeExchange
+  recipeExchange: RecipeExchange!
 }
 
 
@@ -306,7 +306,7 @@ input RecipeFlowUpdateParams {
 }
 
 type RecipeFlowResponse {
-  recipeFlow: RecipeFlow
+  recipeFlow: RecipeFlow!
 }
 
 
@@ -365,19 +365,19 @@ type Query {
 }
 
 type Mutation {
-  createRecipeFlow(recipeFlow: RecipeFlowCreateParams): RecipeFlowResponse
-  updateRecipeFlow(recipeFlow: RecipeFlowUpdateParams): RecipeFlowResponse
-  deleteRecipeFlow(id: ID!): Boolean
+  createRecipeFlow(recipeFlow: RecipeFlowCreateParams!): RecipeFlowResponse!
+  updateRecipeFlow(recipeFlow: RecipeFlowUpdateParams!): RecipeFlowResponse!
+  deleteRecipeFlow(id: ID!): Boolean!
 
-  createRecipeResource(recipeResource: RecipeResourceCreateParams): RecipeResourceResponse
-  updateRecipeResource(recipeResource: RecipeResourceUpdateParams): RecipeResourceResponse
-  deleteRecipeResource(id: ID!): Boolean
+  createRecipeResource(recipeResource: RecipeResourceCreateParams!): RecipeResourceResponse!
+  updateRecipeResource(recipeResource: RecipeResourceUpdateParams!): RecipeResourceResponse!
+  deleteRecipeResource(id: ID!): Boolean!
 
-  createRecipeProcess(recipeProcess: RecipeProcessCreateParams): RecipeProcessResponse
-  updateRecipeProcess(recipeProcess: RecipeProcessUpdateParams): RecipeProcessResponse
-  deleteRecipeProcess(id: ID!): Boolean
+  createRecipeProcess(recipeProcess: RecipeProcessCreateParams!): RecipeProcessResponse!
+  updateRecipeProcess(recipeProcess: RecipeProcessUpdateParams!): RecipeProcessResponse!
+  deleteRecipeProcess(id: ID!): Boolean!
 
-  createRecipeExchange(recipeExchange: RecipeExchangeCreateParams): RecipeExchangeResponse
-  updateRecipeExchange(recipeExchange: RecipeExchangeUpdateParams): RecipeExchangeResponse
-  deleteRecipeExchange(id: ID!): Boolean
+  createRecipeExchange(recipeExchange: RecipeExchangeCreateParams!): RecipeExchangeResponse!
+  updateRecipeExchange(recipeExchange: RecipeExchangeUpdateParams!): RecipeExchangeResponse!
+  deleteRecipeExchange(id: ID!): Boolean!
 }

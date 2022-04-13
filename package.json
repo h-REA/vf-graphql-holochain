@@ -7,7 +7,9 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "cd lib && npm run build",
-    "publish": "cd lib && npm publish --access public",
+    "publish": "npm run publish:lib && npm run publish:mock-client",
+    "publish:lib": "cd lib && npm publish --access public",
+    "publish:mock-client": "cd mock-client && npm publish --access public",
     "start": "npm-run-all --parallel dev:schema dev:demoUI",
     "test": "cd tests && npm run test",
     "dev:schema": "cd lib && npm run dev",
@@ -16,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/holo-rea/holo-rea-proto.git"
+    "url": "git+https://lab.allmende.io/valueflows/vf-schemas/vf-graphql.git"
   },
   "keywords": [
     "REA",
@@ -28,14 +30,14 @@
     "cooperative",
     "coordination"
   ],
-  "author": "HoloREA team & contributors",
+  "author": "vf-graphql team & contributors",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/holo-rea/holo-rea-proto.git/issues"
+    "url": "https://lab.allmende.io/valueflows/vf-schemas/vf-graphql/-/issues"
   },
-  "homepage": "https://github.com/holo-rea/holo-rea-proto#readme",
+  "homepage": "https://lab.allmende.io/valueflows/vf-schemas/vf-graphql/-/blob/sprout/README.md",
   "dependencies": {
-    "graphql": "^15.0.0"
+    "graphql": "^16.2.0"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"

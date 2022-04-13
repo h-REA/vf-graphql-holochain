@@ -1,13 +1,14 @@
 /**
  * GraphQL / iQL server
  *
- * @package: HoloREA
+ * @package: vf-graphql
  * @author:  pospi <pospi@spadgos.com>
  * @since:   2019-03-18
  */
 
 const express = require('express')
 const { ApolloServer } = require('apollo-server-express')
+const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
 const { express: voyagerMiddleware } = require('graphql-voyager/middleware')
 const { addMocksToSchema } = require('@graphql-tools/mock')
 
@@ -24,22 +25,32 @@ const schema = addMocksToSchema({
   },
 })
 
-const server = new ApolloServer({ schema })
+const server = new ApolloServer({
+  schema,
+  plugins: [
+    ApolloServerPluginLandingPageGraphQLPlayground(),
+  ],
+})
 
 const app = express()
-server.applyMiddleware({ app })
 
-app.use(SCHEMA_VIEWER_PATH, voyagerMiddleware({
-  endpointUrl: server.graphqlPath,
-  displayOptions: {
-    hideRoot: true,
-    showLeafFields: true,
-  },
-}))
+server.start().then(() => {
 
-app.listen({ port: SERVER_PORT }, () =>
-  console.log(`🚀🚀🚀
-    Query browser at http://localhost:${SERVER_PORT}${server.graphqlPath}
-    Schema visualiser at http://localhost:${SERVER_PORT}${SCHEMA_VIEWER_PATH}
-🚀🚀🚀`)
-)
+  server.applyMiddleware({ app })
+
+  app.use(SCHEMA_VIEWER_PATH, voyagerMiddleware({
+    endpointUrl: server.graphiqlPath,
+    displayOptions: {
+      hideRoot: true,
+      showLeafFields: true,
+    },
+  }))
+
+  app.listen({ port: SERVER_PORT }, () =>
+    console.log(`🚀🚀🚀
+      Query browser at http://localhost:${SERVER_PORT}${server.graphqlPath}
+      Schema visualiser at http://localhost:${SERVER_PORT}${SCHEMA_VIEWER_PATH}
+  🚀🚀🚀`)
+  )
+
+}).catch(console.error.bind(console))

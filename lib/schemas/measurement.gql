@@ -101,7 +101,7 @@ input UnitUpdateParams {
 }
 
 type UnitResponse {
-  unit: Unit
+  unit: Unit!
 }
 
 
@@ -121,7 +121,7 @@ type Query {
 }
 
 type Mutation {
-  createUnit(unit: UnitCreateParams): UnitResponse
-  updateUnit(unit: UnitUpdateParams): UnitResponse
-  deleteUnit(id: ID!): Boolean
+  createUnit(unit: UnitCreateParams!): UnitResponse!
+  updateUnit(unit: UnitUpdateParams!): UnitResponse!
+  deleteUnit(id: ID!): Boolean!
 }
