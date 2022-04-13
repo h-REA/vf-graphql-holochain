@@ -19,5 +19,5 @@ input PlanProcessFilterParams {
 }
 
 type Plan {
-  processes(filter: PlanProcessFilterParams): ProcessConnection!
+  processes(filter: PlanProcessFilterParams): ProcessConnection
 }

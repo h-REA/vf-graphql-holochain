@@ -23,8 +23,8 @@ type EconomicResource {
 }
 
 type SpatialThing {
-  economicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection!
-  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection!
+  economicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection
+  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection
 }
 
 input EconomicEventCreateParams {

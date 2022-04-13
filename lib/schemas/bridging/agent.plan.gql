@@ -11,13 +11,13 @@
 ##
 
 interface Agent {
-  plans(first: Int, after: String, last: Int, before: String): PlanConnection!
+  plans(first: Int, after: String, last: Int, before: String): PlanConnection
 }
 
 type Person implements Agent {
-  plans(first: Int, after: String, last: Int, before: String): PlanConnection!
+  plans(first: Int, after: String, last: Int, before: String): PlanConnection
 }
 
 type Organization implements Agent {
-  plans(first: Int, after: String, last: Int, before: String): PlanConnection!
+  plans(first: Int, after: String, last: Int, before: String): PlanConnection
 }

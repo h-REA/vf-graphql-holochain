@@ -32,19 +32,19 @@ input AgentProcessFilterParams {
 }
 
 interface Agent {
-  economicEvents(filter: AgentEventFilterParams): EconomicEventConnection!
-  inventoriedEconomicResources(filter: AgentResourceFilterParams): EconomicResourceConnection!
-  processes(filter: AgentProcessFilterParams): ProcessConnection!
+  economicEvents(filter: AgentEventFilterParams): EconomicEventConnection
+  inventoriedEconomicResources(filter: AgentResourceFilterParams): EconomicResourceConnection
+  processes(filter: AgentProcessFilterParams): ProcessConnection
 }
 
 type Person implements Agent {
-  economicEvents(filter: AgentEventFilterParams): EconomicEventConnection!
-  inventoriedEconomicResources(filter: AgentResourceFilterParams): EconomicResourceConnection!
-  processes(filter: AgentProcessFilterParams): ProcessConnection!
+  economicEvents(filter: AgentEventFilterParams): EconomicEventConnection
+  inventoriedEconomicResources(filter: AgentResourceFilterParams): EconomicResourceConnection
+  processes(filter: AgentProcessFilterParams): ProcessConnection
 }
 
 type Organization implements Agent {
-  economicEvents(filter: AgentEventFilterParams): EconomicEventConnection!
-  inventoriedEconomicResources(filter: AgentResourceFilterParams): EconomicResourceConnection!
-  processes(filter: AgentProcessFilterParams): ProcessConnection!
+  economicEvents(filter: AgentEventFilterParams): EconomicEventConnection
+  inventoriedEconomicResources(filter: AgentResourceFilterParams): EconomicResourceConnection
+  processes(filter: AgentProcessFilterParams): ProcessConnection
 }

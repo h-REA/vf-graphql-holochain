@@ -66,16 +66,16 @@ input CommitmentUpdateParams {
 
 
 interface Agent {
-  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection!
-  intents(first: Int, after: String, last: Int, before: String): IntentConnection!
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  intents(first: Int, after: String, last: Int, before: String): IntentConnection
 }
 
 type Person implements Agent {
-  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection!
-  intents(first: Int, after: String, last: Int, before: String): IntentConnection!
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  intents(first: Int, after: String, last: Int, before: String): IntentConnection
 }
 
 type Organization implements Agent {
-  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection!
-  intents(first: Int, after: String, last: Int, before: String): IntentConnection!
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  intents(first: Int, after: String, last: Int, before: String): IntentConnection
 }

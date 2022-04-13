@@ -16,13 +16,13 @@ input agentProposalSearchParams {
 }
 
 interface Agent {
-  proposals(filter: agentProposalSearchParams): ProposalConnection!
+  proposals(filter: agentProposalSearchParams): ProposalConnection
 }
 
 type Person implements Agent {
-  proposals(filter: agentProposalSearchParams): ProposalConnection!
+  proposals(filter: agentProposalSearchParams): ProposalConnection
 }
 
 type Organization implements Agent {
-  proposals(filter: agentProposalSearchParams): ProposalConnection!
+  proposals(filter: agentProposalSearchParams): ProposalConnection
 }

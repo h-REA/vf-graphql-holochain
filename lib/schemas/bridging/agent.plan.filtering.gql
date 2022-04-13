@@ -17,13 +17,13 @@ input AgentPlanFilterParams {
 }
 
 interface Agent {
-  plans(filter: AgentPlanFilterParams): PlanConnection!
+  plans(filter: AgentPlanFilterParams): PlanConnection
 }
 
 type Person implements Agent {
-  plans(filter: AgentPlanFilterParams): PlanConnection!
+  plans(filter: AgentPlanFilterParams): PlanConnection
 }
 
 type Organization implements Agent {
-  plans(filter: AgentPlanFilterParams): PlanConnection!
+  plans(filter: AgentPlanFilterParams): PlanConnection
 }

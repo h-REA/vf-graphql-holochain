@@ -30,16 +30,16 @@ input AgentIntentFilterParams {
 }
 
 interface Agent {
-  commitments(filter: AgentCommitmentFilterParams): CommitmentConnection!
-  intents(filter: AgentIntentFilterParams): IntentConnection!
+  commitments(filter: AgentCommitmentFilterParams): CommitmentConnection
+  intents(filter: AgentIntentFilterParams): IntentConnection
 }
 
 type Person implements Agent {
-  commitments(filter: AgentCommitmentFilterParams): CommitmentConnection!
-  intents(filter: AgentIntentFilterParams): IntentConnection!
+  commitments(filter: AgentCommitmentFilterParams): CommitmentConnection
+  intents(filter: AgentIntentFilterParams): IntentConnection
 }
 
 type Organization implements Agent {
-  commitments(filter: AgentCommitmentFilterParams): CommitmentConnection!
-  intents(filter: AgentIntentFilterParams): IntentConnection!
+  commitments(filter: AgentCommitmentFilterParams): CommitmentConnection
+  intents(filter: AgentIntentFilterParams): IntentConnection
 }
