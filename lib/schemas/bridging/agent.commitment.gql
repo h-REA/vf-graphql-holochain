@@ -1,0 +1,70 @@
+##
+#
+# Agent <> Commitment API
+#
+# Queries related to Commitment data exposed within an agent context,
+# and identifiers linking Agents to Commitment record types.
+#
+# @package  vf-graphql
+# @since    2022-05-27
+#
+##
+
+type Commitment {
+  "The economic agent from whom the commitment is initiated."
+  provider: Agent!
+
+  "The economic agent whom the commitment is for."
+  receiver: Agent!
+
+  ##############################################################################
+  # inverse relationships and queries
+
+  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [AccountingScope!]
+
+  involvedAgents: [Agent!]
+}
+
+input CommitmentCreateParams {
+  "(`Agent`) The economic agent from whom the commitment is initiated."
+  provider: ID!
+
+  "(`Agent`) The economic agent whom the commitment is for."
+  receiver: ID!
+
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [ID!]
+}
+
+input CommitmentUpdateParams {
+  "(`Agent`) The economic agent from whom the commitment is initiated."
+  provider: ID
+
+  "(`Agent`) The economic agent whom the commitment is for."
+  receiver: ID
+
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [ID!]
+}
+
+"Query parameters for reading `Commitment`s related to an `Agent`"
+input agentCommitmentSearchParams {
+  searchString: String
+  action: ID
+  startDate: DateTime
+  endDate: DateTime
+  finished: Boolean
+}
+
+interface Agent {
+  commitments(filter: agentCommitmentSearchParams): [Commitment!]
+}
+
+type Person implements Agent {
+  commitments(filter: agentCommitmentSearchParams): [Commitment!]
+}
+
+type Organization implements Agent {
+  commitments(filter: agentCommitmentSearchParams): [Commitment!]
+}

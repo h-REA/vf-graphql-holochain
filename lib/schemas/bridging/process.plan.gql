@@ -1,8 +1,8 @@
 ##
 #
-# Observation <> Plan API
+# Process <> Plan API
 #
-# Augments observation records with the ability to be referenced in Plans.
+# Augments Process records with the ability to be referenced in Plans.
 #
 # @package  vf-graphql
 # @since    2020-02-12
@@ -24,4 +24,18 @@ input planProcessSearchParams {
 
 type Plan {
   processes(filter: planProcessSearchParams): [Process!]
+}
+
+##
+#  API call input and output types
+##
+
+input ProcessCreateParams {
+  "(`Plan`) The process with its inputs and outputs is part of the plan."
+  plannedWithin: ID
+}
+
+input ProcessUpdateParams {
+  "(`Plan`) The process with its inputs and outputs is part of the plan."
+  plannedWithin: ID
 }

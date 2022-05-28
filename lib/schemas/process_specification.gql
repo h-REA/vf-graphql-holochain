@@ -1,0 +1,65 @@
+##
+#
+# ProcessSpecification module
+#
+# Provides functionality for classifying and organising Processes.
+#
+# @depends  measurement.gql
+# @package  vf-graphql
+# @since    2022-05-27
+#
+##
+
+"""
+Specifies the kind of process.
+"""
+type ProcessSpecification {
+  id: ID!
+
+  "An informal or formal textual identifier for the process. Does not imply uniqueness."
+  name: String!
+
+  "A textual description or comment."
+  note: String
+}
+
+##
+# API input and output types
+##
+
+input ProcessSpecificationCreateParams {
+  "An informal or formal textual identifier for the process. Does not imply uniqueness."
+  name: String!
+
+  "A textual description or comment."
+  note: String
+}
+
+input ProcessSpecificationUpdateParams {
+  id: ID!
+
+  "An informal or formal textual identifier for the process. Does not imply uniqueness."
+  name: String
+
+  "A textual description or comment."
+  note: String
+}
+
+type ProcessSpecificationResponse {
+  processSpecification: ProcessSpecification!
+}
+
+type Query {
+  processSpecification(id: ID!): ProcessSpecification
+  processSpecifications(start: ID, limit: Int): [ProcessSpecification!]
+}
+
+type Mutation {
+  createProcessSpecification(
+    processSpecification: ProcessSpecificationCreateParams!
+  ): ProcessSpecificationResponse!
+  updateProcessSpecification(
+    processSpecification: ProcessSpecificationUpdateParams!
+  ): ProcessSpecificationResponse!
+  deleteProcessSpecification(id: ID!): Boolean!
+}

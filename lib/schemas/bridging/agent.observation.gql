@@ -16,6 +16,9 @@ type EconomicEvent {
 
   "The economic agent whom the actual economic event is for."
   receiver: Agent!
+
+  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [AccountingScope!]
 }
 
 type EconomicResource {
@@ -23,19 +26,16 @@ type EconomicResource {
   primaryAccountable: Agent
 }
 
-type Process {
-  workingAgents: [Agent!]
-}
-
-
 input EconomicEventCreateParams {
   "(`Agent`) The economic agent from whom the actual economic event is initiated."
   provider: ID!
 
   "(`Agent`) The economic agent whom the actual economic event is for."
   receiver: ID!
-}
 
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [ID!]
+}
 
 "Query parameters for reading `EconomicEvent`s related to an `Agent`"
 input agentEventSearchParams {
@@ -52,26 +52,23 @@ input agentResourceSearchParams {
   page: Int
 }
 
-"Query parameters for reading `Process`es related to an `Agent`"
-input agentProcessSearchParams {
-  searchString: String
-  finished: Boolean
-}
-
 interface Agent {
   economicEvents(filter: agentEventSearchParams): [EconomicEvent!]
-  inventoriedEconomicResources(filter: agentResourceSearchParams): [EconomicResource!]
-  processes(filter: agentProcessSearchParams): [Process!]
+  inventoriedEconomicResources(
+    filter: agentResourceSearchParams
+  ): [EconomicResource!]
 }
 
 type Person implements Agent {
   economicEvents(filter: agentEventSearchParams): [EconomicEvent!]
-  inventoriedEconomicResources(filter: agentResourceSearchParams): [EconomicResource!]
-  processes(filter: agentProcessSearchParams): [Process!]
+  inventoriedEconomicResources(
+    filter: agentResourceSearchParams
+  ): [EconomicResource!]
 }
 
 type Organization implements Agent {
   economicEvents(filter: agentEventSearchParams): [EconomicEvent!]
-  inventoriedEconomicResources(filter: agentResourceSearchParams): [EconomicResource!]
-  processes(filter: agentProcessSearchParams): [Process!]
+  inventoriedEconomicResources(
+    filter: agentResourceSearchParams
+  ): [EconomicResource!]
 }
