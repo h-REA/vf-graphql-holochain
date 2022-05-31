@@ -1,33 +1,3 @@
-##
-#
-# Observation <> Commitment API
-#
-# Provides linkage between the Observation and Commitment spaces within
-# economic networks. Since this is so many sided, there is an entire bridging type
-# defined for these purposes, known as Fulfillment.
-#
-# @depends  measurement.gql
-# @package  vf-graphql
-# @since    2022-05-27
-#
-##
-
-type EconomicEvent {
-  "The commitment which is completely or partially fulfilled by an economic event."
-  fulfills: [Fulfillment!]
-}
-
-type Commitment {
-  "Exact economic resource involved in the commitment."
-  resourceInventoriedAs: EconomicResource
-
-  ##############################################################################
-  # inverse relationships and queries
-
-  "The economic event which completely or partially fulfills a commitment."
-  fulfilledBy: [Fulfillment!]
-}
-
 """
 Represents many-to-many relationships between commitments and economic events that fully or partially satisfy one or more commitments.
 """
@@ -53,16 +23,6 @@ type Fulfillment {
 ##
 # API input and output types
 ##
-
-input CommitmentCreateParams {
-  "(`EconomicResource`) Exact economic resource involved in the commitment."
-  resourceInventoriedAs: ID
-}
-
-input CommitmentUpdateParams {
-  "(`EconomicResource`) Exact economic resource involved in the commitment."
-  resourceInventoriedAs: ID
-}
 
 input FulfillmentCreateParams {
   "(`EconomicEvent`) The economic event which completely or partially fulfills a commitment."
