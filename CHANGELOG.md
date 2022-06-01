@@ -14,6 +14,7 @@
 - Fixed IDs not being mandatory in all direct-retrieval API methods
 - Added a mock GraphQLClient for direct use in UI code, to complement the mock GraphQLServer
 - Fixed some geolocation fields being present in the generated schema when the `geolocation` module is not active
+- Added a new edge `Plan.nonProcessCommitments` as an inverse mapping of `Commitment.plannedWithin`
 - Switched to [PNPM](http://pnpm.js.org/) for package management for better cross-monorepo support
 - **Reflect correct Apache-2.0 licensing** in NPM metadata (was: MIT)
 - Updated GraphQL toolchain in dependencies: `@graphql-tools` v6-v8; `@graphql-codegen` v1-v2; `@apollo.client` v2-v3.
