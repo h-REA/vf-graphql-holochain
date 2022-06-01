@@ -9,6 +9,15 @@
 #
 ##
 
+type Plan {
+  ##############################################################################
+  # inverse relationships and queries
+
+  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [AccountingScope!]
+}
+
+
 "Query parameters for reading `Plan`s related to an `Agent`"
 input agentPlanSearchParams {
   searchString: String

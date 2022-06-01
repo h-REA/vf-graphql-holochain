@@ -1,0 +1,25 @@
+##
+#
+# Recipe <> ResourceSpecification API
+#
+# Extends Recipes with ResourceSpecification
+#
+# @package  vf-graphql
+# @since    2022-05-27
+#
+##
+
+type RecipeResource {
+  "The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
+  resourceConformsTo: ResourceSpecification
+}
+
+input RecipeResourceCreateParams {
+  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
+  resourceConformsTo: ID
+}
+
+input RecipeResourceUpdateParams {
+  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
+  resourceConformsTo: ID
+}

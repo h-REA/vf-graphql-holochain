@@ -4,8 +4,13 @@
 #
 # Facilitates claiming of future events in return for contributions already given.
 #
+# TODO: extract dependent files into bridging, particularly `resource_specification`,
+# `agent`, and `observation`
+#
+# @depends  action.gql
 # @depends  measurement.gql
-# @depends  knowledge.gql
+# @depends  agent.gql
+# @depends  resource_specification.gql
 # @depends  observation.gql
 # @package  vf-graphql
 # @since    2019-02-11
@@ -115,7 +120,7 @@ input ClaimCreateParams {
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this claim."
   agreedIn: URI
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 }
 
@@ -155,7 +160,7 @@ input ClaimUpdateParams {
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this claim."
   agreedIn: URI
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 }
 

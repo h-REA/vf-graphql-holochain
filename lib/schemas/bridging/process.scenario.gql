@@ -1,8 +1,8 @@
 ##
 #
-# Observation <> Scenario API
+# Process <> Scenario API
 #
-# Augments observation records with the ability to be referenced in Scenarios.
+# Augments Process records with the ability to be referenced in Scenarios.
 #
 # @package  vf-graphql
 # @since    2020-02-12

@@ -1,0 +1,43 @@
+##
+# Agent <> Process API
+#
+# Defines bi-directional relationships that can exist, and be queried.
+#
+# @package  vf-graphql
+# @since    2022-05-27
+#
+##
+
+type Process {
+  workingAgents: [Agent!]
+
+  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [AccountingScope!]
+}
+
+##
+#  API call input and output types
+##
+
+input ProcessCreateParams {
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [ID!]
+}
+
+"Query parameters for reading `Process`es related to an `Agent`"
+input agentProcessSearchParams {
+  searchString: String
+  finished: Boolean
+}
+
+interface Agent {
+  processes(filter: agentProcessSearchParams): [Process!]
+}
+
+type Person implements Agent {
+  processes(filter: agentProcessSearchParams): [Process!]
+}
+
+type Organization implements Agent {
+  processes(filter: agentProcessSearchParams): [Process!]
+}
