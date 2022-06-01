@@ -21,7 +21,7 @@ test('custom extensions', (t) => {
   `
 
   const schema = printSchema(buildSchema([
-    'measurement', 'knowledge',
+    'measurement', 'process_specification', 'resource_specification', 'action',
   ], [
     knowledgeExtensions,
   ]))

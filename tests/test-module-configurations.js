@@ -43,9 +43,9 @@ test('configuration: agent mapping', (t) => {
 
 test('configuration: observation only', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation',
+    'observation', 'process',
   ])))
   exerciseSchema(schema)
   t.end()
@@ -53,7 +53,7 @@ test('configuration: observation only', (t) => {
 
 test('configuration: observation + geo', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
     'observation',
     'geolocation',
@@ -64,9 +64,10 @@ test('configuration: observation + geo', (t) => {
 
 test('configuration: observation & planning', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
   ])))
   exerciseSchema(schema)
   t.end()
@@ -74,9 +75,10 @@ test('configuration: observation & planning', (t) => {
 
 test('configuration: observation & planning + geo', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
     'geolocation',
   ])))
   exerciseSchema(schema)
@@ -85,9 +87,11 @@ test('configuration: observation & planning + geo', (t) => {
 
 test('configuration: observation, planning & recipe', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
+    'recipe',
   ])))
   exerciseSchema(schema)
   t.end()
@@ -95,9 +99,11 @@ test('configuration: observation, planning & recipe', (t) => {
 
 test('configuration: observation, planning & recipe + geo', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
+    'recipe',
     'geolocation',
   ])))
   exerciseSchema(schema)
@@ -106,7 +112,7 @@ test('configuration: observation, planning & recipe + geo', (t) => {
 
 test('configuration: recipe only', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'recipe',
   ])))
   exerciseSchema(schema)
@@ -117,9 +123,10 @@ test('configuration: recipe only', (t) => {
 
 test('configuration: observation, planning & proposal', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
     'proposal',
   ])))
   exerciseSchema(schema)
@@ -128,9 +135,10 @@ test('configuration: observation, planning & proposal', (t) => {
 
 test('configuration: observation, planning & proposal + geo', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
     'proposal',
     'geolocation',
   ])))
@@ -140,9 +148,11 @@ test('configuration: observation, planning & proposal + geo', (t) => {
 
 test('configuration: observation, planning, recipe & proposal', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
+    'recipe',
     'proposal',
   ])))
   exerciseSchema(schema)
@@ -151,9 +161,11 @@ test('configuration: observation, planning, recipe & proposal', (t) => {
 
 test('configuration: observation, planning, recipe & proposal + geo', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
+    'recipe',
     'proposal',
     'geolocation',
   ])))
@@ -163,9 +175,10 @@ test('configuration: observation, planning, recipe & proposal + geo', (t) => {
 
 test('configuration: observation, planning & agreement', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
     'agreement',
   ])))
   exerciseSchema(schema)
@@ -174,9 +187,10 @@ test('configuration: observation, planning & agreement', (t) => {
 
 test('configuration: observation, planning & agreement + geo', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
     'agreement',
     'geolocation',
   ])))
@@ -186,9 +200,11 @@ test('configuration: observation, planning & agreement + geo', (t) => {
 
 test('configuration: observation, planning, recipe & agreement', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
+    'recipe',
     'agreement',
   ])))
   exerciseSchema(schema)
@@ -197,9 +213,11 @@ test('configuration: observation, planning, recipe & agreement', (t) => {
 
 test('configuration: observation, planning, recipe & agreement + geo', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
+    'recipe',
     'agreement',
     'geolocation',
   ])))
@@ -209,9 +227,10 @@ test('configuration: observation, planning, recipe & agreement + geo', (t) => {
 
 test('configuration: observation, planning & governance', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
     'proposal', 'agreement',
   ])))
   exerciseSchema(schema)
@@ -220,9 +239,10 @@ test('configuration: observation, planning & governance', (t) => {
 
 test('configuration: observation, planning & governance + geo', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
     'proposal', 'agreement',
     'geolocation',
   ])))
@@ -232,9 +252,11 @@ test('configuration: observation, planning & governance + geo', (t) => {
 
 test('configuration: observation, planning, recipe & governance', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
+    'recipe',
     'proposal', 'agreement',
   ])))
   exerciseSchema(schema)
@@ -243,9 +265,11 @@ test('configuration: observation, planning, recipe & governance', (t) => {
 
 test('configuration: observation, planning, recipe & governance + geo', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
+    'recipe',
     'proposal', 'agreement',
     'geolocation',
   ])))
@@ -257,9 +281,9 @@ test('configuration: observation, planning, recipe & governance + geo', (t) => {
 
 test('configuration: gift economies', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation',
+    'observation', 'process',
     'appreciation',
   ])))
   exerciseSchema(schema)
@@ -268,9 +292,9 @@ test('configuration: gift economies', (t) => {
 
 test('configuration: future claims', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation',
+    'observation', 'process',
     'claim',
   ])))
   exerciseSchema(schema)
