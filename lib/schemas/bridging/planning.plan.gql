@@ -19,4 +19,5 @@ type Commitment {
 
 type Plan {
   independentDemands: [Commitment!]
+  nonProcessCommitments: [Commitment!]
 }
