@@ -1,0 +1,29 @@
+##
+#
+# Process <> ProcessSpecification API
+#
+# Enables the classification of Processes using specifications for them
+#
+# @package  vf-graphql
+# @since    2022-05-27
+#
+##
+
+type Process {
+  "The definition or specification for a process."
+  basedOn: ProcessSpecification
+}
+
+##
+#  API call input and output types
+##
+
+input ProcessCreateParams {
+  "(`ProcessSpecification`) The definition or specification for a process."
+  basedOn: ID
+}
+
+input ProcessUpdateParams {
+  "(`ProcessSpecification`) The definition or specification for a process."
+  basedOn: ID
+}

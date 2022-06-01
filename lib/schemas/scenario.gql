@@ -4,6 +4,7 @@
 #
 # Facilitates grouping of processes together into logical collections of higher level processes.
 #
+# @depends  agent.gql
 # @depends  measurement.gql
 # @package  vf-graphql
 # @since    2019-02-11
@@ -69,7 +70,7 @@ input ScenarioCreateParams {
   "The ending date/time of the scenario, often the end of an accounting period."
   hasEnd: DateTime
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 
   "(`Scenario`) This scenario refines another scenario, often as time moves closer or for more detail."
@@ -94,7 +95,7 @@ input ScenarioUpdateParams {
   "The ending date/time of the scenario, often the end of an accounting period."
   hasEnd: DateTime
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 
   "(`Scenario`) This scenario refines another scenario, often as time moves closer or for more detail."

@@ -5,8 +5,8 @@
 # Provides for creating shareable blueprints of potential workflows that can be
 # deployed as work plans for undertaking the actual work.
 #
+# @depends  action.gql
 # @depends  measurement.gql
-# @depends  knowledge.gql
 # @package  vf-graphql
 # @since    2019-02-11
 #
@@ -33,9 +33,6 @@ type RecipeResource {
   "A textual description or comment."
   note: String
 
-  "The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ResourceSpecification
-
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
 
@@ -44,7 +41,6 @@ type RecipeResource {
 
   ##############################################################################
   # inverse relationships and queries
-
 }
 
 """
@@ -93,9 +89,6 @@ type RecipeProcess {
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization."
   processClassifiedAs: [URI!]
 
-  "The standard specification or definition of a process."
-  processConformsTo: ProcessSpecification
-
   "A textual description or comment."
   note: String
 }
@@ -129,9 +122,6 @@ input RecipeResourceCreateParams {
   "The uri to an image relevant to the entity, such as a photo, diagram, etc."
   image: URI
 
-  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ID
-
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
 
@@ -157,9 +147,6 @@ input RecipeResourceUpdateParams {
   "The uri to an image relevant to the entity, such as a photo, diagram, etc."
   image: URI
 
-  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ID
-
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
 
@@ -171,17 +158,12 @@ type RecipeResourceResponse {
   recipeResource: RecipeResource!
 }
 
-
-
 input RecipeProcessCreateParams {
   "An informal or formal textual identifier for a recipe process. Does not imply uniqueness."
   name: String!
 
   "The planned calendar duration of the process as defined for the recipe batch."
   hasDuration: IDuration
-
-  "(`ProcessSpecification`) The standard specification or definition of a process."
-  processConformsTo: ID
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization."
   processClassifiedAs: [URI!]
@@ -199,9 +181,6 @@ input RecipeProcessUpdateParams {
   "The planned calendar duration of the process as defined for the recipe batch."
   hasDuration: IDuration
 
-  "(`ProcessSpecification`) The standard specification or definition of a process."
-  processConformsTo: ID
-
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization."
   processClassifiedAs: [URI!]
 
@@ -212,8 +191,6 @@ input RecipeProcessUpdateParams {
 type RecipeProcessResponse {
   recipeProcess: RecipeProcess!
 }
-
-
 
 input RecipeExchangeCreateParams {
   "An informal or formal textual identifier for a recipe exchange. Does not imply uniqueness."
@@ -237,8 +214,6 @@ type RecipeExchangeResponse {
   recipeExchange: RecipeExchange!
 }
 
-
-
 input RecipeFlowCreateParams {
   "(`Action`) Relates a process input or output to a verb, such as consume, produce, work, modify, etc."
   action: ID!
@@ -260,9 +235,6 @@ input RecipeFlowCreateParams {
 
   "(`RecipeExchange`) Relates a flow to its exchange agreement in a recipe."
   recipeClauseOf: ID
-
-  "(`ProcessSpecification`) References the ProcessSpecification of the last process the economic resource went through. Stage is used when the last process is important for finding proper resources, such as where the publishing process wants only documents that have gone through the editing process."
-  stage: ID
 
   "The state of the desired economic resource (pass or fail), after coming out of a test or review process."
   state: String
@@ -294,9 +266,6 @@ input RecipeFlowUpdateParams {
 
   "(`RecipeExchange`) Relates a flow to its exchange agreement in a recipe."
   recipeClauseOf: ID
-
-  "(`ProcessSpecification`) References the ProcessSpecification of the last process the economic resource went through. Stage is used when the last process is important for finding proper resources, such as where the publishing process wants only documents that have gone through the editing process."
-  stage: ID
 
   "The state of the desired economic resource (pass or fail), after coming out of a test or review process."
   state: String
@@ -369,15 +338,27 @@ type Mutation {
   updateRecipeFlow(recipeFlow: RecipeFlowUpdateParams!): RecipeFlowResponse!
   deleteRecipeFlow(id: ID!): Boolean!
 
-  createRecipeResource(recipeResource: RecipeResourceCreateParams!): RecipeResourceResponse!
-  updateRecipeResource(recipeResource: RecipeResourceUpdateParams!): RecipeResourceResponse!
+  createRecipeResource(
+    recipeResource: RecipeResourceCreateParams!
+  ): RecipeResourceResponse!
+  updateRecipeResource(
+    recipeResource: RecipeResourceUpdateParams!
+  ): RecipeResourceResponse!
   deleteRecipeResource(id: ID!): Boolean!
 
-  createRecipeProcess(recipeProcess: RecipeProcessCreateParams!): RecipeProcessResponse!
-  updateRecipeProcess(recipeProcess: RecipeProcessUpdateParams!): RecipeProcessResponse!
+  createRecipeProcess(
+    recipeProcess: RecipeProcessCreateParams!
+  ): RecipeProcessResponse!
+  updateRecipeProcess(
+    recipeProcess: RecipeProcessUpdateParams!
+  ): RecipeProcessResponse!
   deleteRecipeProcess(id: ID!): Boolean!
 
-  createRecipeExchange(recipeExchange: RecipeExchangeCreateParams!): RecipeExchangeResponse!
-  updateRecipeExchange(recipeExchange: RecipeExchangeUpdateParams!): RecipeExchangeResponse!
+  createRecipeExchange(
+    recipeExchange: RecipeExchangeCreateParams!
+  ): RecipeExchangeResponse!
+  updateRecipeExchange(
+    recipeExchange: RecipeExchangeUpdateParams!
+  ): RecipeExchangeResponse!
   deleteRecipeExchange(id: ID!): Boolean!
 }

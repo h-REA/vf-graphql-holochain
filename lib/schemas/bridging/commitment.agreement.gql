@@ -18,3 +18,17 @@ type Commitment {
 type Agreement {
   commitments: [Commitment!]
 }
+
+##
+# API input and output types
+##
+
+input CommitmentCreateParams {
+  "(`Agreement`) This commitment is part of the agreement."
+  clauseOf: ID
+}
+
+input CommitmentUpdateParams {
+  "(`Agreement`) This commitment is part of the agreement."
+  clauseOf: ID
+}

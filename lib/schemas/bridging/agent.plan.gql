@@ -10,6 +10,14 @@
 #
 ##
 
+type Plan {
+  ##############################################################################
+  # inverse relationships and queries
+
+  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [AccountingScope!]
+}
+
 interface Agent {
   plans(first: Int, after: String, last: Int, before: String): PlanConnection
 }

@@ -4,7 +4,6 @@
 #
 # Allows grouping of many intents (requests or offers) into a related proposal for actioning.
 #
-# @depends  planning.gql
 # @package  vf-graphql
 # @since    2019-02-11
 #
@@ -24,9 +23,6 @@ type Proposal {
 
   "The end time of proposal publication."
   hasEnd: DateTime
-
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [AccountingScope!]
 
   "This proposal contains unit based quantities, which can be multipied to create commitments; commonly seen in a price list or e-commerce."
   unitBased: Boolean
@@ -52,16 +48,15 @@ type ProposedIntent {
   "This is a reciprocal intent of this proposal, not primary. Not meant to be used for intent matching."
   reciprocal: Boolean
 
-  "The intent which is part of this published proposal."
-  publishes: Intent!
-
   "The published proposal which this intent is part of."
   publishedIn: Proposal!
+
+  # see bridging/intent.proposal.gql for the relationship between ProposedIntent and Intent
 }
 
-
-
-
+##
+# API input and output types
+##
 
 input ProposalCreateParams {
   "An informal or formal textual identifier for a proposal. Does not imply uniqueness."
@@ -72,9 +67,6 @@ input ProposalCreateParams {
 
   "The end time of proposal publication."
   hasEnd: DateTime
-
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
 
   "This proposal contains unit based quantities, which can be multipied to create commitments; commonly seen in a price list or e-commerce."
   unitBased: Boolean
@@ -98,9 +90,6 @@ input ProposalUpdateParams {
   "The end time of proposal publication."
   hasEnd: DateTime
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
-
   "This proposal contains unit based quantities, which can be multipied to create commitments; commonly seen in a price list or e-commerce."
   unitBased: Boolean
 
@@ -116,7 +105,6 @@ type ProposedIntentResponse {
   proposedIntent: ProposedIntent!
 }
 
-
 type ProposalConnection {
   edges: [ProposalEdge!]!
   pageInfo: PageInfo!
@@ -129,7 +117,12 @@ type ProposalEdge {
 
 type Query {
   proposal(id: ID!): Proposal
-  proposals(first: Int, after: String, last: Int, before: String): ProposalConnection!
+  proposals(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): ProposalConnection!
 }
 
 type Mutation {
@@ -142,6 +135,10 @@ type Mutation {
   @param publishedIn the (`Proposal`) to include the intent in
   @param publishes the (`Intent`) to include as part of the proposal
   """
-  proposeIntent(publishedIn: ID!, publishes: ID!, reciprocal: Boolean): ProposedIntentResponse!
+  proposeIntent(
+    publishedIn: ID!
+    publishes: ID!
+    reciprocal: Boolean
+  ): ProposedIntentResponse!
   deleteProposedIntent(id: ID!): Boolean!
 }

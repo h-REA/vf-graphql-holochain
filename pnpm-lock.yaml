@@ -1128,6 +1128,7 @@ packages:
       '@graphql-tools/utils': 6.2.4_graphql@15.8.0
       graphql: 15.8.0
       tslib: 2.0.3
+    dev: true
 
   /@graphql-tools/schema/7.1.5_graphql@14.7.0:
     resolution: {integrity: sha512-uyn3HSNSckf4mvQSq0Q07CPaVZMNFCYEVxroApOaw802m9DcZPgf9XVPy/gda5GWj9AhbijfRYVTZQgHnJ4CXA==}
@@ -1191,6 +1192,7 @@ packages:
       camel-case: 4.1.1
       graphql: 15.8.0
       tslib: 2.0.3
+    dev: true
 
   /@graphql-tools/utils/7.10.0_graphql@14.7.0:
     resolution: {integrity: sha512-d334r6bo9mxdSqZW6zWboEnnOOFRrAPVQJ7LkU8/6grglrbcu6WhwCLzHb90E94JI3TD3ricC3YGbUqIi9Xg0w==}

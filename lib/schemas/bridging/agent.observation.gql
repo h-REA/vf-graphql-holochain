@@ -16,17 +16,15 @@ type EconomicEvent {
 
   "The economic agent whom the actual economic event is for."
   receiver: Agent!
+
+  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [AccountingScope!]
 }
 
 type EconomicResource {
   "The agent currently with primary rights and responsibilites for the economic resource. It is the agent that is associated with the accountingQuantity of the economic resource."
   primaryAccountable: Agent
 }
-
-type Process {
-  workingAgents: [Agent!]
-}
-
 
 input EconomicEventCreateParams {
   "(`Agent`) The economic agent from whom the actual economic event is initiated."
@@ -37,19 +35,46 @@ input EconomicEventCreateParams {
 }
 
 interface Agent {
-  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection
-  inventoriedEconomicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection
-  processes(first: Int, after: String, last: Int, before: String): ProcessConnection
+  economicEvents(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicEventConnection
+  inventoriedEconomicResources(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicResourceConnection
 }
 
 type Person implements Agent {
-  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection
-  inventoriedEconomicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection
-  processes(first: Int, after: String, last: Int, before: String): ProcessConnection
+  economicEvents(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicEventConnection
+  inventoriedEconomicResources(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicResourceConnection
 }
 
 type Organization implements Agent {
-  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection
-  inventoriedEconomicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection
-  processes(first: Int, after: String, last: Int, before: String): ProcessConnection
+  economicEvents(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicEventConnection
+  inventoriedEconomicResources(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicResourceConnection
 }

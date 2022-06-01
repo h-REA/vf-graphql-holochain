@@ -4,14 +4,12 @@
 #
 # Record of what actually happened affecting the economic ecosystem.
 #
+# @depends  action.gql
 # @depends  measurement.gql
-# @depends  knowledge.gql
 # @package  vf-graphql
 # @since    2019-02-11
 #
 ##
-
-union ProductionFlowItem = Process | EconomicResource
 
 """
 An observed economic flow, as opposed to a flow planned to happen in the future. This could reflect a change in the quantity of an economic resource. It is also defined by its behavior in relation to the economic resource (see `Action`)
@@ -22,12 +20,6 @@ type EconomicEvent {
   "Relates an economic event to a verb, such as consume, produce, work, improve, etc."
   action: Action!
 
-  "Defines the process to which this event is an input."
-  inputOf: Process
-
-  "Defines the process for which this event is an output."
-  outputOf: Process
-
   "Economic resource involved in the economic event."
   resourceInventoriedAs: EconomicResource
 
@@ -36,9 +28,6 @@ type EconomicEvent {
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
-
-  "The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ResourceSpecification
 
   "The amount and unit of the economic resource counted or inventoried. This is the quantity that could be used to increment or decrement a resource, depending on the type of resource and resource effect of action."
   resourceQuantity: Measure
@@ -58,20 +47,11 @@ type EconomicEvent {
   "A textual description or comment."
   note: String
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [AccountingScope!]
-
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this economic event."
   agreedIn: URI
 
   "References another economic event that implied this economic event, often based on a prior agreement."
   triggeredBy: EconomicEvent
-
-  ##############################################################################
-  # inverse relationships and queries
-
-  track: [ProductionFlowItem!]
-  trace: [ProductionFlowItem!]
 
   "The economic event can be safely deleted, has no dependent information."
   deletable: Boolean
@@ -89,14 +69,8 @@ type EconomicResource {
   "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   classifiedAs: [URI!]
 
-  "The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  conformsTo: ResourceSpecification!
-
   "Sometimes called serial number, used when each item must have a traceable identifier (like a computer). Could also be used for other unique tracking identifiers needed for resources."
   trackingIdentifier: String
-
-  "Lot or batch of an economic resource, used to track forward or backwards to all occurrences of resources of that lot. Note more than one resource can be of the same lot."
-  lot: ProductBatch
 
   "The uri to an image relevant to the resource, such as a photo, diagram, etc."
   image: URI
@@ -112,9 +86,6 @@ type EconomicResource {
 
   "The unit used for use or work or cite actions for this resource."
   unitOfEffort: Unit
-
-  "References the ProcessSpecification of the last process the desired economic resource went through. Stage is used when the last process is important for finding proper resources, such as where the publishing process wants only documents that have gone through the editing process."
-  stage: ProcessSpecification
 
   "The state of the desired economic resource (pass or fail), after coming out of a test or review process. Can be derived from the last event if a pass or fail event."
   state: Action
@@ -132,93 +103,19 @@ type EconomicResource {
   track: [EconomicEvent!]
 }
 
-"""
-A lot or batch, defining a resource produced at the same time in the same way.
-From DataFoodConsortium vocabulary https://datafoodconsortium.gitbook.io/dfc-standard-documentation/.
-"""
-type ProductBatch {
-  id: ID!
-
-  "The standard unique identifier of the batch."
-  batchNumber: String!
-
-  "Expiration date of the batch, commonly used for food."
-  expiryDate: DateTime
-
-  "Date the batch was produced.  Can be derived from the economic event of production."
-  productionDate: DateTime
-}
-
-"""
-An activity that changes inputs into outputs.  It could transform or transport economic resource(s).
-"""
-type Process {
-  id: ID!
-
-  "An informal or formal textual identifier for a process. Does not imply uniqueness."
-  name: String!
-
-  "The planned beginning of the process."
-  hasBeginning: DateTime
-
-  "The planned end of the process."
-  hasEnd: DateTime
-
-  "The process is complete or not.  This is irrespective of if the original goal has been met, and indicates that no more will be done."
-  finished: Boolean
-
-  "The definition or specification for a process."
-  basedOn: ProcessSpecification
-
-  "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
-  classifiedAs: [URI!]
-
-  "A textual description or comment."
-  note: String
-
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [AccountingScope!]
-
-  ##############################################################################
-  # inverse relationships and queries
-
-  inputs(action: ID): [EconomicEvent!]
-  outputs(action: ID): [EconomicEvent!]
-  unplannedEconomicEvents(action: ID): [EconomicEvent!]
-
-  nextProcesses: [Process!]
-  previousProcesses: [Process!]
-
-  trace: [EconomicEvent!]
-  track: [EconomicEvent!]
-
-  "The process can be safely deleted, has no dependent information."
-  deletable: Boolean
-}
-
-
+##
+# API input and output types
+##
 
 input EconomicEventCreateParams {
   "(`Action`) Relates an economic event to a verb, such as consume, produce, work, improve, etc."
   action: ID!
-
-  "(`Process`) Defines the process to which this event is an input."
-  inputOf: ID
-
-  "(`Process`) Defines the process for which this event is an output."
-  outputOf: ID
-
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
 
   "(`EconomicResource`) Economic resource involved in the economic event."
   resourceInventoriedAs: ID
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
-
-  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ID
 
   "The amount and unit of the economic resource counted or inventoried. This is the quantity that could be used to increment or decrement a resource, depending on the type of resource and resource effect of action."
   resourceQuantity: IMeasure
@@ -241,9 +138,6 @@ input EconomicEventCreateParams {
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this economic event."
   agreedIn: URI
 
-  "(`Agreement`) This economic event occurs as part of this agreement."
-  realizationOf: ID
-
   "(`EconomicEvent`) References another economic event that implied this economic event, often based on a prior agreement."
   triggeredBy: ID
 
@@ -260,9 +154,6 @@ input EconomicEventUpdateParams {
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this economic event."
   agreedIn: URI
 
-  "(`Agreement`) This economic event occurs as part of this agreement."
-  realizationOf: ID
-
   "(`EconomicEvent`) References another economic event that implied this economic event, often based on a prior agreement."
   triggeredBy: ID
 }
@@ -274,8 +165,6 @@ type EconomicEventResponse {
   economicResource: EconomicResource
 }
 
-
-
 """
 Input `EconomicResource` type used when sending events to setup initial resource recordings
 """
@@ -283,14 +172,8 @@ input EconomicResourceCreateParams {
   "An informal or formal textual identifier for an item. Does not imply uniqueness."
   name: String
 
-  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  conformsTo: ID
-
   "Sometimes called serial number, used when each item must have a traceable identifier (like a computer). Could also be used for other unique tracking identifiers needed for resources."
   trackingIdentifier: String
-
-  "(`ProductBatch`) Lot or batch of an economic resource, used to track forward or backwards to all occurrences of resources of that lot. Note more than one resource can be of the same lot."
-  lot: ID
 
   "The uri to an image relevant to the resource, such as a photo, diagram, etc."
   image: URI
@@ -325,103 +208,6 @@ type EconomicResourceResponse {
   economicResource: EconomicResource!
 }
 
-
-
-input ProductBatchCreateParams {
-  "The standard unique identifier of the batch."
-  batchNumber: String!
-
-  "Expiration date of the batch, commonly used for food."
-  expiryDate: DateTime
-
-  "Date the batch was produced.  Can be derived from the economic event of production."
-  productionDate: DateTime
-}
-
-input ProductBatchUpdateParams {
-  id: ID!
-
-  "The standard unique identifier of the batch."
-  batchNumber: String
-
-  "Expiration date of the batch, commonly used for food."
-  expiryDate: DateTime
-
-  "Date the batch was produced.  Can be derived from the economic event of production."
-  productionDate: DateTime
-}
-
-type ProductBatchResponse {
-  productBatch: ProductBatch!
-}
-
-
-
-input ProcessCreateParams {
-  "An informal or formal textual identifier for a process. Does not imply uniqueness."
-  name: String!
-
-  "The planned beginning of the process."
-  hasBeginning: DateTime
-
-  "The planned end of the process."
-  hasEnd: DateTime
-
-  "The process is complete or not.  This is irrespective of if the original goal has been met, and indicates that no more will be done."
-  finished: Boolean
-
-  "A textual description or comment."
-  note: String
-
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
-
-  "(`Plan`) The process with its inputs and outputs is part of the plan."
-  plannedWithin: ID
-
-  "(`ProcessSpecification`) The definition or specification for a process."
-  basedOn: ID
-
-  "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
-  classifiedAs: [URI!]
-}
-
-input ProcessUpdateParams {
-  id: ID!
-
-  "An informal or formal textual identifier for a process. Does not imply uniqueness."
-  name: String
-
-  "The planned beginning of the process."
-  hasBeginning: DateTime
-
-  "The planned end of the process."
-  hasEnd: DateTime
-
-  "The process is complete or not.  This is irrespective of if the original goal has been met, and indicates that no more will be done."
-  finished: Boolean
-
-  "A textual description or comment."
-  note: String
-
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
-
-  "(`Plan`) The process with its inputs and outputs is part of the plan."
-  plannedWithin: ID
-
-  "(`ProcessSpecification`) The definition or specification for a process."
-  basedOn: ID
-
-  "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
-  classifiedAs: [URI!]
-}
-
-type ProcessResponse {
-  process: Process!
-}
-
-
 type EconomicEventConnection {
   edges: [EconomicEventEdge!]!
   pageInfo: PageInfo!
@@ -442,55 +228,26 @@ type EconomicResourceEdge {
   cursor: String!
 }
 
-type ProductBatchConnection {
-  edges: [ProductBatchEdge!]!
-  pageInfo: PageInfo!
-}
-
-type ProductBatchEdge {
-  node: ProductBatch!
-  cursor: String!
-}
-
-type ProcessConnection {
-  edges: [ProcessEdge!]!
-  pageInfo: PageInfo!
-}
-
-type ProcessEdge {
-  node: Process!
-  cursor: String!
-}
-
 type Query {
   economicEvent(id: ID!): EconomicEvent
   economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection!
 
   economicResource(id: ID!): EconomicResource
   economicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection!
-
-  productBatch(id: ID!): ProductBatch
-  productBatches(first: Int, after: String, last: Int, before: String): ProductBatchConnection!
-
-  process(id: ID!): Process
-  processes(first: Int, after: String, last: Int, before: String): ProcessConnection!
 }
 
 type Mutation {
   "Registers a new (`EconomicEvent`) with the collaboration space. Also serves as a means to register (`EconomicResource`) as well, instead of createEconomicResource"
-  createEconomicEvent(event: EconomicEventCreateParams!, newInventoriedResource: EconomicResourceCreateParams): EconomicEventResponse!
+  createEconomicEvent(
+    event: EconomicEventCreateParams!
+    newInventoriedResource: EconomicResourceCreateParams
+  ): EconomicEventResponse!
   updateEconomicEvent(event: EconomicEventUpdateParams!): EconomicEventResponse!
   deleteEconomicEvent(id: ID!): Boolean!
 
   # :TODO: should this be allowed without an originating event? Or should the event be recorded transparently?
-  updateEconomicResource(resource: EconomicResourceUpdateParams!): EconomicResourceResponse!
+  updateEconomicResource(
+    resource: EconomicResourceUpdateParams!
+  ): EconomicResourceResponse!
   deleteEconomicResource(id: ID!): Boolean!
-
-  createProductBatch(productBatch: ProductBatchCreateParams!): ProductBatchResponse!
-  updateProductBatch(productBatch: ProductBatchUpdateParams!): ProductBatchResponse!
-  deleteProductBatch(id: ID!): Boolean!
-
-  createProcess(process: ProcessCreateParams!): ProcessResponse!
-  updateProcess(process: ProcessUpdateParams!): ProcessResponse!
-  deleteProcess(id: ID!): Boolean!
 }

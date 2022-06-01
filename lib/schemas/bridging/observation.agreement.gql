@@ -18,3 +18,17 @@ type EconomicEvent {
 type Agreement {
   economicEvents: [EconomicEvent!]
 }
+
+##
+# API input and output types
+##
+
+input EconomicEventCreateParams {
+  "(`Agreement`) This economic event occurs as part of this agreement."
+  realizationOf: ID
+}
+
+input EconomicEventUpdateParams {
+  "(`Agreement`) This economic event occurs as part of this agreement."
+  realizationOf: ID
+}

@@ -1,6 +1,6 @@
 ##
 #
-# Planning <> Proposal indexes
+# Intent <> Proposal indexes
 #
 # Enables traversing Intent links into related Proposal modules.
 #
@@ -11,4 +11,9 @@
 
 type Intent {
   publishedIn: [ProposedIntent!]
+}
+
+type ProposedIntent {
+  "The intent which is part of this published proposal."
+  publishes: Intent!
 }

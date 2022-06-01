@@ -29,7 +29,9 @@ type Agreement {
   note: String
 }
 
-
+##
+# API input and output types
+##
 
 input AgreementCreateParams { # implements AgreementParams
   "An informal or formal textual identifier for an agreement. Does not imply uniqueness."
@@ -58,8 +60,6 @@ input AgreementUpdateParams { # implements UpdateParams & AgreementParams
 type AgreementResponse {
   agreement: Agreement!
 }
-
-
 
 type AgreementConnection {
   edges: [AgreementEdge!]!
