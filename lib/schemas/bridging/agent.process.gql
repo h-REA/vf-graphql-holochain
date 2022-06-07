@@ -23,32 +23,3 @@ input ProcessCreateParams {
   "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 }
-
-interface Agent {
-  processes(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): ProcessConnection
-}
-
-type Person implements Agent {
-  processes(filter: agentProcessSearchParams): [Process!]
-  processes(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): ProcessConnection
-}
-
-type Organization implements Agent {
-  processes(filter: agentProcessSearchParams): [Process!]
-  processes(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): ProcessConnection
-}
