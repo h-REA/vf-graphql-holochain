@@ -16,17 +16,15 @@ type EconomicEvent {
 
   "The economic agent whom the actual economic event is for."
   receiver: Agent!
+
+  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [AccountingScope!]
 }
 
 type EconomicResource {
   "The agent currently with primary rights and responsibilites for the economic resource. It is the agent that is associated with the accountingQuantity of the economic resource."
   primaryAccountable: Agent
 }
-
-type Process {
-  workingAgents: [Agent!]
-}
-
 
 input EconomicEventCreateParams {
   "(`Agent`) The economic agent from whom the actual economic event is initiated."
@@ -36,42 +34,47 @@ input EconomicEventCreateParams {
   receiver: ID!
 }
 
-
-"Query parameters for reading `EconomicEvent`s related to an `Agent`"
-input agentEventSearchParams {
-  searchString: String
-  action: ID
-  startDate: DateTime
-  endDate: DateTime
-}
-
-"Query parameters for reading `EconomicResource`s related to an `Agent`"
-input agentResourceSearchParams {
-  searchString: String
-  resourceClassification: URI
-  page: Int
-}
-
-"Query parameters for reading `Process`es related to an `Agent`"
-input agentProcessSearchParams {
-  searchString: String
-  finished: Boolean
-}
-
 interface Agent {
-  economicEvents(filter: agentEventSearchParams): [EconomicEvent!]
-  inventoriedEconomicResources(filter: agentResourceSearchParams): [EconomicResource!]
-  processes(filter: agentProcessSearchParams): [Process!]
+  economicEvents(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicEventConnection
+  inventoriedEconomicResources(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicResourceConnection
 }
 
 type Person implements Agent {
-  economicEvents(filter: agentEventSearchParams): [EconomicEvent!]
-  inventoriedEconomicResources(filter: agentResourceSearchParams): [EconomicResource!]
-  processes(filter: agentProcessSearchParams): [Process!]
+  economicEvents(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicEventConnection
+  inventoriedEconomicResources(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicResourceConnection
 }
 
 type Organization implements Agent {
-  economicEvents(filter: agentEventSearchParams): [EconomicEvent!]
-  inventoriedEconomicResources(filter: agentResourceSearchParams): [EconomicResource!]
-  processes(filter: agentProcessSearchParams): [Process!]
+  economicEvents(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicEventConnection
+  inventoriedEconomicResources(
+    first: Int
+    after: String
+    last: Int
+    before: String
+  ): EconomicResourceConnection
 }

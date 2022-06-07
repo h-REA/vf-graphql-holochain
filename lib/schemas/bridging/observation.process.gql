@@ -1,0 +1,51 @@
+##
+#
+# Observation <> Process API
+#
+# Augments Observation records (EconomicEvent specifically) with the ability to reference Processes
+# and vice versa.
+#
+# @package  vf-graphql
+# @since    2022-05-27
+#
+##
+
+union ProductionFlowItem = Process | EconomicResource
+
+type EconomicEvent {
+  "Defines the process to which this event is an input."
+  inputOf: Process
+
+  "Defines the process for which this event is an output."
+  outputOf: Process
+
+  ##############################################################################
+  # inverse relationships and queries
+
+  track: [ProductionFlowItem!]
+  trace: [ProductionFlowItem!]
+}
+
+type Process {
+  ##############################################################################
+  # inverse relationships and queries
+
+  inputs(action: ID): [EconomicEvent!]
+  outputs(action: ID): [EconomicEvent!]
+  unplannedEconomicEvents(action: ID): [EconomicEvent!]
+
+  trace: [EconomicEvent!]
+  track: [EconomicEvent!]
+}
+
+##
+# API input and output types
+##
+
+input EconomicEventCreateParams {
+  "(`Process`) Defines the process to which this event is an input."
+  inputOf: ID
+
+  "(`Process`) Defines the process for which this event is an output."
+  outputOf: ID
+}

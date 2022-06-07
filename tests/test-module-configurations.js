@@ -8,7 +8,22 @@
 const test = require('tape-catch')
 
 const { makeMockSchema, exerciseSchema } = require('./helpers')
-const { buildSchema, printSchema } = require('../lib')
+const { buildSchema, printSchema } = require('../lib/')
+
+test('configuration: kitchen sink', (t) => {
+  const schema = makeMockSchema(printSchema(buildSchema([
+    'ordering', 'filtering',
+    'knowledge', 'measurement',
+    'agent',
+    'observation', 'planning', 'recipe',
+    'agreement', 'proposal',
+    'geolocation',
+    'plan', 'scenario',
+    'appreciation', 'claim',
+  ])))
+  exerciseSchema(schema)
+  t.end()
+})
 
 test('configuration: standalone agent', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([

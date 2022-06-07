@@ -4,7 +4,6 @@
 #
 # Allows for grouping processes into related groups of work with defined deliverables.
 #
-# @depends  scenario.gql
 # @package  vf-graphql
 # @since    2019-02-11
 #
@@ -28,20 +27,13 @@ type Plan {
   "A textual description or comment."
   note: String
 
-  "This plan refines a scenario, making it operational."
-  refinementOf: Scenario
-
-  ##############################################################################
-  # inverse relationships and queries
-
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [AccountingScope!]
-
   "The plan is able to be deleted or not."
   deletable: Boolean
 }
 
-
+##
+#  API call input and output types
+##
 
 input PlanCreateParams {
   "An informal or formal textual identifier for a plan. Does not imply uniqueness."
@@ -55,9 +47,6 @@ input PlanCreateParams {
 
   "A textual description or comment."
   note: String
-
-  "(`Scenario`) This plan refines a scenario, making it operational."
-  refinementOf: ID
 }
 
 input PlanUpdateParams {
@@ -74,20 +63,25 @@ input PlanUpdateParams {
 
   "A textual description or comment."
   note: String
-
-  "(`Scenario`) This plan refines a scenario, making it operational."
-  refinementOf: ID
 }
 
 type PlanResponse {
   plan: Plan!
 }
 
+type PlanConnection {
+  edges: [PlanEdge!]!
+  pageInfo: PageInfo!
+}
 
+type PlanEdge {
+  node: Plan!
+  cursor: String!
+}
 
 type Query {
   plan(id: ID!): Plan
-  plans(start: ID, limit: Int): [Plan!]
+  plans(first: Int, after: String, last: Int, before: String): PlanConnection!
 }
 
 type Mutation {

@@ -4,8 +4,13 @@
 #
 # Facilitates claiming of future events in return for contributions already given.
 #
+# TODO: extract dependent files into bridging, particularly `resource_specification`,
+# `agent`, and `observation`
+#
+# @depends  action.gql
 # @depends  measurement.gql
-# @depends  knowledge.gql
+# @depends  agent.gql
+# @depends  resource_specification.gql
 # @depends  observation.gql
 # @package  vf-graphql
 # @since    2019-02-11
@@ -113,7 +118,7 @@ input ClaimCreateParams {
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this claim."
   agreedIn: URI
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 }
 
@@ -153,7 +158,7 @@ input ClaimUpdateParams {
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this claim."
   agreedIn: URI
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 }
 
@@ -205,12 +210,32 @@ type SettlementResponse {
 
 
 
+type ClaimConnection {
+  edges: [ClaimEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ClaimEdge {
+  node: Claim!
+  cursor: String!
+}
+
+type SettlementConnection {
+  edges: [SettlementEdge!]!
+  pageInfo: PageInfo!
+}
+
+type SettlementEdge {
+  node: Settlement!
+  cursor: String!
+}
+
 type Query {
   claim(id: ID!): Claim
-  claims(start: ID, limit: Int): [Claim!]
+  claims(first: Int, after: String, last: Int, before: String): ClaimConnection!
 
   settlement(id: ID!): Settlement
-  settlements(start: ID, limit: Int): [Settlement!]
+  settlements(first: Int, after: String, last: Int, before: String): SettlementConnection!
 }
 
 type Mutation {

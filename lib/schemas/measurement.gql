@@ -105,10 +105,19 @@ type UnitResponse {
 }
 
 
+type UnitConnection {
+  edges: [UnitEdge!]!
+  pageInfo: PageInfo!
+}
+
+type UnitEdge {
+  node: Unit!
+  cursor: String!
+}
 
 type Query {
   unit(id: ID!): Unit
-  units(start: ID, limit: Int): [Unit!]
+  units(first: Int, after: String, last: Int, before: String): UnitConnection!
 }
 
 type Mutation {

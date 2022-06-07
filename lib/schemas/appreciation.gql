@@ -27,7 +27,9 @@ type Appreciation {
   note: String
 }
 
-
+##
+# API input and output types
+##
 
 input AppreciationCreateParams {
   "(`EconomicEvent`) The economic event this appreciation has been given in acknowledgement of."
@@ -57,10 +59,27 @@ type AppreciationResponse {
   appreciation: Appreciation!
 }
 
+type AppreciationConnection {
+  edges: [AppreciationEdge!]!
+  pageInfo: PageInfo!
+}
 
+type AppreciationEdge {
+  node: Appreciation!
+  cursor: String!
+}
+
+type Query {
+  appreciation(id: ID!): Appreciation!
+  appreciations(first: Int, after: String, last: Int, before: String): AppreciationConnection!
+}
 
 type Mutation {
-  createAppreciation(appreciation: AppreciationCreateParams!): AppreciationResponse!
-  updateAppreciation(appreciation: AppreciationUpdateParams!): AppreciationResponse!
+  createAppreciation(
+    appreciation: AppreciationCreateParams!
+  ): AppreciationResponse!
+  updateAppreciation(
+    appreciation: AppreciationUpdateParams!
+  ): AppreciationResponse!
   deleteAppreciation(id: ID!): Boolean!
 }
