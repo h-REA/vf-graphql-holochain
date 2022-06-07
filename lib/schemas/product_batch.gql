@@ -17,6 +17,7 @@ From DataFoodConsortium vocabulary https://datafoodconsortium.gitbook.io/dfc-sta
 """
 type ProductBatch {
   id: ID!
+  revisionId: ID!
 
   "The standard unique identifier of the batch."
   batchNumber: String!
@@ -44,7 +45,7 @@ input ProductBatchCreateParams {
 }
 
 input ProductBatchUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "The standard unique identifier of the batch."
   batchNumber: String

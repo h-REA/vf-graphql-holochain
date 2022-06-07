@@ -16,6 +16,7 @@ An observed economic flow, as opposed to a flow planned to happen in the future.
 """
 type EconomicEvent {
   id: ID!
+  revisionId: ID!
 
   "Relates an economic event to a verb, such as consume, produce, work, improve, etc."
   action: Action!
@@ -62,6 +63,7 @@ A resource which is useful to people or the ecosystem.
 """
 type EconomicResource {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an item. Does not imply uniqueness."
   name: String
@@ -103,10 +105,6 @@ type EconomicResource {
   track: [EconomicEvent!]
 }
 
-##
-# API input and output types
-##
-
 input EconomicEventCreateParams {
   "(`Action`) Relates an economic event to a verb, such as consume, produce, work, improve, etc."
   action: ID!
@@ -146,7 +144,7 @@ input EconomicEventCreateParams {
 }
 
 input EconomicEventUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "A textual description or comment."
   note: String
@@ -186,7 +184,7 @@ input EconomicResourceCreateParams {
 }
 
 input EconomicResourceUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   classifiedAs: [URI!]
@@ -243,11 +241,11 @@ type Mutation {
     newInventoriedResource: EconomicResourceCreateParams
   ): EconomicEventResponse!
   updateEconomicEvent(event: EconomicEventUpdateParams!): EconomicEventResponse!
-  deleteEconomicEvent(id: ID!): Boolean!
+  deleteEconomicEvent(revisionId: ID!): Boolean!
 
   # :TODO: should this be allowed without an originating event? Or should the event be recorded transparently?
   updateEconomicResource(
     resource: EconomicResourceUpdateParams!
   ): EconomicResourceResponse!
-  deleteEconomicResource(id: ID!): Boolean!
+  deleteEconomicResource(revisionId: ID!): Boolean!
 }

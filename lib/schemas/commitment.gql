@@ -14,6 +14,7 @@ A planned economic flow that has been promised by an agent to another agent.
 """
 type Commitment {
   id: ID!
+  revisionId: ID!
 
   "Relates a commitment to a verb, such as consume, produce, work, improve, etc."
   action: Action!
@@ -95,7 +96,7 @@ input CommitmentCreateParams {
 }
 
 input CommitmentUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
@@ -155,5 +156,5 @@ type Query {
 type Mutation {
   createCommitment(commitment: CommitmentCreateParams!): CommitmentResponse!
   updateCommitment(commitment: CommitmentUpdateParams!): CommitmentResponse!
-  deleteCommitment(id: ID!): Boolean!
+  deleteCommitment(revisionId: ID!): Boolean!
 }

@@ -22,6 +22,7 @@ A claim for a future economic event(s) in reciprocity for an economic event that
 """
 type Claim {
   id: ID!
+  revisionId: ID!
 
   "Relates a claim to a verb, such as consume, produce, work, improve, etc."
   action: Action!
@@ -65,6 +66,7 @@ Represents many-to-many relationships between claim and economic events that ful
 """
 type Settlement {
   id: ID!
+  revisionId: ID!
 
   "A claim which is fully or partially settled by an economic event."
   settles: Claim!
@@ -123,7 +125,7 @@ input ClaimCreateParams {
 }
 
 input ClaimUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`Action`) Relates a claim to a verb, such as consume, produce, work, improve, etc."
   action: ID
@@ -186,7 +188,7 @@ input SettlementCreateParams {
 }
 
 input SettlementUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`Claim`) A claim which is fully or partially settled by an economic event."
   settles: ID
@@ -241,9 +243,9 @@ type Query {
 type Mutation {
   createClaim(claim: ClaimCreateParams!): ClaimResponse!
   updateClaim(claim: ClaimUpdateParams!): ClaimResponse!
-  deleteClaim(id: ID!): Boolean!
+  deleteClaim(revisionId: ID!): Boolean!
 
   createSettlement(settlement: SettlementCreateParams!): SettlementResponse!
   updateSettlement(settlement: SettlementUpdateParams!): SettlementResponse!
-  deleteSettlement(id: ID!): Boolean!
+  deleteSettlement(revisionId: ID!): Boolean!
 }

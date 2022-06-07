@@ -16,6 +16,7 @@ Supports the gift economy.
 """
 type Appreciation {
   id: ID!
+  revisionId: ID!
 
   "The economic event this appreciation has been given in acknowledgement of."
   appreciationOf: EconomicEvent!
@@ -43,7 +44,7 @@ input AppreciationCreateParams {
 }
 
 input AppreciationUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`EconomicEvent`) The economic event this appreciation has been given in acknowledgement of."
   appreciationOf: ID
@@ -81,5 +82,5 @@ type Mutation {
   updateAppreciation(
     appreciation: AppreciationUpdateParams!
   ): AppreciationResponse!
-  deleteAppreciation(id: ID!): Boolean!
+  deleteAppreciation(revisionId: ID!): Boolean!
 }

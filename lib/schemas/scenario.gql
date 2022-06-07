@@ -16,6 +16,7 @@ An estimated or analytical logical collection of higher level processes used for
 """
 type Scenario {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a scenario. Does not imply uniqueness."
   name: String!
@@ -44,6 +45,7 @@ The type definition of one or more scenarios, such as Yearly Budget.
 """
 type ScenarioDefinition {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a scenario definition. Does not imply uniqueness."
   name: String!
@@ -81,7 +83,7 @@ input ScenarioCreateParams {
 }
 
 input ScenarioUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a scenario. Does not imply uniqueness."
   name: String
@@ -123,7 +125,7 @@ input ScenarioDefinitionCreateParams {
 }
 
 input ScenarioDefinitionUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a scenario definition. Does not imply uniqueness."
   name: String
@@ -171,9 +173,9 @@ type Query {
 type Mutation {
   createScenario(plan: ScenarioCreateParams!): ScenarioResponse!
   updateScenario(plan: ScenarioUpdateParams!): ScenarioResponse!
-  deleteScenario(id: ID!): Boolean!
+  deleteScenario(revisionId: ID!): Boolean!
 
   createScenarioDefinition(plan: ScenarioDefinitionCreateParams!): ScenarioDefinitionResponse!
   updateScenarioDefinition(plan: ScenarioDefinitionUpdateParams!): ScenarioDefinitionResponse!
-  deleteScenarioDefinition(id: ID!): Boolean!
+  deleteScenarioDefinition(revisionId: ID!): Boolean!
 }

@@ -14,6 +14,7 @@ A logical collection of processes that constitute a body of planned work with de
 """
 type Plan {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a plan. Does not imply uniqueness."
   name: String!
@@ -50,7 +51,7 @@ input PlanCreateParams {
 }
 
 input PlanUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a plan. Does not imply uniqueness."
   name: String
@@ -89,5 +90,5 @@ type Mutation {
   # :TODO:
   # createPlanFromRecipe(): PlanResponse!
   updatePlan(plan: PlanUpdateParams!): PlanResponse!
-  deletePlan(id: ID!): Boolean!
+  deletePlan(revisionId: ID!): Boolean!
 }

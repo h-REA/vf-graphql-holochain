@@ -15,6 +15,7 @@ Specifies the kind of process.
 """
 type ProcessSpecification {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for the process. Does not imply uniqueness."
   name: String!
@@ -36,7 +37,7 @@ input ProcessSpecificationCreateParams {
 }
 
 input ProcessSpecificationUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for the process. Does not imply uniqueness."
   name: String
@@ -76,5 +77,5 @@ type Mutation {
   updateProcessSpecification(
     processSpecification: ProcessSpecificationUpdateParams!
   ): ProcessSpecificationResponse!
-  deleteProcessSpecification(id: ID!): Boolean!
+  deleteProcessSpecification(revisionId: ID!): Boolean!
 }

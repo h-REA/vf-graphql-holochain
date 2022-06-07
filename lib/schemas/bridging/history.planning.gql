@@ -1,0 +1,19 @@
+type Commitment {
+  revision(revisionId: ID!): Commitment
+  meta: RecordMeta!
+}
+
+type Intent {
+  revision(revisionId: ID!): Intent
+  meta: RecordMeta!
+}
+
+type Fulfillment {
+  revision(revisionId: ID!): Fulfillment
+  meta: RecordMeta!
+}
+
+type Satisfaction {
+  revision(revisionId: ID!): Satisfaction
+  meta: RecordMeta!
+}

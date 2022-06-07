@@ -3,6 +3,7 @@ Represents many-to-many relationships between commitments and economic events th
 """
 type Fulfillment {
   id: ID!
+  revisionId: ID!
 
   "The economic event which completely or partially fulfills a commitment."
   fulfilledBy: EconomicEvent!
@@ -42,7 +43,7 @@ input FulfillmentCreateParams {
 }
 
 input FulfillmentUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`EconomicEvent`) The economic event which completely or partially fulfills a commitment."
   fulfilledBy: ID
@@ -87,5 +88,5 @@ type Query {
 type Mutation {
   createFulfillment(fulfillment: FulfillmentCreateParams!): FulfillmentResponse!
   updateFulfillment(fulfillment: FulfillmentUpdateParams!): FulfillmentResponse!
-  deleteFulfillment(id: ID!): Boolean!
+  deleteFulfillment(revisionId: ID!): Boolean!
 }

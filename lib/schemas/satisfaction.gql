@@ -20,6 +20,7 @@ Represents many-to-many relationships between intents and commitments or events 
 """
 type Satisfaction {
   id: ID!
+  revisionId: ID!
 
   "An intent satisfied fully or partially by an economic event or commitment."
   satisfies: Intent!
@@ -59,7 +60,7 @@ input SatisfactionCreateParams {
 }
 
 input SatisfactionUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`Intent`) An intent satisfied fully or partially by an economic event or commitment."
   satisfies: ID
@@ -108,5 +109,5 @@ type Mutation {
   updateSatisfaction(
     satisfaction: SatisfactionUpdateParams!
   ): SatisfactionResponse!
-  deleteSatisfaction(id: ID!): Boolean!
+  deleteSatisfaction(revisionId: ID!): Boolean!
 }

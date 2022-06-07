@@ -17,6 +17,7 @@ Specifies the resource as part of a recipe, for use in planning from recipe.
 """
 type RecipeResource {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a recipe resource. Does not imply uniqueness."
   name: String!
@@ -48,6 +49,7 @@ The specification of a resource inflow to, or outflow from, a recipe process.
 """
 type RecipeFlow {
   id: ID!
+  revisionId: ID!
 
   "The amount and unit of the economic resource counted or inventoried."
   resourceQuantity: Measure
@@ -79,6 +81,7 @@ Specifies a process in a recipe for use in planning from recipe.
 """
 type RecipeProcess {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a recipe process. Does not imply uniqueness."
   name: String!
@@ -98,6 +101,7 @@ Specifies an exchange agreement as part of a recipe.
 """
 type RecipeExchange {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a recipe exchange. Does not imply uniqueness."
   name: String!
@@ -130,7 +134,7 @@ input RecipeResourceCreateParams {
 }
 
 input RecipeResourceUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a recipe resource. Does not imply uniqueness."
   name: String
@@ -173,7 +177,7 @@ input RecipeProcessCreateParams {
 }
 
 input RecipeProcessUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a recipe process. Does not imply uniqueness."
   name: String
@@ -201,7 +205,7 @@ input RecipeExchangeCreateParams {
 }
 
 input RecipeExchangeUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a recipe exchange. Does not imply uniqueness."
   name: String
@@ -244,7 +248,7 @@ input RecipeFlowCreateParams {
 }
 
 input RecipeFlowUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "(`Action`) Relates a process input or output to a verb, such as consume, produce, work, modify, etc."
   action: ID
@@ -336,7 +340,7 @@ type Query {
 type Mutation {
   createRecipeFlow(recipeFlow: RecipeFlowCreateParams!): RecipeFlowResponse!
   updateRecipeFlow(recipeFlow: RecipeFlowUpdateParams!): RecipeFlowResponse!
-  deleteRecipeFlow(id: ID!): Boolean!
+  deleteRecipeFlow(revisionId: ID!): Boolean!
 
   createRecipeResource(
     recipeResource: RecipeResourceCreateParams!
@@ -344,7 +348,7 @@ type Mutation {
   updateRecipeResource(
     recipeResource: RecipeResourceUpdateParams!
   ): RecipeResourceResponse!
-  deleteRecipeResource(id: ID!): Boolean!
+  deleteRecipeResource(revisionId: ID!): Boolean!
 
   createRecipeProcess(
     recipeProcess: RecipeProcessCreateParams!
@@ -352,7 +356,7 @@ type Mutation {
   updateRecipeProcess(
     recipeProcess: RecipeProcessUpdateParams!
   ): RecipeProcessResponse!
-  deleteRecipeProcess(id: ID!): Boolean!
+  deleteRecipeProcess(revisionId: ID!): Boolean!
 
   createRecipeExchange(
     recipeExchange: RecipeExchangeCreateParams!
@@ -360,5 +364,5 @@ type Mutation {
   updateRecipeExchange(
     recipeExchange: RecipeExchangeUpdateParams!
   ): RecipeExchangeResponse!
-  deleteRecipeExchange(id: ID!): Boolean!
+  deleteRecipeExchange(revisionId: ID!): Boolean!
 }

@@ -1,0 +1,19 @@
+type RecipeResource {
+  revision(revisionId: ID!): RecipeResource
+  meta: RecordMeta!
+}
+
+type RecipeProcess {
+  revision(revisionId: ID!): RecipeProcess
+  meta: RecordMeta!
+}
+
+type RecipeFlow {
+  revision(revisionId: ID!): RecipeFlow
+  meta: RecordMeta!
+}
+
+type RecipeExchange {
+  revision(revisionId: ID!): RecipeExchange
+  meta: RecordMeta!
+}

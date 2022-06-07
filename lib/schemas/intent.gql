@@ -13,6 +13,7 @@ A planned economic flow which has not been committed to, which can lead to econo
 """
 type Intent {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an intent. Does not imply uniqueness."
   name: String
@@ -109,7 +110,7 @@ input IntentCreateParams {
 }
 
 input IntentUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an intent. Does not imply uniqueness."
   name: String
@@ -181,5 +182,5 @@ type Query {
 type Mutation {
   createIntent(intent: IntentCreateParams!): IntentResponse!
   updateIntent(intent: IntentUpdateParams!): IntentResponse!
-  deleteIntent(id: ID!): Boolean!
+  deleteIntent(revisionId: ID!): Boolean!
 }

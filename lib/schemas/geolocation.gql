@@ -14,6 +14,7 @@ A physical mappable location.
 """
 type SpatialThing {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a location. Does not imply uniqueness."
   name: String!
@@ -57,7 +58,7 @@ input SpatialThingCreateParams {
 }
 
 input SpatialThingUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a location. Does not imply uniqueness."
   name: String
@@ -101,5 +102,5 @@ type Query {
 type Mutation {
   createSpatialThing(spatialThing: SpatialThingCreateParams!): SpatialThingResponse!
   updateSpatialThing(spatialThing: SpatialThingUpdateParams!): SpatialThingResponse!
-  deleteSpatialThing(id: ID!): Boolean!
+  deleteSpatialThing(revisionId: ID!): Boolean!
 }

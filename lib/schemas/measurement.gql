@@ -47,6 +47,7 @@ From OM2 vocabulary.
 """
 type Unit {
   id: ID!
+  revisionId: ID!
 
   "A human readable label for the unit, can be language specific."
   label: String!
@@ -91,7 +92,7 @@ input UnitCreateParams {
 }
 
 input UnitUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "A human readable label for the unit, can be language specific."
   label: String
@@ -123,5 +124,5 @@ type Query {
 type Mutation {
   createUnit(unit: UnitCreateParams!): UnitResponse!
   updateUnit(unit: UnitUpdateParams!): UnitResponse!
-  deleteUnit(id: ID!): Boolean!
+  deleteUnit(revisionId: ID!): Boolean!
 }

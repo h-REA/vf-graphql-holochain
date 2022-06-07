@@ -16,6 +16,7 @@ An activity that changes inputs into outputs.  It could transform or transport e
 """
 type Process {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a process. Does not imply uniqueness."
   name: String!
@@ -73,7 +74,7 @@ input ProcessCreateParams {
 }
 
 input ProcessUpdateParams {
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for a process. Does not imply uniqueness."
   name: String

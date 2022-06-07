@@ -20,6 +20,7 @@ A person or group or organization with economic agency.
 """
 interface Agent {
   id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an agent. Does not imply uniqueness."
   name: String!
@@ -45,6 +46,7 @@ A natural person.
 """
 type Person implements Agent {
   id: ID!
+  revisionId: ID!
 
   "The name that this agent will be referred to by."
   name: String!
@@ -70,6 +72,7 @@ A formal or informal group, or legal organization.
 """
 type Organization implements Agent {
   id: ID!
+  revisionId: ID!
 
   # :TODO: define how people can create further typing of Organization
   # type: OrganizationClassification
@@ -103,6 +106,7 @@ The role of an economic relationship that exists between 2 agents, such as membe
 """
 type AgentRelationship {
   id: ID!
+  revisionId: ID!
 
   "The subject of a relationship between 2 agents.  For example, if Mary is a member of a group, then Mary is the subject."
   subject: Agent!
@@ -125,6 +129,7 @@ A relationship role defining the kind of association one agent can have with ano
 """
 type AgentRelationshipRole {
   id: ID!
+  revisionId: ID!
 
   "The human readable name of the role, from the subject to the object."
   roleLabel: String!
@@ -164,7 +169,7 @@ input AgentCreateParams { # implements AgentParams
 }
 
 input AgentUpdateParams { # implements UpdateParams & AgentParams
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an agent. Does not imply uniqueness."
   name: String
@@ -192,7 +197,7 @@ input OrganizationCreateParams { # implements AgentParams
 }
 
 input OrganizationUpdateParams { # implements UpdateParams & AgentParams
-  id: ID!
+  revisionId: ID!
 
   "An informal or formal textual identifier for an agent. Does not imply uniqueness."
   name: String
@@ -235,7 +240,7 @@ input AgentRelationshipCreateParams { # implements AgentRelationshipParams
 }
 
 input AgentRelationshipUpdateParams { # implements UpdateParams & AgentRelationshipParams
-  id: ID!
+  revisionId: ID!
 
   "(`Agent`) The subject of a relationship between 2 agents.  For example, if Mary is a member of a group, then Mary is the subject."
   subject: ID
@@ -272,7 +277,7 @@ input AgentRelationshipRoleCreateParams { # implements AgentRelationshipRolePara
 }
 
 input AgentRelationshipRoleUpdateParams { # implements UpdateParams & AgentRelationshipRoleParams
-  id: ID!
+  revisionId: ID!
 
   "The human readable name of the role, inverse from the object to the subject. For example, 'is member of'."
   roleLabel: String
@@ -373,20 +378,20 @@ type Mutation {
   "Update profile details"
   updatePerson(person: AgentUpdateParams!): PersonResponse!
   "Erase record of a person and thus remove them from the collaboration space"
-  deletePerson(id: ID!): Boolean!
+  deletePerson(revisionId: ID!): Boolean!
 
   "Registers a new organization (group agent) with the collaboration space"
   createOrganization(organization: OrganizationCreateParams!): OrganizationResponse!
   "Update organization profile details"
   updateOrganization(organization: OrganizationUpdateParams!): OrganizationResponse!
   "Erase record of an organization and thus remove it from the collaboration space"
-  deleteOrganization(id: ID!): Boolean!
+  deleteOrganization(revisionId: ID!): Boolean!
 
   createAgentRelationship(relationship: AgentRelationshipCreateParams!): AgentRelationshipResponse!
   updateAgentRelationship(relationship: AgentRelationshipUpdateParams!): AgentRelationshipResponse!
-  deleteAgentRelationship(id: ID!): Boolean!
+  deleteAgentRelationship(revisionId: ID!): Boolean!
 
   createAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleCreateParams!): AgentRelationshipRoleResponse!
   updateAgentRelationshipRole(agentRelationshipRole: AgentRelationshipRoleUpdateParams!): AgentRelationshipRoleResponse!
-  deleteAgentRelationshipRole(id: ID!): Boolean!
+  deleteAgentRelationshipRole(revisionId: ID!): Boolean!
 }
