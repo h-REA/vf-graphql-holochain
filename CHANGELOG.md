@@ -12,7 +12,7 @@
 	- If the `filtering` module is enabled, query `filter` parameters are added to the record relationships. The parameter names and logic for these queries are defined in the `bridging/*.filtering.gql` schema files, and are particular to the type of data they relate.
 	- Systems may also choose to implement the `ordering` module, which augments record relationships with an `orderBy` parameter. See the `bridging/*.ordering.gql` schema files.
 
-## 0.8.5 (unreleased)
+## 0.8.5
 
 - Fixed errata in fields being required or not:
 	- `Claim.triggeredBy` is now required when creating
