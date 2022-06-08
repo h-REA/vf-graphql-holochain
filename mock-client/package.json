@@ -1,6 +1,6 @@
 {
   "name": "@vf-ui/graphql-client-mock",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A preconfigured GraphQLClient for testing the ValueFlows schema with mock data.",
   "main": "index.js",
   "type": "module",
