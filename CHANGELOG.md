@@ -1,8 +1,12 @@
-## 0.9.0
+## 0.9.0 (unreleased)
 
 - **Breaking:** switched to a revision-based API for referencing updates & deletions, for compatibility with eventually-consistent distributed systems
-	- `revisionId` is now a mandatory field in all updateable record types. For systems which do not implement history, it is fine to return `revisionId` with the same value as `id`.
-	- Added a new optional `history` module, which services needing to implement human-facing conflict resolution capabilities (eg. eventually-consistent networks) may implement. These additional query edges and response types provide a minimal-footprint API which can be used to resolve conflicts between divergent branches of the same record. See the 'bridging' schemas beginning with `history.*` as a reference.
+	- Added a new optional `history` module, which implementations featuring human-facing conflict resolution capabilities may implement. These additional query edges, metadata and response types provide a minimal-footprint API which can be used to resolve conflicts between divergent branches of the same record. See the 'bridging' schemas beginning with `history.*` as a reference.
+	- `revisionId` is now a mandatory field in all updateable record types. For systems which do not implement `history`, it is fine to return `revisionId` with the same value as `id` and to use this identifier for updates.
+- **Breaking:** updated all record query edges and relationships to conform to the [Relay Connections specification](https://relay.dev/graphql/connections.htm) in order to efficiently manage large result sets by way of pagination.
+	- Cursors for managing pagination are now required metadata to be provided with list-based result sets. Other optional page metadata may also be returned to assist with the user interface if the implementation can support it (see `pagination.gql`).
+	- If the `filtering` module is enabled, query `filter` parameters are added to the record relationships. The parameter names and logic for these queries are defined in the `bridging/*.filtering.gql` schema files, and are particular to the type of data they relate.
+	- Systems may also choose to implement the `ordering` module, which augments record relationships with an `orderBy` parameter. See the `bridging/*.ordering.gql` schema files.
 
 ## 0.8.5 (unreleased)
 
