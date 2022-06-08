@@ -42,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/valueflows/vf-graphql.git"
+    "url": "git+ssh://git@lab.allmende.io:valueflows/vf-schemas/vf-graphql.git"
   },
   "keywords": [
     "ValueFlows",
@@ -53,9 +53,9 @@
   "author": "ValueFlows contributors",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/valueflows/vf-graphql/issues"
+    "url": "https://lab.allmende.io/valueflows/vf-schemas/vf-graphql/issues"
   },
-  "homepage": "https://github.com/valueflows/vf-graphql#readme",
+  "homepage": "https://lab.allmende.io/valueflows/vf-schemas/vf-graphql#readme",
   "dependencies": {
     "@graphql-tools/merge": "^8.2.1"
   },
