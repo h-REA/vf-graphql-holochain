@@ -1,5 +1,9 @@
 ## 0.9.0 (unreleased)
 
+- **Breaking:** refactored schema modules to decouple into discrete types wherever possible. As a result, integrators will need to update any VF module ID whitelists. Only strongly-coupled record types remain declared in shared module files.
+	- `observation.gql` no longer contains `Process` or `ProductBatch`, which are now in their own modules of the same names.
+	- `planning.gql` no longer exists; see now the separate modules `commitment`, `intent`, `fulfillment` & `satisfaction`.
+	- `knowledge.gql` no longer exists, and has been refactored into `action`, `process_specification` and `resource_specification`.
 - **Breaking:** switched to a revision-based API for referencing updates & deletions, for compatibility with eventually-consistent distributed systems
 	- Added a new optional `history` module, which implementations featuring human-facing conflict resolution capabilities may implement. These additional query edges, metadata and response types provide a minimal-footprint API which can be used to resolve conflicts between divergent branches of the same record. See the 'bridging' schemas beginning with `history.*` as a reference.
 	- `revisionId` is now a mandatory field in all updateable record types. For systems which do not implement `history`, it is fine to return `revisionId` with the same value as `id` and to use this identifier for updates.
