@@ -13,9 +13,10 @@ const { buildSchema, printSchema } = require('../lib/')
 test('configuration: kitchen sink', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
     'ordering', 'filtering',
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process', 'recipe',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
     'agreement', 'proposal',
     'geolocation',
     'plan', 'scenario',
@@ -306,9 +307,10 @@ test('configuration: future claims', (t) => {
 test('configuration: everything', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
     'history',
-    'knowledge', 'measurement',
+    'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'planning', 'recipe',
+    'observation', 'process', 'recipe',
+    'commitment', 'intent', 'satisfaction', 'fulfillment',
     'plan', 'scenario',
     'proposal', 'agreement',
     'appreciation',
