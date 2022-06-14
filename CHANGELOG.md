@@ -11,7 +11,8 @@
 	- Cursors for managing pagination are now required metadata to be provided with list-based result sets. Other optional page metadata may also be returned to assist with the user interface if the implementation can support it (see `pagination.gql`).
 	- If the `filtering` module is enabled, query `filter` parameters are added to the record relationships. The parameter names and logic for these queries are defined in the `bridging/*.filtering.gql` schema files, and are particular to the type of data they relate.
 	- Systems may also choose to implement the `ordering` module, which augments record relationships with an `orderBy` parameter. See the `bridging/*.ordering.gql` schema files.
-- Added `plannedWithin` to `Commitment` creation & update parameters, for referencing any `Plan` they are a part of.
+- Added `plannedWithin` to `Commitment` creation & update parameters, for referencing any `Plan` they are a part of
+- Fixed `ScenarioDefinitionEdge` referencing `Satisfaction` instead of `ScenarioDefinition`
 
 ## 0.8.5
 
