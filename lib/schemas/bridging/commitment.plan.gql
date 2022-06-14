@@ -29,9 +29,15 @@ type Plan {
 input CommitmentCreateParams {
   "(`Plan`) Represents a desired deliverable expected from this plan."
   independentDemandOf: ID
+
+  "(`Plan`) The transfer commitment is part of the plan."
+  plannedWithin: ID
 }
 
 input CommitmentUpdateParams {
   "(`Plan`) Represents a desired deliverable expected from this plan."
   independentDemandOf: ID
+
+  "(`Plan`) The transfer commitment is part of the plan."
+  plannedWithin: ID
 }
