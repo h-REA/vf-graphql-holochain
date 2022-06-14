@@ -158,7 +158,7 @@ type ScenarioDefinitionConnection {
 }
 
 type ScenarioDefinitionEdge {
-  node: Satisfaction!
+  node: ScenarioDefinition!
   cursor: String!
 }
 
