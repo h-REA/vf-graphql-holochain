@@ -1,0 +1,24 @@
+input AgentRelationshipFilterParams {
+  "Retrieve only relationships matching these AgentRelationshipRole(s)."
+  roleId: [ID!]
+  "Retrieve only relationships relevant in the given accounting scope(s)."
+  inScopeOf: [ID!]
+}
+
+interface Agent {
+  relationships(filter: AgentRelationshipFilterParams): AgentRelationshipConnection
+  relationshipsAsSubject(filter: AgentRelationshipFilterParams): AgentRelationshipConnection
+  relationshipsAsObject(filter: AgentRelationshipFilterParams): AgentRelationshipConnection
+}
+
+type Person implements Agent {
+  relationships(filter: AgentRelationshipFilterParams): AgentRelationshipConnection
+  relationshipsAsSubject(filter: AgentRelationshipFilterParams): AgentRelationshipConnection
+  relationshipsAsObject(filter: AgentRelationshipFilterParams): AgentRelationshipConnection
+}
+
+type Organization implements Agent {
+  relationships(filter: AgentRelationshipFilterParams): AgentRelationshipConnection
+  relationshipsAsSubject(filter: AgentRelationshipFilterParams): AgentRelationshipConnection
+  relationshipsAsObject(filter: AgentRelationshipFilterParams): AgentRelationshipConnection
+}

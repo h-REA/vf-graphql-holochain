@@ -34,9 +34,9 @@ interface Agent {
   ##############################################################################
   # inverse relationships and queries
 
-  relationships(roleId: ID): [AgentRelationship!] # :TODO: category filtering
-  relationshipsAsSubject(roleId: ID): [AgentRelationship!] # :TODO: category filtering
-  relationshipsAsObject(roleId: ID): [AgentRelationship!] # :TODO: category filtering
+  relationships(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
+  relationshipsAsSubject(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
+  relationshipsAsObject(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
 
   roles: [AgentRelationshipRole!]
 }
@@ -60,9 +60,9 @@ type Person implements Agent {
   ##############################################################################
   # inverse relationships and queries
 
-  relationships(roleId: ID): [AgentRelationship!] # :TODO: category filtering
-  relationshipsAsSubject(roleId: ID): [AgentRelationship!] # :TODO: category filtering
-  relationshipsAsObject(roleId: ID): [AgentRelationship!] # :TODO: category filtering
+  relationships(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
+  relationshipsAsSubject(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
+  relationshipsAsObject(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
 
   roles: [AgentRelationshipRole!]
 }
@@ -92,9 +92,9 @@ type Organization implements Agent {
   ##############################################################################
   # inverse relationships and queries
 
-  relationships(roleId: ID): [AgentRelationship!] # :TODO: category filtering
-  relationshipsAsSubject(roleId: ID): [AgentRelationship!] # :TODO: category filtering
-  relationshipsAsObject(roleId: ID): [AgentRelationship!] # :TODO: category filtering
+  relationships(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
+  relationshipsAsSubject(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
+  relationshipsAsObject(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
 
   roles: [AgentRelationshipRole!]
 }
