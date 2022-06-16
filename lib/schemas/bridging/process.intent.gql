@@ -18,8 +18,8 @@ type Intent {
 }
 
 type Process {
-  intendedInputs(action: ID): [Intent!]
-  intendedOutputs(action: ID): [Intent!]
+  intendedInputs(first: Int, after: String, last: Int, before: String): IntentConnection
+  intendedOutputs(first: Int, after: String, last: Int, before: String): IntentConnection
 }
 
 ##

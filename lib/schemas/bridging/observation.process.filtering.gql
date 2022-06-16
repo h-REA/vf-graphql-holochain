@@ -1,0 +1,16 @@
+input ProcessEventFilterParams {
+  searchString: String
+  providerId: [ID!]
+  receiverId: [ID!]
+  resourceClassifiedAs: [URI!]
+  action: [ID!]
+  startDate: DateTime
+  endDate: DateTime
+}
+
+type Process {
+  observedInputs(filter: ProcessEventFilterParams): EconomicEventConnection
+  observedOutputs(filter: ProcessEventFilterParams): EconomicEventConnection
+  unplannedInputs(filter: ProcessEventFilterParams): EconomicEventConnection
+  unplannedOutputs(filter: ProcessEventFilterParams): EconomicEventConnection
+}

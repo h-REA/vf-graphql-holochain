@@ -56,6 +56,11 @@ type EconomicEvent {
 
   "The economic event can be safely deleted, has no dependent information."
   deletable: Boolean
+
+  # inverse relationships and queries
+
+  "Other EconomicEvents which have been triggered by this one."
+  triggers: [EconomicEvent!]
 }
 
 """
@@ -100,6 +105,9 @@ type EconomicResource {
 
   "Used when a stock economic resource contains units also defined as economic resources."
   contains: [EconomicResource!]
+
+  economicEventsInOutFrom(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsTo(first: Int, after: String, last: Int, before: String): EconomicEventConnection
 
   trace: [EconomicEvent!]
   track: [EconomicEvent!]

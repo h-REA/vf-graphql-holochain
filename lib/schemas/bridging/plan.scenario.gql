@@ -12,6 +12,10 @@ type Plan {
   refinementOf: Scenario
 }
 
+type Scenario {
+  plans(first: Int, after: String, last: Int, before: String): PlanConnection
+}
+
 ##
 #  API call input and output types
 ##

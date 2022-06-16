@@ -141,6 +141,10 @@ type AgentRelationshipRole {
   note: String
 
   # :TODO: https://github.com/valueflows/valueflows/issues/494
+
+  # inverse relationships and queries
+
+  agentRelationships(first: Int, after: String, last: Int, before: String): AgentRelationshipConnection
 }
 
 # :TODO: how do we want to do this concept?

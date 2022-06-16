@@ -14,6 +14,11 @@ type RecipeProcess {
   processConformsTo: ProcessSpecification
 }
 
+type ProcessSpecification {
+  conformingRecipeProcesses(first: Int, after: String, last: Int, before: String): RecipeProcessConnection
+  recipeFlowsRequiringStage(first: Int, after: String, last: Int, before: String): RecipeFlowConnection
+}
+
 input RecipeProcessCreateParams {
   "(`ProcessSpecification`) The standard specification or definition of a process."
   processConformsTo: ID

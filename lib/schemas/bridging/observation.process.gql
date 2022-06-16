@@ -30,9 +30,10 @@ type Process {
   ##############################################################################
   # inverse relationships and queries
 
-  inputs(action: ID): [EconomicEvent!]
-  outputs(action: ID): [EconomicEvent!]
-  unplannedEconomicEvents(action: ID): [EconomicEvent!]
+  observedInputs(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  observedOutputs(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  unplannedInputs(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  unplannedOutputs(first: Int, after: String, last: Int, before: String): EconomicEventConnection
 
   trace: [EconomicEvent!]
   track: [EconomicEvent!]

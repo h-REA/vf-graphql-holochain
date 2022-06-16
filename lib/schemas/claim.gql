@@ -4,14 +4,6 @@
 #
 # Facilitates claiming of future events in return for contributions already given.
 #
-# TODO: extract dependent files into bridging, particularly `resource_specification`,
-# `agent`, and `observation`
-#
-# @depends  action.gql
-# @depends  measurement.gql
-# @depends  agent.gql
-# @depends  resource_specification.gql
-# @depends  observation.gql
 # @package  vf-graphql
 # @since    2019-02-11
 #
@@ -29,9 +21,6 @@ type Claim {
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
-
-  "The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ResourceSpecification
 
   "The amount and unit of the economic resource counted or inventoried."
   resourceQuantity: Measure
@@ -57,8 +46,9 @@ type Claim {
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this claim."
   agreedIn: URI
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [AccountingScope!]
+  # inverse relationships and queries
+
+  settledBy(first: Int, after: String, last: Int, before: String): SettlementConnection
 }
 
 """
@@ -93,9 +83,6 @@ input ClaimCreateParams {
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
 
-  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ID
-
   "The amount and unit of the economic resource counted or inventoried."
   resourceQuantity: IMeasure
 
@@ -119,9 +106,6 @@ input ClaimCreateParams {
 
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this claim."
   agreedIn: URI
-
-  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
 }
 
 input ClaimUpdateParams {
@@ -132,9 +116,6 @@ input ClaimUpdateParams {
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
-
-  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ID
 
   "The amount and unit of the economic resource counted or inventoried."
   resourceQuantity: IMeasure
@@ -159,9 +140,6 @@ input ClaimUpdateParams {
 
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this claim."
   agreedIn: URI
-
-  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
 }
 
 type ClaimResponse {

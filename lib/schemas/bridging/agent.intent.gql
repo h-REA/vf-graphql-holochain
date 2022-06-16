@@ -48,23 +48,22 @@ input IntentUpdateParams {
 }
 
 interface Agent {
-  intents(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): IntentConnection
+  intents(first: Int, after: String, last: Int, before: String): IntentConnection
+  intentsAsProvider(first: Int, after: String, last: Int, before: String): IntentConnection
+  intentsAsReceiver(first: Int, after: String, last: Int, before: String): IntentConnection
+  intentsInScope(first: Int, after: String, last: Int, before: String): IntentConnection
 }
 
 type Person implements Agent {
-  intents(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): IntentConnection
+  intents(first: Int, after: String, last: Int, before: String): IntentConnection
+  intentsAsProvider(first: Int, after: String, last: Int, before: String): IntentConnection
+  intentsAsReceiver(first: Int, after: String, last: Int, before: String): IntentConnection
+  intentsInScope(first: Int, after: String, last: Int, before: String): IntentConnection
 }
 
 type Organization implements Agent {
   intents(first: Int, after: String, last: Int, before: String): IntentConnection
+  intentsAsProvider(first: Int, after: String, last: Int, before: String): IntentConnection
+  intentsAsReceiver(first: Int, after: String, last: Int, before: String): IntentConnection
+  intentsInScope(first: Int, after: String, last: Int, before: String): IntentConnection
 }

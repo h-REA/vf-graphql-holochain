@@ -14,6 +14,10 @@ type Commitment {
   resourceInventoriedAs: EconomicResource
 }
 
+type EconomicResource {
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection
+}
+
 ##
 # API input and output types
 ##

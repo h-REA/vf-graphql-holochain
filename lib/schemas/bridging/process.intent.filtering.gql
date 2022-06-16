@@ -1,0 +1,14 @@
+input ProcessIntentFilterParams {
+  searchString: String
+  providerId: [ID!]
+  receiverId: [ID!]
+  resourceClassifiedAs: [URI!]
+  action: [ID!]
+  startDate: DateTime
+  endDate: DateTime
+}
+
+type Process {
+  intendedInputs(filter: ProcessIntentFilterParams): IntentConnection
+  intendedOutputs(filter: ProcessIntentFilterParams): IntentConnection
+}

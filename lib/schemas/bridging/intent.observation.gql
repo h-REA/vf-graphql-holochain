@@ -14,6 +14,10 @@ type Intent {
   resourceInventoriedAs: EconomicResource
 }
 
+type EconomicResource {
+  intents(first: Int, after: String, last: Int, before: String): IntentConnection
+}
+
 ##
 # API input and output types
 ##

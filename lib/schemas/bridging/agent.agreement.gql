@@ -11,5 +11,5 @@
 ##
 
 type Agreement {
-  involvedAgents: [Agent!]
+  involvedAgents(first: Int, after: String, last: Int, before: String): AgentConnection
 }

@@ -9,7 +9,8 @@
 ##
 
 type Process {
-  workingAgents: [Agent!]
+  involvedAgents(first: Int, after: String, last: Int, before: String): AgentConnection
+  workingAgents(first: Int, after: String, last: Int, before: String): AgentConnection
 
   "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [AccountingScope!]
@@ -20,6 +21,11 @@ type Process {
 ##
 
 input ProcessCreateParams {
+  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
+  inScopeOf: [ID!]
+}
+
+input ProcessUpdateParams {
   "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [ID!]
 }
