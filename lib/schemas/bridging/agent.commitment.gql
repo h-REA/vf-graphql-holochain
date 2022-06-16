@@ -23,7 +23,7 @@ type Commitment {
   ##############################################################################
   # inverse relationships and queries
 
-  involvedAgents(first: Int, after: String, last: Int, before: String): AgentConnection
+  involvedAgents: [Agent!]
 }
 
 input CommitmentCreateParams {

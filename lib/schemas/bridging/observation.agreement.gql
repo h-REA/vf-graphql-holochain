@@ -16,8 +16,8 @@ type EconomicEvent {
 }
 
 type Agreement {
-  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection
-  unplannedEconomicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEvents: [EconomicEvent!]
+  unplannedEconomicEvents: [EconomicEvent!]
 }
 
 ##

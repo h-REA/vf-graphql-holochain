@@ -9,6 +9,6 @@ input ProcessIntentFilterParams {
 }
 
 type Process {
-  intendedInputs(filter: ProcessIntentFilterParams): IntentConnection
-  intendedOutputs(filter: ProcessIntentFilterParams): IntentConnection
+  intendedInputs(filter: ProcessIntentFilterParams): [Intent!]
+  intendedOutputs(filter: ProcessIntentFilterParams): [Intent!]
 }

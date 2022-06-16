@@ -18,8 +18,8 @@ type Commitment {
 }
 
 type Plan {
-  independentDemands(first: Int, after: String, last: Int, before: String): CommitmentConnection
-  nonProcessCommitments(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  independentDemands: [Commitment!]
+  nonProcessCommitments: [Commitment!]
 }
 
 ##

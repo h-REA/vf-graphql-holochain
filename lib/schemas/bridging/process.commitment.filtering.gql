@@ -9,6 +9,6 @@ input ProcessCommitmentFilterParams {
 }
 
 type Process {
-  committedInputs(filter: ProcessCommitmentFilterParams): CommitmentConnection
-  committedOutputs(filter: ProcessCommitmentFilterParams): CommitmentConnection
+  committedInputs(filter: ProcessCommitmentFilterParams): [Commitment!]
+  committedOutputs(filter: ProcessCommitmentFilterParams): [Commitment!]
 }

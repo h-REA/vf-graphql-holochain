@@ -9,8 +9,8 @@ input ProcessEventFilterParams {
 }
 
 type Process {
-  observedInputs(filter: ProcessEventFilterParams): EconomicEventConnection
-  observedOutputs(filter: ProcessEventFilterParams): EconomicEventConnection
-  unplannedInputs(filter: ProcessEventFilterParams): EconomicEventConnection
-  unplannedOutputs(filter: ProcessEventFilterParams): EconomicEventConnection
+  observedInputs(filter: ProcessEventFilterParams): [EconomicEvent!]
+  observedOutputs(filter: ProcessEventFilterParams): [EconomicEvent!]
+  unplannedInputs(filter: ProcessEventFilterParams): [EconomicEvent!]
+  unplannedOutputs(filter: ProcessEventFilterParams): [EconomicEvent!]
 }

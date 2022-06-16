@@ -19,8 +19,8 @@ type Commitment {
 }
 
 type Process {
-  committedInputs(first: Int, after: String, last: Int, before: String): CommitmentConnection
-  committedOutputs(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  committedInputs: [Commitment!]
+  committedOutputs: [Commitment!]
 }
 
 ##
