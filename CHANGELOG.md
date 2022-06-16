@@ -1,6 +1,4 @@
-## 0.9.0 (unreleased)
-
-## 0.9.0-alpha.6
+## 0.9.0-alpha.6 (unreleased)
 
 - Added all currently defined [inverse query relationships](https://www.valueflo.ws/specification/inverses/)
 - **Breaking:** changed query edges from `Process` to flow record types (`EconomicEvent`, `Commitment` and `Intent`) to use pagination and return `*Connection` structures. Previous `action` filter is now present as a property of the standard `filter` argument.
