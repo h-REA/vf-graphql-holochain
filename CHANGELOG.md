@@ -1,27 +1,49 @@
 ## 0.9.0 (unreleased)
 
-- **Breaking:** refactored schema modules to decouple into discrete types wherever possible. As a result, integrators will need to update any VF module ID whitelists. Only strongly-coupled record types remain declared in shared module files.
-	- `observation.gql` no longer contains `Process` or `ProductBatch`, which are now in their own modules of the same names.
-	- `planning.gql` no longer exists; see now the separate modules `commitment`, `intent`, `fulfillment` & `satisfaction`.
-	- `knowledge.gql` no longer exists, and has been refactored into `action`, `process_specification` and `resource_specification`.
-- **Breaking:** switched to a revision-based API for referencing updates & deletions, for compatibility with eventually-consistent distributed systems
-	- Added a new optional `history` module, which implementations featuring human-facing conflict resolution capabilities may implement. These additional query edges, metadata and response types provide a minimal-footprint API which can be used to resolve conflicts between divergent branches of the same record. See the 'bridging' schemas beginning with `history.*` as a reference.
-	- `revisionId` is now a mandatory field in all updateable record types. For systems which do not implement `history`, it is fine to return `revisionId` with the same value as `id` and to use this identifier for updates.
-- **Breaking:** updated all record query edges and relationships to conform to the [Relay Connections specification](https://relay.dev/graphql/connections.htm) in order to efficiently manage large result sets by way of pagination.
-	- Cursors for managing pagination are now required metadata to be provided with list-based result sets. Other optional page metadata may also be returned to assist with the user interface if the implementation can support it (see `pagination.gql`).
-	- If the `filtering` module is enabled, query `filter` parameters are added to the record relationships. The parameter names and logic for these queries are defined in the `bridging/*.filtering.gql` schema files, and are particular to the type of data they relate.
-	- Systems may also choose to implement the `ordering` module, which augments record relationships with an `orderBy` parameter. See the `bridging/*.ordering.gql` schema files.
-- Added `plannedWithin` to `Commitment` creation & update parameters, for referencing any `Plan` they are a part of
 - Fixed `ScenarioDefinitionEdge` referencing `Satisfaction` instead of `ScenarioDefinition`
+
+## 0.9.0-alpha.5
+
+- Added `plannedWithin` to `Commitment`, for referencing `Plan`s that a `Commitment` is independently a part of (separate to any `Process`)
+
+## 0.9.0-alpha.4
+
+- **Breaking:** refactored schema modules to decouple into discrete types wherever possible. As a result, integrators will need to update any VF module ID whitelists. Only strongly-coupled record types remain declared in shared module files.
+    - `observation.gql` no longer contains `Process` or `ProductBatch`, which are now in their own modules of the same names.
+    - `planning.gql` no longer exists; see now the separate modules `commitment`, `intent`, `fulfillment` & `satisfaction`.
+    - `knowledge.gql` no longer exists, and has been refactored into `action`, `process_specification` and `resource_specification`.
+
+## 0.9.0-alpha.3
+
+- Record metadata fields renamed for clarity: `currentRevision` is now `retrievedRevision`
+- Revision author now references an REA `Agent`, rather than a scalar ID to be manually associated by applications
+- Make return values for all inter-type edges non-mandatory so that errors are not thrown if implementations choose to omit null values
+- Cleanup of `Agent` / `Proposal` query edges for pagination
+- Downgrades/fixes in mock server due to GraphQL / Express compatibility issues
+
+## 0.9.0-alpha.2
+
+- Fix deletion mutations returning nullable values
+- Fix `AgentRelationship.inScopeOf` not being assignable in create or update mutations
+
+## 0.9.0-alpha.1
+
+- **Breaking:** switched to a revision-based API for referencing updates & deletions, for compatibility with eventually-consistent distributed systems
+    - Added a new optional `history` module, which implementations featuring human-facing conflict resolution capabilities may implement. These additional query edges, metadata and response types provide a minimal-footprint API which can be used to resolve conflicts between divergent branches of the same record. See the 'bridging' schemas beginning with `history.*` as a reference.
+    - `revisionId` is now a mandatory field in all updateable record types. For systems which do not implement `history`, it is fine to return `revisionId` with the same value as `id` and to use this identifier for updates.
+- **Breaking:** updated all record query edges and relationships to conform to the [Relay Connections specification](https://relay.dev/graphql/connections.htm) in order to efficiently manage large result sets by way of pagination.
+    - Cursors for managing pagination are now required metadata to be provided with list-based result sets. Other optional page metadata may also be returned to assist with the user interface if the implementation can support it (see `pagination.gql`).
+    - If the `filtering` module is enabled, query `filter` parameters are added to the record relationships. The parameter names and logic for these queries are defined in the `bridging/*.filtering.gql` schema files, and are particular to the type of data they relate.
+    - Systems may also choose to implement the `ordering` module, which augments record relationships with an `orderBy` parameter. See the `bridging/*.ordering.gql` schema files.
 
 ## 0.8.5
 
 - Fixed errata in fields being required or not:
-	- `Claim.triggeredBy` is now required when creating
-	- `Plan.name` is now required
-	- `ScenarioDefinition.name` is now correctly required when creating, but not when updating
-	- `Scenario.definedAs` is no longer required
-	- Fixed `Intent` mutation parameters not being marked as required
+    - `Claim.triggeredBy` is now required when creating
+    - `Plan.name` is now required
+    - `ScenarioDefinition.name` is now correctly required when creating, but not when updating
+    - `Scenario.definedAs` is no longer required
+    - Fixed `Intent` mutation parameters not being marked as required
 - **Breaking:** added a new field `EconomicEvent.toLocation` for managing resource location updates. `EconomicResource.currentLocation` is no longer updateable directly.
 - Fix `EconomicEvent.inScopeOf` being updateable when it should not be
 - Fix `RecipeFlow.recipeFlowResource` not being required when it should be
@@ -75,15 +97,15 @@
 - Added pagination parameters to all list queries
 - Removed many accounting fields from `EconomicEventUpdateParams` that should not have been present
 - Added various fields missed in the original conversion:
-	- `Agent.primaryLocation`
-	- `Scenario.definedAs`
+    - `Agent.primaryLocation`
+    - `Scenario.definedAs`
 - Fixed missing input fields:
-	- `basedOn` & `classifiedAs` in `ProcessUpdateParams`
-	- `refinementOf` in `Plan` create / update
-	- `resourceConformsTo` in `RecipeResource` create / update
-	- `processClassifiedAs` in `RecipeProcess` create / update
-	- `refinementOf` in `Scenario` create / update
-	- `ScenarioDefinitionUpdateParams.name`
+    - `basedOn` & `classifiedAs` in `ProcessUpdateParams`
+    - `refinementOf` in `Plan` create / update
+    - `resourceConformsTo` in `RecipeResource` create / update
+    - `processClassifiedAs` in `RecipeProcess` create / update
+    - `refinementOf` in `Scenario` create / update
+    - `ScenarioDefinitionUpdateParams.name`
 - Add missing mutations & queries for `Claim`, `Scenario`, `ScenarioDefinition` & `SpatialThing`
 - Removed `pass` & `fail` actions from the set of core verbs (see [ValueFlows/#610](https://github.com/valueflows/valueflows/issues/610))
 
