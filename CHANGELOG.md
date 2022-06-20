@@ -3,6 +3,11 @@
 - Added all currently defined [inverse query relationships](https://www.valueflo.ws/specification/inverses/)
 - **Breaking:** changed query edges of all `Process` flow relationships (`Commitment`, `Intent` and `EconomicEvent`) to parameterise filters consistently with other edges. Previous `action` parameter is now present as a property of the standard `filter` argument.
 - **Breaking:** added pagination to all `Agent` relationship query edges
+- Added `Agent` filter params to agent query APIs, allowing filter by agent classification
+- Added `Process`, `Commitment`, `Intent`, `Claim` & `Proposal` filter params to toplevel query APIs
+- Added `offers` & `requests` convenience queries for easier `Proposal` retrieval
+- Added convenience query edges `Proposal.primaryIntents` and `Proposal.reciprocalIntents`
+- `Plan.processes`, `Scenario.plans` & `Scenario.refinements` are no longer paginated
 - Fixed `Claim.provider` & `Claim.receiver` missing
 - Fixed `inScopeOf` field being included in `Claim`, `Process` and `Scenario` when "agent" module is not defined
 - Fixed `ScenarioDefinitionEdge` referencing `Satisfaction` instead of `ScenarioDefinition`
