@@ -10,6 +10,7 @@
 #
 ##
 
+union TrackTraceItem = Process | EconomicResource | EconomicEvent
 union ProductionFlowItem = Process | EconomicResource
 
 type EconomicEvent {
@@ -18,12 +19,6 @@ type EconomicEvent {
 
   "Defines the process for which this event is an output."
   outputOf: Process
-
-  ##############################################################################
-  # inverse relationships and queries
-
-  track: [ProductionFlowItem!]
-  trace: [ProductionFlowItem!]
 }
 
 type Process {
@@ -35,8 +30,8 @@ type Process {
   unplannedInputs: [EconomicEvent!]
   unplannedOutputs: [EconomicEvent!]
 
-  trace: [EconomicEvent!]
-  track: [EconomicEvent!]
+  previous: [EconomicEvent!]
+  next: [EconomicEvent!]
 }
 
 ##

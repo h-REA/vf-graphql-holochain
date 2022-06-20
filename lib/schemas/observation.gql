@@ -11,6 +11,9 @@
 #
 ##
 
+union TrackTraceItem = EconomicResource | EconomicEvent
+union ProductionFlowItem = EconomicResource
+
 """
 An observed economic flow, as opposed to a flow planned to happen in the future. This could reflect a change in the quantity of an economic resource. It is also defined by its behavior in relation to the economic resource (see `Action`)
 """
@@ -61,6 +64,11 @@ type EconomicEvent {
 
   "Other EconomicEvents which have been triggered by this one."
   triggers: [EconomicEvent!]
+
+  previous: [ProductionFlowItem!]
+  next: [ProductionFlowItem!]
+  track: [TrackTraceItem!]
+  trace: [TrackTraceItem!]
 }
 
 """
@@ -109,8 +117,10 @@ type EconomicResource {
   economicEventsInOutFrom(first: Int, after: String, last: Int, before: String): EconomicEventConnection
   economicEventsTo(first: Int, after: String, last: Int, before: String): EconomicEventConnection
 
-  trace: [EconomicEvent!]
-  track: [EconomicEvent!]
+  previous: [EconomicEvent!]
+  next: [EconomicEvent!]
+  track: [TrackTraceItem!]
+  trace: [TrackTraceItem!]
 }
 
 input EconomicEventCreateParams {
