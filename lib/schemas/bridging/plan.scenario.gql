@@ -13,7 +13,7 @@ type Plan {
 }
 
 type Scenario {
-  plans(first: Int, after: String, last: Int, before: String): PlanConnection
+  plans: [Plan!]
 }
 
 ##

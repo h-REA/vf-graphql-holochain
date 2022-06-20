@@ -15,7 +15,7 @@ type Process {
 }
 
 type Plan {
-  processes(first: Int, after: String, last: Int, before: String): ProcessConnection
+  processes: [Process!]
 }
 
 ##
