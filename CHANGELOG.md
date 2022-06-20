@@ -3,6 +3,11 @@
 - Added all currently defined [inverse query relationships](https://www.valueflo.ws/specification/inverses/)
 - **Breaking:** changed query edges of all `Process` flow relationships (`Commitment`, `Intent` and `EconomicEvent`) to parameterise filters consistently with other edges. Previous `action` parameter is now present as a property of the standard `filter` argument.
 - **Breaking:** added pagination to all `Agent` relationship query edges
+- **Breaking:** updated track & trace API queries:
+	- `EconomicEvent` now has `previous` & `next`, which may be a `Process` or `EconomicResource`
+	- `EconomicResource` now has `previous` & `next`, which may only return `EconomicEvent`s
+	- Expanded `track` & `trace` queries on `EconomicEvent` & `EconomicResource` to return any of `Process`, `EconomicResource` or `EconomicEvent`
+	- Renamed `track` & `trace` on `Process` to `previous` and `next` for compatibility with other records. These edges still only return `EconomicEvent` records.
 - Added `Agent` filter params to agent query APIs, allowing filter by agent classification
 - Added `Process`, `Commitment`, `Intent`, `Claim` & `Proposal` filter params to toplevel query APIs
 - Added `offers` & `requests` convenience queries for easier `Proposal` retrieval
