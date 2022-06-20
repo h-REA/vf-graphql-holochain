@@ -119,12 +119,11 @@ type ProposalEdge {
 
 type Query {
   proposal(id: ID!): Proposal
-  proposals(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): ProposalConnection!
+  proposals(first: Int, after: String, last: Int, before: String): ProposalConnection!
+  "List all proposals that are being listed as offers."
+  offers(first: Int, after: String, last: Int, before: String): ProposalConnection!
+  "List all proposals that are being listed as requests."
+  requests(first: Int, after: String, last: Int, before: String): ProposalConnection!
 }
 
 type Mutation {
