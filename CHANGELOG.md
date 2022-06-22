@@ -1,4 +1,4 @@
-## 0.9.0-alpha.6 (unreleased)
+## 0.9.0-alpha.6
 
 - Added all currently defined [inverse query relationships](https://www.valueflo.ws/specification/inverses/)
 - **Breaking:** changed query edges of all `Process` flow relationships (`Commitment`, `Intent` and `EconomicEvent`) to parameterise filters consistently with other edges. Previous `action` parameter is now present as a property of the standard `filter` argument.
