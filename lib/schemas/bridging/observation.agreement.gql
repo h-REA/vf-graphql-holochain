@@ -17,6 +17,7 @@ type EconomicEvent {
 
 type Agreement {
   economicEvents: [EconomicEvent!]
+  unplannedEconomicEvents: [EconomicEvent!]
 }
 
 ##

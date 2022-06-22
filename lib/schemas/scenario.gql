@@ -27,9 +27,6 @@ type Scenario {
   "The ending date/time of the scenario, often the end of an accounting period."
   hasEnd: DateTime
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [AccountingScope!]
-
   "The scenario definition for this scenario, for example yearly budget."
   definedAs: ScenarioDefinition
 
@@ -38,6 +35,10 @@ type Scenario {
 
   "A textual description or comment."
   note: String
+
+  # inverse relationships and queries
+
+  refinements: [Scenario!]
 }
 
 """
@@ -55,6 +56,10 @@ type ScenarioDefinition {
 
   "A textual description or comment."
   note: String
+
+  # inverse relationships and queries
+
+  scenarios(first: Int, after: String, last: Int, before: String): ScenarioConnection
 }
 
 
@@ -71,9 +76,6 @@ input ScenarioCreateParams {
 
   "The ending date/time of the scenario, often the end of an accounting period."
   hasEnd: DateTime
-
-  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
 
   "(`Scenario`) This scenario refines another scenario, often as time moves closer or for more detail."
   refinementOf: ID
@@ -96,9 +98,6 @@ input ScenarioUpdateParams {
 
   "The ending date/time of the scenario, often the end of an accounting period."
   hasEnd: DateTime
-
-  "(`AccountingScope`) Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
 
   "(`Scenario`) This scenario refines another scenario, often as time moves closer or for more detail."
   refinementOf: ID

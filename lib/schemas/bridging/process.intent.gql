@@ -18,8 +18,8 @@ type Intent {
 }
 
 type Process {
-  intendedInputs(action: ID): [Intent!]
-  intendedOutputs(action: ID): [Intent!]
+  intendedInputs: [Intent!]
+  intendedOutputs: [Intent!]
 }
 
 ##

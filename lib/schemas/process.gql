@@ -66,9 +66,6 @@ input ProcessCreateParams {
   "A textual description or comment."
   note: String
 
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
-
   "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   classifiedAs: [URI!]
 }
@@ -90,9 +87,6 @@ input ProcessUpdateParams {
 
   "A textual description or comment."
   note: String
-
-  "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
-  inScopeOf: [ID!]
 
   "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   classifiedAs: [URI!]

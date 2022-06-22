@@ -17,11 +17,11 @@ type Commitment {
   "The economic agent whom the commitment is for."
   receiver: Agent!
 
-  ##############################################################################
-  # inverse relationships and queries
-
   "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [AccountingScope!]
+
+  ##############################################################################
+  # inverse relationships and queries
 
   involvedAgents: [Agent!]
 }
@@ -49,28 +49,22 @@ input CommitmentUpdateParams {
 }
 
 interface Agent {
-  commitments(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): CommitmentConnection
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  commitmentsAsProvider(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  commitmentsAsReceiver(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  commitmentsInScope(first: Int, after: String, last: Int, before: String): CommitmentConnection
 }
 
 type Person implements Agent {
-  commitments(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): CommitmentConnection
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  commitmentsAsProvider(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  commitmentsAsReceiver(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  commitmentsInScope(first: Int, after: String, last: Int, before: String): CommitmentConnection
 }
 
 type Organization implements Agent {
-  commitments(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): CommitmentConnection
+  commitments(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  commitmentsAsProvider(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  commitmentsAsReceiver(first: Int, after: String, last: Int, before: String): CommitmentConnection
+  commitmentsInScope(first: Int, after: String, last: Int, before: String): CommitmentConnection
 }

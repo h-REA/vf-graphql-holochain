@@ -51,30 +51,21 @@ type ProposedToResponse {
 }
 
 interface Agent {
-  proposals(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): ProposalConnection
+  proposals(first: Int, after: String, last: Int, before: String): ProposalConnection
+  proposalsInScope(first: Int, after: String, last: Int, before: String): ProposalConnection
+  proposalsTo(first: Int, after: String, last: Int, before: String): ProposalConnection
 }
 
 type Person implements Agent {
-  proposals(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): ProposalConnection
+  proposals(first: Int, after: String, last: Int, before: String): ProposalConnection
+  proposalsInScope(first: Int, after: String, last: Int, before: String): ProposalConnection
+  proposalsTo(first: Int, after: String, last: Int, before: String): ProposalConnection
 }
 
 type Organization implements Agent {
-  proposals(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): ProposalConnection
+  proposals(first: Int, after: String, last: Int, before: String): ProposalConnection
+  proposalsInScope(first: Int, after: String, last: Int, before: String): ProposalConnection
+  proposalsTo(first: Int, after: String, last: Int, before: String): ProposalConnection
 }
 
 type Mutation {

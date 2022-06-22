@@ -13,3 +13,7 @@ type Process {
   "The process with its inputs and outputs is part of the scenario."
   nestedIn: Scenario
 }
+
+type Scenario {
+  processes(first: Int, after: String, last: Int, before: String): ProcessConnection
+}

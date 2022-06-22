@@ -11,6 +11,7 @@
 ##
 
 input EconomicEventFilterParams {
+  searchString: String
   providerId: [ID!]
   receiverId: [ID!]
   resourceClassifiedAs: [URI!]

@@ -295,7 +295,7 @@ test('configuration: future claims', (t) => {
   const schema = makeMockSchema(printSchema(buildSchema([
     'process_specification', 'resource_specification', 'action', 'measurement',
     'agent',
-    'observation', 'process',
+    'observation', 'process', 'intent',
     'claim',
   ])))
   exerciseSchema(schema)

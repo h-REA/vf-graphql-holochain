@@ -10,17 +10,17 @@
 #
 ##
 
-type Process {
-  committedInputs(action: ID): [Commitment!]
-  committedOutputs(action: ID): [Commitment!]
-}
-
 type Commitment {
   "Defines the process to which this commitment is an input."
   inputOf: Process
 
   "Defines the process for which this commitment is an output."
   outputOf: Process
+}
+
+type Process {
+  committedInputs: [Commitment!]
+  committedOutputs: [Commitment!]
 }
 
 ##

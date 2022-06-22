@@ -16,6 +16,8 @@ type Plan {
 
   "Grouping around something to create a boundary or context, used for documenting, accounting, planning."
   inScopeOf: [AccountingScope!]
+
+  involvedAgents(first: Int, after: String, last: Int, before: String): AgentConnection
 }
 
 interface Agent {

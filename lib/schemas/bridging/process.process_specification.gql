@@ -14,6 +14,10 @@ type Process {
   basedOn: ProcessSpecification
 }
 
+type ProcessSpecification {
+  conformingProcesses(first: Int, after: String, last: Int, before: String): ProcessConnection
+}
+
 ##
 #  API call input and output types
 ##

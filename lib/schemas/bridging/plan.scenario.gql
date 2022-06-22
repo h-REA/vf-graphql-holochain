@@ -12,6 +12,10 @@ type Plan {
   refinementOf: Scenario
 }
 
+type Scenario {
+  plans: [Plan!]
+}
+
 ##
 #  API call input and output types
 ##

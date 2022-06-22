@@ -35,46 +35,25 @@ input EconomicEventCreateParams {
 }
 
 interface Agent {
-  economicEvents(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): EconomicEventConnection
-  inventoriedEconomicResources(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): EconomicResourceConnection
+  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsAsProvider(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsAsReceiver(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsInScope(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  inventoriedEconomicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection
 }
 
 type Person implements Agent {
-  economicEvents(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): EconomicEventConnection
-  inventoriedEconomicResources(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): EconomicResourceConnection
+  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsAsProvider(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsAsReceiver(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsInScope(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  inventoriedEconomicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection
 }
 
 type Organization implements Agent {
-  economicEvents(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): EconomicEventConnection
-  inventoriedEconomicResources(
-    first: Int
-    after: String
-    last: Int
-    before: String
-  ): EconomicResourceConnection
+  economicEvents(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsAsProvider(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsAsReceiver(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  economicEventsInScope(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  inventoriedEconomicResources(first: Int, after: String, last: Int, before: String): EconomicResourceConnection
 }
