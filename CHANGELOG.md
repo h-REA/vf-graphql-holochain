@@ -13,6 +13,7 @@
 - Added `offers` & `requests` convenience queries for easier `Proposal` retrieval
 - Added convenience query edges `Proposal.primaryIntents` and `Proposal.reciprocalIntents`
 - `Plan.processes`, `Scenario.plans` & `Scenario.refinements` are no longer paginated
+- Added missing `Commitment.stage` field
 - Fixed `Claim.provider` & `Claim.receiver` missing
 - Fixed `inScopeOf` field being included in `Claim`, `Process` and `Scenario` when "agent" module is not defined
 - Fixed `ScenarioDefinitionEdge` referencing `Satisfaction` instead of `ScenarioDefinition`
