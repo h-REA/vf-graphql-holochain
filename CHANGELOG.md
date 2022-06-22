@@ -17,6 +17,7 @@
 - Fixed `Claim.provider` & `Claim.receiver` missing
 - Fixed `inScopeOf` field being included in `Claim`, `Process` and `Scenario` when "agent" module is not defined
 - Fixed `ScenarioDefinitionEdge` referencing `Satisfaction` instead of `ScenarioDefinition`
+- **Breaking:** fixed `EconomicEvent.appreciationWith` incorrectly named as `EconomicEvent.appreciatedBy`
 
 ## 0.9.0-alpha.5
 
