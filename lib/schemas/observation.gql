@@ -114,7 +114,9 @@ type EconomicResource {
   "Used when a stock economic resource contains units also defined as economic resources."
   contains: [EconomicResource!]
 
+  "All economic events with the economic resource in the resourceInventoriedAs, including all process related events, the provider resource in transfers/moves, and raise/lower."
   economicEventsInOutFrom(first: Int, after: String, last: Int, before: String): EconomicEventConnection
+  "All economic events with the economic Resource in the toResourceInventoriedAs, which is the receiver resource in transfers and moves."
   economicEventsTo(first: Int, after: String, last: Int, before: String): EconomicEventConnection
 
   previous: [EconomicEvent!]
