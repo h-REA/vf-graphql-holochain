@@ -2,8 +2,3 @@ type ResourceSpecification {
   revision(revisionId: ID!): ResourceSpecification
   meta: RecordMeta!
 }
-
-type ProcessSpecification {
-  revision(revisionId: ID!): ProcessSpecification
-  meta: RecordMeta!
-}
