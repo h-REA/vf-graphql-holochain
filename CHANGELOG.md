@@ -1,3 +1,8 @@
+## 0.9.0-alpha.7
+
+- **Breaking:** removed `deleteEconomicEvent` and `deleteEconomicResource` as there are bookkeeping repercussions for deleting them, even in simple cases.
+- Fixed schema files for `ResourceSpecification` & `ProcessSpecification` history queries being incorrectly named, leading to missing query edges.
+
 ## 0.9.0-alpha.6
 
 - Added all currently defined [inverse query relationships](https://www.valueflo.ws/specification/inverses/)
