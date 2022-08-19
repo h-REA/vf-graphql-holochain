@@ -1,3 +1,7 @@
+## 0.9.0-alpha.8
+
+- Fixed schema files for `Commitment`, `Intent`, `Fulfillment` & `Satisfaction` history queries being incorrectly named, leading to missing query edges.
+
 ## 0.9.0-alpha.7
 
 - **Breaking:** removed `deleteEconomicEvent` and `deleteEconomicResource` as there are bookkeeping repercussions for deleting them, even in simple cases.
