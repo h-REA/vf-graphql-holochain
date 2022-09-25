@@ -99,6 +99,9 @@ input IntentCreateParams {
   "The uri to an image relevant to the intent, such as a photo."
   image: URI
 
+  "A comma separated list of uri addresses to images relevant to the intent."
+  imageList: [URI!]
+
   "A textual description or comment."
   note: String
 
