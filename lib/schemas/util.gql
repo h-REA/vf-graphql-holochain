@@ -16,3 +16,11 @@ The `DateTime` scalar type represents a DateTime value as specified by
 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 """
 scalar DateTime
+
+"""
+The `Decimal` scalar type represents arbitrary-precision floating-point
+numbers as specified by
+[IEEE 854-1987](https://en.wikipedia.org/wiki/IEEE_854-1987).  They
+are represented as strings.
+"""
+scalar Decimal
