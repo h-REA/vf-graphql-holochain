@@ -1,3 +1,8 @@
+## 0.9.0-alpha.9 (unreleased)
+
+- **Breaking:** introduced an arbitrary-precision `Decimal` type in place of all existing `Float` values to avoid rounding errors in some language backends.
+- The pagination parameters `startCursor` and `endCursor` are now nullable, for cases where no results are returned.
+
 ## 0.9.0-alpha.8
 
 - Fixed schema files for `Commitment`, `Intent`, `Fulfillment` & `Satisfaction` history queries being incorrectly named, leading to missing query edges.
