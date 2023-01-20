@@ -25,7 +25,7 @@ type Proposal {
   "The end time of proposal publication."
   hasEnd: DateTime
 
-  "This proposal contains unit based quantities, which can be multipied to create commitments; commonly seen in a price list or e-commerce."
+  "This proposal contains unit based quantities, which can be multiplied to create commitments; commonly seen in a price list or e-commerce."
   unitBased: Boolean
 
   "The date and time the proposal was created."
