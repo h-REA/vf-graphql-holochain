@@ -57,7 +57,7 @@
   },
   "homepage": "https://lab.allmende.io/valueflows/vf-schemas/vf-graphql#readme",
   "dependencies": {
-    "@graphql-tools/merge": "^8.2.1"
+    "@graphql-tools/merge": "^8.3.16"
   },
   "peerDependencies": {
     "graphql": ">=14"
