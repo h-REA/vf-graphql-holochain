@@ -2,6 +2,7 @@
 
 - **Breaking:** introduced an arbitrary-precision `Decimal` type in place of all existing `Float` values to avoid rounding errors in some language backends.
 - The pagination parameters `startCursor` and `endCursor` are now nullable, for cases where no results are returned.
+- Updated `@graphql-tools/merge` to 8.3.16 to fix bundling errors when used with certain TypeScript compiler configurations.
 
 ## 0.9.0-alpha.8
 
