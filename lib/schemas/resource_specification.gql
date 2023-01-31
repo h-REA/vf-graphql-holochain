@@ -24,6 +24,9 @@ type ResourceSpecification {
   "The uri to an image relevant to the entity, such as a photo, diagram, etc."
   image: URI
 
+  "URI addresses to images relevant to the type of resource."
+  imageList: [URI!]
+
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
 
@@ -48,6 +51,9 @@ input ResourceSpecificationCreateParams {
   "The uri to an image relevant to the entity, such as a photo, diagram, etc."
   image: URI
 
+  "URI addresses to images relevant to the type of resource."
+  imageList: [URI!]
+
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]
 
@@ -69,6 +75,9 @@ input ResourceSpecificationUpdateParams {
 
   "The uri to an image relevant to the entity, such as a photo, diagram, etc."
   image: URI
+
+  "URI addresses to images relevant to the type of resource."
+  imageList: [URI!]
 
   "References a concept in a common taxonomy or other classification scheme for purposes of categorization or grouping."
   resourceClassifiedAs: [URI!]

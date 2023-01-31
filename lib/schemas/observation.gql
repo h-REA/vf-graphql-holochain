@@ -90,6 +90,9 @@ type EconomicResource {
   "The uri to an image relevant to the resource, such as a photo, diagram, etc."
   image: URI
 
+  "URI addresses to images relevant to the resource."
+  imageList: [URI!]
+
   "The current amount and unit of the economic resource for which the agent has primary rights and responsibilities, sometimes thought of as ownership. This can be either stored or derived from economic events affecting the resource."
   accountingQuantity: Measure
 
@@ -196,6 +199,9 @@ input EconomicResourceCreateParams {
   "The uri to an image relevant to the resource, such as a photo, diagram, etc."
   image: URI
 
+  "URI addresses to images relevant to the resource."
+  imageList: [URI!]
+
   "(`EconomicResource`) Used when a stock economic resource contains items also defined as economic resources."
   containedIn: ID
 
@@ -211,6 +217,9 @@ input EconomicResourceUpdateParams {
 
   "The uri to an image relevant to the resource, such as a photo, diagram, etc."
   image: URI
+
+  "URI addresses to images relevant to the resource."
+  imageList: [URI!]
 
   "(`EconomicResource`) Used when a stock economic resource contains items also defined as economic resources."
   containedIn: ID
