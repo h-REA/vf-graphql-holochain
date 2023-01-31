@@ -36,10 +36,10 @@ type Agreement {
 
 input AgreementCreateParams { # implements AgreementParams
   "An informal or formal textual identifier for an agreement. Does not imply uniqueness."
-  name: String!
+  name: String
 
   "The date and time the agreement was created."
-  created: DateTime!
+  created: DateTime
 
   "A textual description or comment."
   note: String
