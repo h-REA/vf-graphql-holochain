@@ -1,8 +1,10 @@
-## 0.9.0-alpha.9 (unreleased)
+## 0.9.0-alpha.9
 
 - **Breaking:** introduced an arbitrary-precision `Decimal` type in place of all existing `Float` values to avoid rounding errors in some language backends.
 - The pagination parameters `startCursor` and `endCursor` are now nullable, for cases where no results are returned.
 - Updated `@graphql-tools/merge` to 8.3.16 to fix bundling errors when used with certain TypeScript compiler configurations.
+- Added `imageList` to `Intent`, `Resource` and `ResourceSpecification` to allow specifying multiple "secondary" images for these records.
+- `name` and `created` are now optional parameters when creating a new `Agreement`.
 
 ## 0.9.0-alpha.8
 
