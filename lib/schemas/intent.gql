@@ -51,6 +51,9 @@ type Intent {
   "The uri to an image relevant to the intent, such as a photo."
   image: URI
 
+  "URI addresses to images relevant to the intent."
+  imageList: [URI!]
+
   "A textual description or comment."
   note: String
 
@@ -99,7 +102,7 @@ input IntentCreateParams {
   "The uri to an image relevant to the intent, such as a photo."
   image: URI
 
-  "A comma separated list of uri addresses to images relevant to the intent."
+  "URI addresses to images relevant to the intent."
   imageList: [URI!]
 
   "A textual description or comment."
@@ -147,6 +150,9 @@ input IntentUpdateParams {
 
   "The uri to an image relevant to the intent, such as a photo."
   image: URI
+
+  "URI addresses to images relevant to the intent."
+  imageList: [URI!]
 
   "The intent is complete or not.  This is irrespective of if the original goal has been met, and indicates that no more will be done."
   finished: Boolean
