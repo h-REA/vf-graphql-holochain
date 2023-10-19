@@ -25,9 +25,6 @@ type RecipeFlow {
   "The amount and unit of the work or use or citation effort-based action. This is often a time duration, but also could be cycle counts or other measures of effort or usefulness."
   effortQuantity: Measure
 
-  "The resource definition referenced by this flow in the recipe."
-  resourceConformsTo: ResourceSpecification!
-
   "Relates a process input or output to a verb, such as consume, produce, work, modify, etc."
   action: Action!
 
@@ -138,9 +135,6 @@ input RecipeFlowCreateParams {
   "(`Action`) Relates a process input or output to a verb, such as consume, produce, work, modify, etc."
   action: ID!
 
-  "(`ResourceSpecification`) The resource definition referenced by this flow in the recipe."
-  resourceConformsTo: ID!
-
   "The amount and unit of the economic resource counted or inventoried."
   resourceQuantity: IMeasure
 
@@ -168,9 +162,6 @@ input RecipeFlowUpdateParams {
 
   "(`Action`) Relates a process input or output to a verb, such as consume, produce, work, modify, etc."
   action: ID
-
-  "(`ResourceSpecification`) The resource definition referenced by this flow in the recipe."
-  resourceConformsTo: ID
 
   "The amount and unit of the economic resource counted or inventoried."
   resourceQuantity: IMeasure
