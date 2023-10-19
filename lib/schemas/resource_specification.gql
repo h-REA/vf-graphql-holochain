@@ -38,6 +38,9 @@ type ResourceSpecification {
 
   "The default unit used for use or work."
   defaultUnitOfEffort: Unit
+
+  "Defines if any resource of that type can be freely substituted for any other resource of that type when used, consumed, traded, etc."
+  substitutable: Boolean
 }
 
 ##
@@ -65,6 +68,9 @@ input ResourceSpecificationCreateParams {
 
   "(`Unit`) The default unit used for use or work."
   defaultUnitOfEffort: ID
+
+  "Defines if any resource of that type can be freely substituted for any other resource of that type when used, consumed, traded, etc."
+  substitutable: Boolean
 }
 
 input ResourceSpecificationUpdateParams {
@@ -90,6 +96,9 @@ input ResourceSpecificationUpdateParams {
 
   "(`Unit`) The default unit used for use or work."
   defaultUnitOfEffort: ID
+
+  "Defines if any resource of that type can be freely substituted for any other resource of that type when used, consumed, traded, etc."
+  substitutable: Boolean
 }
 
 type ResourceSpecificationResponse {
