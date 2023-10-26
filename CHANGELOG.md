@@ -1,3 +1,8 @@
+## 0.9.0-alpha.10
+
+- **Breaking:** revised *Recipe* schemas. `RecipeResource` removed for simplicity and `RecipeFlow` now references `ResourceSpecification` directly.
+- Added `ResourceSpecification.substitutable` property for declaring whether `EconomicResource` types are fungible or not.
+
 ## 0.9.0-alpha.9
 
 - **Breaking:** introduced an arbitrary-precision `Decimal` type in place of all existing `Float` values to avoid rounding errors in some language backends.
