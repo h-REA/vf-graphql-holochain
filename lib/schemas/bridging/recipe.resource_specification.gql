@@ -9,17 +9,17 @@
 #
 ##
 
-type RecipeResource {
-  "The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ResourceSpecification
+type RecipeFlow {
+  "The resource definition referenced by this flow in the recipe."
+  resourceConformsTo: ResourceSpecification!
 }
 
-input RecipeResourceCreateParams {
-  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
-  resourceConformsTo: ID
+input RecipeFlowCreateParams {
+  "(`ResourceSpecification`) The resource definition referenced by this flow in the recipe."
+  resourceConformsTo: ID!
 }
 
-input RecipeResourceUpdateParams {
-  "(`ResourceSpecification`) The primary resource specification or definition of an existing or potential economic resource. A resource will have only one, as this specifies exactly what the resource is."
+input RecipeFlowUpdateParams {
+  "(`ResourceSpecification`) The resource definition referenced by this flow in the recipe."
   resourceConformsTo: ID
 }
