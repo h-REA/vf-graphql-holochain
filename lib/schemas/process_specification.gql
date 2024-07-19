@@ -22,6 +22,9 @@ type ProcessSpecification {
 
   "A textual description or comment."
   note: String
+
+  "The image of the process."
+  image: String
 }
 
 ##
@@ -34,6 +37,9 @@ input ProcessSpecificationCreateParams {
 
   "A textual description or comment."
   note: String
+
+  "The image of the process."
+  image: String
 }
 
 input ProcessSpecificationUpdateParams {
@@ -44,6 +50,9 @@ input ProcessSpecificationUpdateParams {
 
   "A textual description or comment."
   note: String
+
+  "The image of the process."
+  image: String
 }
 
 type ProcessSpecificationResponse {
