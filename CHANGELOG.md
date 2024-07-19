@@ -1,3 +1,7 @@
+## 0.9.0-alpha.11
+- Added `image` to `ProcessSpecification`.
+- Added `stage` to `CommitmentCreateParams` and `CommitmentUpdateParams`
+
 ## 0.9.0-alpha.10
 
 - **Breaking:** revised *Recipe* schemas. `RecipeResource` removed for simplicity and `RecipeFlow` now references `ResourceSpecification` directly.
