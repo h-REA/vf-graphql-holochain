@@ -54,6 +54,12 @@ type Unit {
 
   "A standard display symbol for a unit of measure."
   symbol: String!
+
+  "The OM2 identifier for the unit."
+  omUnitIdentifier: String!
+
+  "Arbitrary classification for the unit."
+  classifiedAs: String
 }
 
 
@@ -89,6 +95,12 @@ input UnitCreateParams {
 
   "A standard display symbol for a unit of measure."
   symbol: String!
+
+  "The OM2 identifier for the unit."
+  omUnitIdentifier: String!
+
+  "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
+  classifiedAs: [URI!]
 }
 
 input UnitUpdateParams {
@@ -99,6 +111,12 @@ input UnitUpdateParams {
 
   "A standard display symbol for a unit of measure."
   symbol: String
+
+  "The OM2 identifier for the unit."
+  omUnitIdentifier: String
+
+  "References one or more concepts in a common taxonomy or other classification scheme for purposes of categorization or grouping."
+  classifiedAs: [URI!]
 }
 
 type UnitResponse {
