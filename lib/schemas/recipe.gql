@@ -37,6 +37,15 @@ type RecipeFlow {
   "Relates a flow to its exchange agreement in a recipe."
   recipeClauseOf: RecipeExchange
 
+  "Relates a flow to its reciprocal exchange agreement in a recipe."
+  recipeReciprocalClauseOf: RecipeExchange
+
+  "Relates to a process specification in a recipe."
+  stage: ProcessSpecification
+
+  "The instructions for planning"
+  instructions: String
+
   "A textual description or comment."
   note: String
 }
@@ -150,9 +159,18 @@ input RecipeFlowCreateParams {
   "(`RecipeExchange`) Relates a flow to its exchange agreement in a recipe."
   recipeClauseOf: ID
 
+  "(`RecipeExchange`) Relates a flow to its reciprocal exchange agreement in a recipe."
+  recipeReciprocalClauseOf: ID
+
+  "The stage of the flow in its lifecycle."
+  stage: ID
+
   "The state of the desired economic resource (pass or fail), after coming out of a test or review process."
   state: String
 
+  "The instructions for planning"
+  instructions: String
+  
   "A textual description or comment."
   note: String
 }
@@ -178,8 +196,17 @@ input RecipeFlowUpdateParams {
   "(`RecipeExchange`) Relates a flow to its exchange agreement in a recipe."
   recipeClauseOf: ID
 
+  "(`RecipeExchange`) Relates a flow to its reciprocal exchange agreement in a recipe."
+  recipeReciprocalClauseOf: ID
+
+  "The stage of the flow in its lifecycle."
+  stage: ID
+
   "The state of the desired economic resource (pass or fail), after coming out of a test or review process."
   state: String
+
+  "The instructions for planning"
+  instructions: String
 
   "A textual description or comment."
   note: String
