@@ -54,6 +54,9 @@ type Commitment {
 
   "The commitment can be safely deleted, has no dependent information."
   deletable: Boolean
+
+  "The intent which this commitment satisfies."
+  satisfies: Intent
 }
 
 ##
@@ -93,6 +96,9 @@ input CommitmentCreateParams {
 
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this commitment."
   agreedIn: URI
+
+  "The intent which this commitment satisfies."
+  satisfies: ID
 }
 
 input CommitmentUpdateParams {
@@ -127,6 +133,9 @@ input CommitmentUpdateParams {
 
   "Reference to an agreement between agents which specifies the rules or policies or calculations which govern this commitment."
   agreedIn: URI
+
+  "The intent which this commitment satisfies."
+  satisfies: ID
 }
 
 type CommitmentResponse {

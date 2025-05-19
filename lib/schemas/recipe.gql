@@ -68,6 +68,15 @@ type RecipeProcess {
 
   "A textual description or comment."
   note: String
+
+  "The image that represents the recipe process."
+  image: URI
+
+  "The non-reciprocal recipe flows that are part of this process."
+  recipeInputs: [RecipeFlow!]
+
+  "The reciprocal recipe flows that are part of this process."
+  recipeOutputs: [RecipeFlow!]
 }
 
 """
@@ -82,6 +91,12 @@ type RecipeExchange {
 
   "A textual description or comment."
   note: String
+
+  "The non-reciprocal recipe flows that are part of this exchange agreement."
+  recipeClauses: [RecipeFlow!]
+
+  "The reciprocal recipe flows that are part of this exchange agreement."
+  recipeReciprocalClauses: [RecipeFlow!]
 }
 
 input RecipeProcessCreateParams {

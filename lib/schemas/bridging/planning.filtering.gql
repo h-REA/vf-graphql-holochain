@@ -34,23 +34,9 @@ input IntentFilterParams {
   status: String
 }
 
-input FulfillmentFilterParams {
-  "Match Fulfillments fulfilling any of the given Commitments"
-  fulfills: [ID!]
-  "Match Fulfillments fulfilled by any of the given EconomicEvents"
-  fulfilledBy: [ID!]
-}
-
-input SatisfactionFilterParams {
-  "Match Satisfactions satisfying any of the given Intents"
-  satisfies: [ID!]
-  "Match Satisfactions satisfied by any of the given EconomicEvents or Commitments"
-  satisfiedBy: [ID!]
-}
-
 type Query {
   commitments(filter: CommitmentFilterParams): CommitmentConnection!
   intents(filter: IntentFilterParams): IntentConnection!
-  fulfillments(filter: FulfillmentFilterParams): FulfillmentConnection!
-  satisfactions(filter: SatisfactionFilterParams): SatisfactionConnection!
+  # fulfillments(filter: FulfillmentFilterParams): FulfillmentConnection!
+  # satisfactions(filter: SatisfactionFilterParams): SatisfactionConnection!
 }

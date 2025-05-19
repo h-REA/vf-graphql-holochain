@@ -1,3 +1,14 @@
+## 0.9.1-alpha.0
+- Removed `proposedIntent`
+- Removed `satisfaction`
+- Removed `fulfillment`
+- Added `observedBy` to `Intent`
+- Added `satisfiedBy` to `Intent`
+- Added `fulfilledBy` to `Commitment`
+- Added `minimumQuantity` to `Intent`
+- Added `corrects` to `EconomicEvent`
+- Added `image` to `RecipeProcess`
+
 ## 0.9.0-alpha.11
 - Added `image` to `ProcessSpecification`.
 - Added `stage` to `CommitmentCreateParams` and `CommitmentUpdateParams`

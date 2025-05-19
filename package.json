@@ -6,7 +6,7 @@
   "main": "/dev/null",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build": "cd lib && npm run build",
+    "build": "cd lib && rm -Rf build && npm run build",
     "publish": "npm run publish:lib && npm run publish:mock-client",
     "publish:lib": "cd lib && npm publish --access public",
     "publish:mock-client": "cd mock-client && npm publish --access public",

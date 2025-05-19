@@ -10,15 +10,10 @@
 ##
 
 type Intent {
-  publishedIn: [ProposedIntent!]
+  publishedIn: [Proposal!]
 }
 
 type Proposal {
   primaryIntents: [Intent!]
   reciprocalIntents: [Intent!]
-}
-
-type ProposedIntent {
-  "The intent which is part of this published proposal."
-  publishes: Intent!
 }

@@ -57,6 +57,15 @@ type EconomicEvent {
   "References another economic event that implied this economic event, often based on a prior agreement."
   triggeredBy: EconomicEvent
 
+  "The intent this economic event satisfies."
+  satisfies: Intent
+
+  "The commitment this economic event fulfills."
+  fulfills: Commitment
+
+  "The economic event that this economic event corrects."
+  corrects: EconomicEvent
+
   "The economic event can be safely deleted, has no dependent information."
   deletable: Boolean
 
@@ -164,6 +173,12 @@ input EconomicEventCreateParams {
 
   "(`EconomicResource`) Additional economic resource on the economic event when needed by the receiver. Used when a transfer or move, or sometimes other actions, requires explicitly identifying an economic resource on the receiving side."
   toResourceInventoriedAs: ID
+
+  "The intent this economic event satisfies."
+  satisfies: ID
+
+  "The commitment this economic event fulfills."
+  fulfills: ID
 }
 
 input EconomicEventUpdateParams {

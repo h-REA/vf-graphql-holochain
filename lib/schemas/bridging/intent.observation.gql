@@ -12,6 +12,7 @@
 type Intent {
   "When a specific `EconomicResource` is known which can service the `Intent`, this defines that resource."
   resourceInventoriedAs: EconomicResource
+  observedBy: [EconomicEvent!]
 }
 
 type EconomicResource {

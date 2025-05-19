@@ -12,6 +12,7 @@
 type Commitment {
   "Exact economic resource involved in the commitment."
   resourceInventoriedAs: EconomicResource
+  fulfilledBy: [EconomicEvent!]
 }
 
 type EconomicResource {

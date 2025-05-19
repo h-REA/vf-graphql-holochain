@@ -33,6 +33,9 @@ type Intent {
   "The total quantity of the offered resource available."
   availableQuantity: Measure
 
+  "Minimum quantity of the offered resource available."
+  minimumQuantity: Measure
+
   "The planned beginning of the intent."
   hasBeginning: DateTime
 
