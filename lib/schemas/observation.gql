@@ -58,10 +58,10 @@ type EconomicEvent {
   triggeredBy: EconomicEvent
 
   "The intent this economic event satisfies."
-  satisfies: Intent
+  satisfies: [Intent!]
 
   "The commitment this economic event fulfills."
-  fulfills: Commitment
+  fulfills: [Commitment!]
 
   "The economic event that this economic event corrects."
   corrects: EconomicEvent
@@ -175,10 +175,10 @@ input EconomicEventCreateParams {
   toResourceInventoriedAs: ID
 
   "The intent this economic event satisfies."
-  satisfies: ID
+  satisfies: [ID!]
 
   "The commitment this economic event fulfills."
-  fulfills: ID
+  fulfills: [ID!]
 }
 
 input EconomicEventUpdateParams {
