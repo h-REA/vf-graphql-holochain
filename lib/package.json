@@ -1,6 +1,6 @@
 {
   "name": "@valueflows/vf-graphql",
-  "version": "0.9.1-alpha.0",
+  "version": "0.9.1-alpha.6",
   "description": "Reference GraphQL implementation of the ValueFlows spec",
   "main": "index.js",
   "types": "index.d.ts",
@@ -60,7 +60,7 @@
     "@graphql-tools/merge": "^8.3.16"
   },
   "peerDependencies": {
-    "graphql": ">=14"
+    "graphql": ">=15"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.4.0",

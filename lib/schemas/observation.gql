@@ -222,6 +222,9 @@ input EconomicResourceCreateParams {
 
   "A textual description or comment."
   note: String
+
+  "References the ProcessSpecification of the last process the desired economic resource went through. Stage is used when the last process is important for finding proper resources, such as where the publishing process wants only documents that have gone through the editing process."
+  stage: ID
 }
 
 input EconomicResourceUpdateParams {
@@ -244,6 +247,9 @@ input EconomicResourceUpdateParams {
 
   "A textual description or comment."
   note: String
+
+  "References the ProcessSpecification of the last process the desired economic resource went through. Stage is used when the last process is important for finding proper resources, such as where the publishing process wants only documents that have gone through the editing process."
+  stage: ID
 }
 
 type EconomicResourceResponse {

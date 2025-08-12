@@ -37,6 +37,12 @@ type RecipeFlow {
   "Relates a flow to its exchange agreement in a recipe."
   recipeClauseOf: RecipeExchange
 
+  "The role of the provider in the exchange agreement."
+  providerRole: ID
+
+  "The role of the receiver in the exchange agreement."
+  receiverRole: ID
+
   "Relates a flow to its reciprocal exchange agreement in a recipe."
   recipeReciprocalClauseOf: RecipeExchange
 
@@ -174,6 +180,12 @@ input RecipeFlowCreateParams {
   "(`RecipeExchange`) Relates a flow to its exchange agreement in a recipe."
   recipeClauseOf: ID
 
+  "The role of the provider in the exchange agreement."
+  providerRole: ID
+
+  "The role of the receiver in the exchange agreement."
+  receiverRole: ID
+
   "(`RecipeExchange`) Relates a flow to its reciprocal exchange agreement in a recipe."
   recipeReciprocalClauseOf: ID
 
@@ -210,6 +222,12 @@ input RecipeFlowUpdateParams {
 
   "(`RecipeExchange`) Relates a flow to its exchange agreement in a recipe."
   recipeClauseOf: ID
+
+  "The role of the provider in the exchange agreement."
+  providerRole: ID
+
+  "The role of the receiver in the exchange agreement."
+  receiverRole: ID
 
   "(`RecipeExchange`) Relates a flow to its reciprocal exchange agreement in a recipe."
   recipeReciprocalClauseOf: ID

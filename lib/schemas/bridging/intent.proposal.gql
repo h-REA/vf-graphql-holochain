@@ -12,8 +12,3 @@
 type Intent {
   publishedIn: [Proposal!]
 }
-
-type Proposal {
-  primaryIntents: [Intent!]
-  reciprocalIntents: [Intent!]
-}
